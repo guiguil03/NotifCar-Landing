@@ -3,12 +3,14 @@ import Header from '../components/layout/Header';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
+import { type Page } from '../hooks/useNavigation';
 
 interface ProfilePageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate?: (page: Page) => void;
+  onLogout?: () => void;
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
+const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate, onLogout }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: 'John Doe',
@@ -53,9 +55,6 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header 
-        isAuthenticated={true}
-        user={{ name: formData.name, email: formData.email }}
-        onLogout={() => console.log('Logout')}
         onNavigate={onNavigate}
       />
       

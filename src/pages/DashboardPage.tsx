@@ -7,6 +7,7 @@ import VehicleCard from '../components/features/VehicleCard';
 import NotificationCard from '../components/features/NotificationCard';
 import AddVehicleModal from '../components/features/AddVehicleModal';
 import QRCodeDisplay from '../components/features/QRCodeDisplay';
+import { type Page } from '../hooks/useNavigation';
 
 interface Vehicle {
   id: string;
@@ -35,10 +36,11 @@ interface Notification {
 }
 
 interface DashboardPageProps {
-  onNavigate?: (page: string) => void;
+  onNavigate?: (page: Page) => void;
+  onLogout?: () => void;
 }
 
-const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
+const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate, onLogout }) => {
   const [activeTab, setActiveTab] = useState<'vehicles' | 'notifications' | 'scan'>('vehicles');
   const [showAddVehicle, setShowAddVehicle] = useState(false);
   const [showQRCode, setShowQRCode] = useState<Vehicle | null>(null);
@@ -141,9 +143,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header 
-        isAuthenticated={true}
-        user={{ name: 'John Doe', email: 'john@example.com' }}
-        onLogout={() => console.log('Logout')}
         onNavigate={onNavigate}
       />
       

@@ -1,26 +1,41 @@
 import React from 'react';
 import Button from '../ui/Button';
+import { useAuth } from '../../contexts/AuthContext';
+import { type Page } from '../../hooks/useNavigation';
 
 interface HeaderProps {
-  isAuthenticated?: boolean;
-  onLogin?: () => void;
-  onRegister?: () => void;
-  onLogout?: () => void;
-  onNavigate?: (page: string) => void;
-  user?: {
-    name: string;
-    email: string;
-  };
+  onNavigate?: (page: Page) => void;
+  onScrollToSection?: (sectionId: string) => void;
+  onOpenRegistration?: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
-  isAuthenticated = false,
-  onLogin,
-  onRegister,
-  onLogout,
   onNavigate,
-  user,
+  onScrollToSection,
+  onOpenRegistration,
 }) => {
+  const { isAuthenticated, user, logout } = useAuth();
+
+  const handleRegister = () => {
+    onOpenRegistration?.();
+  };
+
+  const handleLogout = () => {
+    logout();
+    onNavigate?.('landing');
+  };
+
+  const handleScrollToSection = (sectionId: string) => {
+    if (onScrollToSection) {
+      onScrollToSection(sectionId);
+    } else {
+      // Fallback pour le scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
       
@@ -59,15 +74,24 @@ const Header: React.FC<HeaderProps> = ({
               </nav>
             ) : (
               <nav className="hidden md:ml-10 md:flex md:space-x-8">
-                <a href="#features" className="text-slate-600 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-purple-50 rounded-lg">
+                <button 
+                  onClick={() => handleScrollToSection('features')}
+                  className="text-slate-600 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-purple-50 rounded-lg"
+                >
                   Fonctionnalités
-                </a>
-                <a href="#pricing" className="text-slate-600 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-purple-50 rounded-lg">
+                </button>
+                <button 
+                  onClick={() => handleScrollToSection('pricing')}
+                  className="text-slate-600 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-purple-50 rounded-lg"
+                >
                   Tarifs
-                </a>
-                <a href="#contact" className="text-slate-600 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-purple-50 rounded-lg">
+                </button>
+                <button 
+                  onClick={() => handleScrollToSection('contact')}
+                  className="text-slate-600 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-purple-50 rounded-lg"
+                >
                   Contact
-                </a>
+                </button>
               </nav>
             )}
           </div>
@@ -79,16 +103,13 @@ const Header: React.FC<HeaderProps> = ({
                 <span className="text-sm text-slate-600 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
                   Bonjour, {user?.name}
                 </span>
-                <Button variant="outline" size="sm" onClick={onLogout} className="border-red-300 text-red-600 hover:bg-red-50">
+                <Button variant="outline" size="sm" onClick={handleLogout} className="border-red-300 text-red-600 hover:bg-red-50">
                   Déconnexion
                 </Button>
               </div>
             ) : (
               <div className="flex items-center space-x-3">
-                <Button variant="outline" size="sm" onClick={onLogin} className="border-purple-300 text-purple-600 hover:bg-purple-50">
-                  Connexion
-                </Button>
-                <Button variant="primary" size="sm" onClick={onRegister} className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800">
+                <Button variant="primary" size="sm" onClick={handleRegister} className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800">
                   S'inscrire
                 </Button>
               </div>

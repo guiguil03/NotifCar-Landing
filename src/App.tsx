@@ -1,46 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { useNavigation } from './hooks/useNavigation';
 import LandingPage from './pages/LandingPage';
-import AuthPage from './pages/AuthPage';
 import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
 import './App.css';
 
-type Page = 'landing' | 'auth' | 'dashboard' | 'profile';
-
 const AppContent: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuth();
-  const [currentPage, setCurrentPage] = useState<Page>('landing');
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-  const [authError, setAuthError] = useState<string>('');
-  const [authLoading, setAuthLoading] = useState(false);
+  const { isAuthenticated, isLoading, logout } = useAuth();
+  const { currentPage, navigateTo, scrollToSection } = useNavigation();
 
-  const { login, register } = useAuth();
-
-  const handleAuth = async (email: string, password: string, name?: string) => {
-    setAuthLoading(true);
-    setAuthError('');
-    
-    try {
-      if (authMode === 'login') {
-        await login(email, password);
-      } else {
-        if (!name) throw new Error('Le nom est requis');
-        await register(name, email, password);
-      }
-      setCurrentPage('dashboard');
-    } catch (error) {
-      setAuthError(error instanceof Error ? error.message : 'Une erreur est survenue');
-    } finally {
-      setAuthLoading(false);
-    }
+  const handleLogout = () => {
+    logout();
+    navigateTo('landing');
   };
-
-  // const handleLogout = () => {
-  //   const { logout } = useAuth();
-  //   logout();
-  //   setCurrentPage('landing');
-  // };
 
   if (isLoading) {
     return (
@@ -57,32 +30,21 @@ const AppContent: React.FC = () => {
   if (isAuthenticated) {
     switch (currentPage) {
       case 'dashboard':
-        return <DashboardPage onNavigate={(page: string) => setCurrentPage(page as Page)} />;
+        return <DashboardPage onNavigate={navigateTo} onLogout={handleLogout} />;
       case 'profile':
-        return <ProfilePage onNavigate={(page: string) => setCurrentPage(page as Page)} />;
+        return <ProfilePage onNavigate={navigateTo} onLogout={handleLogout} />;
       default:
-        return <DashboardPage onNavigate={(page: string) => setCurrentPage(page as Page)} />;
+        return <DashboardPage onNavigate={navigateTo} onLogout={handleLogout} />;
     }
   }
 
   // Pages pour les utilisateurs non connectés
-  switch (currentPage) {
-    case 'auth':
-      return (
-        <AuthPage
-          mode={authMode}
-          onSwitchMode={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}
-          onAuthenticate={handleAuth}
-          loading={authLoading}
-          error={authError}
-        />
-      );
-    case 'landing':
-    default:
-      return (
-        <LandingPage onNavigate={(page: string) => setCurrentPage(page as Page)} />
-      );
-  }
+  return (
+    <LandingPage 
+      onNavigate={navigateTo} 
+      onScrollToSection={scrollToSection}
+    />
+  );
 };
 
 const App: React.FC = () => {
