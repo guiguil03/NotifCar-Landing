@@ -36,11 +36,11 @@ const AppContent: React.FC = () => {
     }
   };
 
-  const handleLogout = () => {
-    const { logout } = useAuth();
-    logout();
-    setCurrentPage('landing');
-  };
+  // const handleLogout = () => {
+  //   const { logout } = useAuth();
+  //   logout();
+  //   setCurrentPage('landing');
+  // };
 
   if (isLoading) {
     return (
@@ -57,11 +57,11 @@ const AppContent: React.FC = () => {
   if (isAuthenticated) {
     switch (currentPage) {
       case 'dashboard':
-        return <DashboardPage onNavigate={setCurrentPage} />;
+        return <DashboardPage onNavigate={(page: string) => setCurrentPage(page as Page)} />;
       case 'profile':
-        return <ProfilePage onNavigate={setCurrentPage} />;
+        return <ProfilePage onNavigate={(page: string) => setCurrentPage(page as Page)} />;
       default:
-        return <DashboardPage onNavigate={setCurrentPage} />;
+        return <DashboardPage onNavigate={(page: string) => setCurrentPage(page as Page)} />;
     }
   }
 
@@ -80,7 +80,7 @@ const AppContent: React.FC = () => {
     case 'landing':
     default:
       return (
-        <LandingPage onNavigate={setCurrentPage} />
+        <LandingPage onNavigate={(page: string) => setCurrentPage(page as Page)} />
       );
   }
 };

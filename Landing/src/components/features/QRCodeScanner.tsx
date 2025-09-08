@@ -7,7 +7,7 @@ interface QRCodeScannerProps {
   onError?: (error: string) => void;
 }
 
-const QRCodeScanner: React.FC<QRCodeScannerProps> = ({ onScan, onError }) => {
+const QRCodeScanner: React.FC<QRCodeScannerProps> = ({ onScan, onError: _onError }) => {
   const [isScanning, setIsScanning] = useState(false);
   const [scannedData, setScannedData] = useState<string | null>(null);
 
