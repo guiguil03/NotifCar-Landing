@@ -7,13 +7,8 @@ import ProfilePage from './pages/ProfilePage';
 import './App.css';
 
 const AppContent: React.FC = () => {
-  const { isAuthenticated, isLoading, logout } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
   const { currentPage, navigateTo, scrollToSection } = useNavigation();
-
-  const handleLogout = () => {
-    logout();
-    navigateTo('landing');
-  };
 
   if (isLoading) {
     return (
@@ -30,11 +25,11 @@ const AppContent: React.FC = () => {
   if (isAuthenticated) {
     switch (currentPage) {
       case 'dashboard':
-        return <DashboardPage onNavigate={navigateTo} onLogout={handleLogout} />;
+        return <DashboardPage onNavigate={navigateTo} />;
       case 'profile':
-        return <ProfilePage onNavigate={navigateTo} onLogout={handleLogout} />;
+        return <ProfilePage onNavigate={navigateTo} />;
       default:
-        return <DashboardPage onNavigate={navigateTo} onLogout={handleLogout} />;
+        return <DashboardPage onNavigate={navigateTo} />;
     }
   }
 

@@ -40,7 +40,7 @@ interface DashboardPageProps {
   onLogout?: () => void;
 }
 
-const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate, onLogout }) => {
+const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState<'vehicles' | 'notifications' | 'scan'>('vehicles');
   const [showAddVehicle, setShowAddVehicle] = useState(false);
   const [showQRCode, setShowQRCode] = useState<Vehicle | null>(null);

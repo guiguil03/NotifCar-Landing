@@ -10,7 +10,7 @@ interface ProfilePageProps {
   onLogout?: () => void;
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate, onLogout }) => {
+const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: 'John Doe',
