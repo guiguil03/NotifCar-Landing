@@ -532,61 +532,88 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 relative overflow-hidden">
+      <section id="contact" className="py-24 bg-white relative overflow-hidden border-t border-gray-100">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-white/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/3 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-100/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-100/30 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
         
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg border border-purple-200">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
             Rejoignez la révolution
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-8 leading-tight">
             Prêt à révolutionner la 
-            <span className="block bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
               communication automobile ?
             </span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-purple-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
             Rejoignez des milliers d'automobilistes qui utilisent déjà Notifcar pour une communication plus fluide et sécurisée
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+            {/* Bouton Principal - S'inscrire */}
             <button 
               onClick={() => setIsRegistrationModalOpen(true)}
-              className="group relative bg-white text-purple-600 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25"
+              className="group relative overflow-hidden bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 text-white px-16 py-6 rounded-3xl font-bold text-xl hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 transition-all duration-500 transform hover:scale-110 hover:-rotate-1 shadow-2xl hover:shadow-purple-500/30"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center gap-3">
-                <svg className="w-6 h-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span>S'inscrire maintenant</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              {/* Effet de brillance */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              
+              {/* Particules flottantes */}
+              <div className="absolute top-2 left-4 w-2 h-2 bg-purple-400 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-3 right-6 w-1.5 h-1.5 bg-purple-300 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200"></div>
+              <div className="absolute top-4 right-8 w-1 h-1 bg-purple-500 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-400"></div>
+              
+              <div className="relative flex items-center justify-center gap-4">
+                <div className="relative">
+                  <svg className="w-8 h-8 text-white group-hover:animate-bounce transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                </div>
+                <span className="text-white group-hover:text-purple-100 transition-all duration-300">
+                  S'inscrire maintenant
+                </span>
+                <svg className="w-6 h-6 text-white group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
             </button>
             
+            {/* Bouton Secondaire - En savoir plus */}
             <button 
               onClick={() => onScrollToSection?.('features')}
-              className="group border-2 border-white/80 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
+              className="group relative overflow-hidden bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 border-2 border-gray-300 text-gray-700 px-16 py-6 rounded-3xl font-bold text-xl hover:from-gray-200 hover:via-gray-300 hover:to-gray-200 hover:border-gray-400 transition-all duration-500 transform hover:scale-110 hover:rotate-1 shadow-2xl hover:shadow-gray-300/20"
             >
-              <div className="flex items-center justify-center gap-3">
-                <svg className="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>En savoir plus</span>
-                <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              {/* Effet de brillance */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              
+              {/* Particules flottantes */}
+              <div className="absolute top-3 left-6 w-2 h-2 bg-purple-400/60 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-purple-300/60 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300"></div>
+              <div className="absolute top-5 right-10 w-1 h-1 bg-purple-500/60 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-500"></div>
+              
+              <div className="relative flex items-center justify-center gap-4">
+                <div className="relative">
+                  <svg className="w-8 h-8 text-gray-600 group-hover:animate-pulse transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                </div>
+                <span className="group-hover:text-purple-600 transition-colors duration-300">
+                  En savoir plus
+                </span>
+                <svg className="w-6 h-6 text-gray-600 group-hover:translate-y-2 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </div>
             </button>
