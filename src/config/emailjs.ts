@@ -11,6 +11,12 @@ export const EMAILJS_CONFIG = {
   
   // Template pour l'inscription (vous devrez créer un nouveau template)
   REGISTRATION_TEMPLATE_ID: 'template_registration',
+  
+  // Email de l'administrateur (vous)
+  ADMIN_EMAIL: 'guillaumel1103@gmail.com',
+  
+  // Nom de l'administrateur
+  ADMIN_NAME: 'Guillaume',
 };
 
 // Fonction pour initialiser EmailJS

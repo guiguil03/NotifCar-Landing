@@ -20,46 +20,66 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
         onOpenRegistration={() => setIsRegistrationModalOpen(true)}
       />
       
-      {/* Hero Section - Clean & Professional */}
-      <section className="relative min-h-screen bg-white text-slate-900">
-        {/* Simple Background Elements */}
+      {/* Hero Section - Enhanced & Professional */}
+      <section className="relative min-h-screen bg-gradient-to-br from-white via-purple-50/30 to-blue-50/30 text-slate-900 overflow-hidden">
+        {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
-          {/* Subtle Grid Pattern */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.3%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+          {/* Animated Grid Pattern */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.2%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221.5%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-60 animate-pulse"></div>
           
-          {/* Simple Car Icons */}
-          <div className="absolute top-20 right-20 w-8 h-8 text-purple-200">
+          {/* Floating Car Icons with Animation */}
+          <div className="absolute top-20 right-20 w-10 h-10 text-purple-300 animate-bounce">
+            <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full drop-shadow-sm">
+              <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+            </svg>
+          </div>
+          <div className="absolute bottom-20 left-20 w-8 h-8 text-purple-400 animate-pulse">
+            <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full drop-shadow-sm">
+              <path d="M19 7h-1V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM8 6h8v1H8V6zm8 13H8a1 1 0 0 1-1-1V9h10v9a1 1 0 0 1-1 1z"/>
+            </svg>
+          </div>
+          <div className="absolute top-1/2 left-10 w-6 h-6 text-blue-300 animate-pulse delay-1000">
             <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
               <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
             </svg>
           </div>
-          <div className="absolute bottom-20 left-20 w-6 h-6 text-purple-300">
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-              <path d="M19 7h-1V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM8 6h8v1H8V6zm8 13H8a1 1 0 0 1-1-1V9h10v9a1 1 0 0 1-1 1z"/>
-            </svg>
-          </div>
+          
+          {/* Subtle Gradient Orbs */}
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-purple-200/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-blue-200/20 rounded-full blur-2xl animate-pulse delay-500"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
           <div className="text-center w-full">
-            {/* Logo */}
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl mb-8 shadow-lg">
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
+            {/* Enhanced Logo */}
+            <div className="inline-flex items-center justify-center w-28 h-28 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 rounded-3xl mb-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div className="relative">
+                <svg className="w-14 h-14 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-ping"></div>
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full"></div>
+              </div>
             </div>
             
-            {/* Title with Car Icon */}
+            {/* Enhanced Title with Car Icon */}
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <svg className="w-16 h-16 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-                </svg>
-                <span className="bg-gradient-to-r from-black-600 to-black-800 bg-clip-text ">
-                  Communication automobile !!
+              <div className="flex items-center justify-center gap-6 mb-6">
+                <div className="relative">
+                  <svg className="w-20 h-20 text-purple-600 drop-shadow-lg animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                  </svg>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-yellow-800" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                </div>
+                <span className="bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 bg-clip-text text-transparent animate-pulse">
+                  Communication automobile
                 </span>
               </div>
-              <span className="text-3xl md:text-5xl text-slate-700">
+              <span className="text-3xl md:text-5xl text-slate-700 font-light">
                 sécurisée & instantanée
               </span>
             </h1>
@@ -115,25 +135,34 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               "Votre véhicule vous parle, écoutez-le."
             </p>
             
-            {/* CTA Buttons */}
+            {/* Enhanced CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
               <button 
                 onClick={() => setIsRegistrationModalOpen(true)}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg transition-colors duration-200 flex items-center justify-center gap-3"
+                className="group relative bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 text-white px-10 py-5 rounded-2xl font-semibold text-lg shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-105 hover:shadow-purple-500/25"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                S'inscrire maintenant
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <div className="relative flex items-center gap-3">
+                  <svg className="w-6 h-6 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>S'inscrire maintenant</span>
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
               </button>
               <button 
                 onClick={() => onScrollToSection?.('features')}
-                className="bg-white border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg transition-colors duration-200 flex items-center justify-center gap-3"
+                className="group bg-white/80 backdrop-blur-sm border-2 border-purple-600 text-purple-600 hover:bg-purple-50 hover:border-purple-700 px-10 py-5 rounded-2xl font-semibold text-lg shadow-xl transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-105 hover:shadow-purple-200/50"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                En savoir plus
+                <span>En savoir plus</span>
+                <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
               </button>
             </div>
 
@@ -179,62 +208,154 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
         </div>
       </section>
 
-      {/* Key Features Section */}
-      <section id="features" className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6">
-              <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      {/* Enhanced Key Features Section */}
+      <section id="features" className="py-24 bg-gradient-to-br from-white via-purple-50/20 to-blue-50/20 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-200/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-blue-200/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Fonctionnalités principales
+            </div>
+            <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-gray-700 bg-clip-text text-transparent mb-6">
+              Comment ça marche ?
             </h2>
-            <p className="text-xl text-gray-600">
-              Une solution complète pour la communication automobile
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+              Une solution complète et innovante pour la communication automobile
             </p>
+            
+            {/* Process Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="text-center group">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                    <span className="text-3xl font-bold text-white">1</span>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
+                    <svg className="w-3 h-3 text-yellow-800" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                  Scannez le QR code
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Pointez votre caméra vers le QR code apposé sur le pare-brise du véhicule. 
+                  <span className="font-semibold text-purple-600"> Reconnaissance automatique en moins d'1 seconde.</span>
+                </p>
+              </div>
+              
+              <div className="text-center group">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                    <span className="text-3xl font-bold text-white">2</span>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full flex items-center justify-center animate-pulse">
+                    <svg className="w-3 h-3 text-green-800" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                  Rédigez votre message
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Choisissez le type de notification (info, alerte, urgent) et rédigez votre message personnalisé.
+                  <span className="font-semibold text-purple-600"> Interface intuitive en 3 clics maximum.</span>
+                </p>
+              </div>
+              
+              <div className="text-center group">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                    <span className="text-3xl font-bold text-white">3</span>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center animate-pulse">
+                    <svg className="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                  Envoi instantané
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Le propriétaire reçoit immédiatement une notification push sur son mobile.
+                  <span className="font-semibold text-gray-600"> Temps de réponse garanti &lt; 3 secondes.</span>
+                </p>
+              </div>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
+            <div className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-purple-100/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full flex items-center justify-center animate-pulse">
+                  <svg className="w-3 h-3 text-green-800" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Authentification sécurisée</h3>
-              <p className="text-gray-600">Email, Google, Apple - Conformité RGPD</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">Authentification sécurisée</h3>
+              <p className="text-gray-600 leading-relaxed">Email, Google, Apple - Conformité RGPD</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="w-12 h-12 bg-purple-200 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-700" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-                </svg>
+            <div className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-purple-100/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                  </svg>
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
+                  <span className="text-xs font-bold text-yellow-800">1</span>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">QR code unique</h3>
-              <p className="text-gray-600">Apposé sur le pare-brise de chaque véhicule</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">QR code unique</h3>
+              <p className="text-gray-600 leading-relaxed">Apposé sur le pare-brise de chaque véhicule</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 1 0-15 0v5h5l-5 5-5-5h5v-5a7.5 7.5 0 1 1 15 0v5z" />
-                </svg>
+            <div className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-purple-100/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 1 0-15 0v5h5l-5 5-5-5h5v-5a7.5 7.5 0 1 1 15 0v5z" />
+                  </svg>
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center animate-pulse">
+                  <span className="text-xs font-bold text-blue-800">2</span>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Notifications push</h3>
-              <p className="text-gray-600">Temps de réponse &lt; 5 secondes</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">Notifications push</h3>
+              <p className="text-gray-600 leading-relaxed">Temps de réponse &lt; 5 secondes</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
+            <div className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-purple-100/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-400 rounded-full flex items-center justify-center animate-pulse">
+                  <span className="text-xs font-bold text-red-800">3</span>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Historique des échanges</h3>
-              <p className="text-gray-600">Messagerie interne et traçabilité</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">Historique des échanges</h3>
+              <p className="text-gray-600 leading-relaxed">Messagerie interne et traçabilité</p>
             </div>
           </div>
         </div>
@@ -254,66 +375,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
           </div>
         </div>
       </div>
-
-      {/* How it works Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6">
-              <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Comment ça marche ?
-            </h2>
-            <p className="text-xl text-gray-600">
-              En 3 étapes simples, notifiez un automobiliste
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-300 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-2xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Scannez le QR code
-              </h3>
-              <p className="text-gray-600">
-                Pointez votre caméra vers le QR code apposé sur le pare-brise du véhicule. 
-                <span className="font-semibold text-purple-600"> Reconnaissance automatique en moins d'1 seconde.</span>
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-2xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Rédigez votre message
-              </h3>
-              <p className="text-gray-600">
-                Choisissez le type de notification (info, alerte, urgent) et rédigez votre message personnalisé.
-                <span className="font-semibold text-purple-600"> Interface intuitive en 3 clics maximum.</span>
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-2xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Envoi instantané
-              </h3>
-              <p className="text-gray-600">
-                Le propriétaire reçoit immédiatement une notification push sur son mobile.
-                <span className="font-semibold text-gray-600"> Temps de réponse garanti &lt; 3 secondes.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-white">
@@ -471,26 +532,63 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 bg-purple-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Prêt à révolutionner la communication automobile ?
+      <section id="contact" className="py-24 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-white/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/3 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+        
+        <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            Rejoignez la révolution
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+            Prêt à révolutionner la 
+            <span className="block bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+              communication automobile ?
+            </span>
           </h2>
-          <p className="text-xl text-purple-100 mb-8">
-            Rejoignez des milliers d'automobilistes qui utilisent déjà Notifcar
+          
+          <p className="text-xl md:text-2xl text-purple-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Rejoignez des milliers d'automobilistes qui utilisent déjà Notifcar pour une communication plus fluide et sécurisée
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button 
               onClick={() => setIsRegistrationModalOpen(true)}
-              className="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-purple-50 transition-colors duration-200"
+              className="group relative bg-white text-purple-600 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25"
             >
-              S'inscrire maintenant
+              <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-center justify-center gap-3">
+                <svg className="w-6 h-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span>S'inscrire maintenant</span>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
             </button>
+            
             <button 
               onClick={() => onScrollToSection?.('features')}
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-purple-600 transition-colors duration-200"
+              className="group border-2 border-white/80 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
             >
-              En savoir plus
+              <div className="flex items-center justify-center gap-3">
+                <svg className="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>En savoir plus</span>
+                <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
             </button>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Input from '../ui/Input';
 import Modal from '../ui/Modal';
 import { EmailService, type RegistrationData } from '../../services/emailService';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
+import { testEmailToAddress } from '../../utils/emailTest';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string>('');
+  const [isTesting, setIsTesting] = useState(false);
 
   // Initialiser EmailJS au montage du composant
   useEffect(() => {
@@ -69,18 +71,11 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
           phone: formData.phone,
         };
 
-        // Envoyer l'email d'inscription à l'admin
-        const adminResponse = await EmailService.sendRegistrationEmail(registrationData);
-        
-        if (!adminResponse.success) {
-          throw new Error(adminResponse.error || 'Erreur lors de l\'envoi de l\'email');
-        }
-
         // Envoyer l'email de confirmation à l'utilisateur
-        const userResponse = await EmailService.sendConfirmationEmail(registrationData);
+        const response = await EmailService.sendRegistrationEmail(registrationData);
         
-        if (!userResponse.success) {
-          console.warn('Email de confirmation non envoyé:', userResponse.error);
+        if (!response.success) {
+          throw new Error(response.error || 'Erreur lors de l\'envoi de l\'email');
         }
 
         setIsSubmitted(true);
@@ -106,6 +101,37 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
     setIsSubmitted(false);
     setSubmitError('');
     onClose();
+  };
+
+  const handleTestEmail = async () => {
+    if (!formData.email) {
+      setSubmitError('Veuillez d\'abord saisir un email pour tester');
+      return;
+    }
+
+    setIsTesting(true);
+    setSubmitError('');
+
+    try {
+      // Test avec les paramètres exacts
+      console.log('🧪 Test EmailJS avec:', {
+        to_email: formData.email,
+        to_name: formData.name || 'Test User',
+        from_email: EMAILJS_CONFIG.ADMIN_EMAIL,
+        from_name: 'Équipe Notifcar'
+      });
+
+      const result = await testEmailToAddress(formData.email);
+      if (result.success) {
+        setSubmitError(`✅ Email de test envoyé à ${formData.email} ! Vérifiez votre boîte de réception.`);
+      } else {
+        setSubmitError(`❌ Erreur: ${result.error}`);
+      }
+    } catch (error) {
+      setSubmitError(`❌ Erreur de test: ${error}`);
+    } finally {
+      setIsTesting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -148,11 +174,16 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} size="md">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl mb-4 shadow-lg">
+          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent mb-3">
           S'inscrire à Notifcar
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 text-lg">
           Rejoignez la communauté et recevez un email de confirmation
         </p>
       </div>
@@ -209,15 +240,57 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
           </div>
         )}
 
-        <Button
-          type="submit"
-          variant="primary"
-          size="lg"
-          loading={isSubmitting}
-          className="w-full"
-        >
-          {isSubmitting ? 'Envoi en cours...' : 'S\'inscrire et recevoir un email'}
-        </Button>
+        <div className="space-y-4">
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            loading={isSubmitting}
+            className="w-full group relative overflow-hidden bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative flex items-center justify-center gap-2">
+              {isSubmitting ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  <span>Envoi en cours...</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                  <span>S'inscrire et recevoir un email</span>
+                </>
+              )}
+            </div>
+          </Button>
+          
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            loading={isTesting}
+            onClick={handleTestEmail}
+            className="w-full text-xs group border-purple-300 hover:border-purple-400 hover:bg-purple-50 transition-all duration-300"
+          >
+            <div className="flex items-center justify-center gap-2">
+              {isTesting ? (
+                <>
+                  <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-purple-600"></div>
+                  <span>Test en cours...</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                  <span>Tester l'envoi d'email</span>
+                </>
+              )}
+            </div>
+          </Button>
+        </div>
       </form>
 
       <div className="mt-6 text-center">

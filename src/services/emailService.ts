@@ -27,7 +27,7 @@ export class EmailService {
     }
   }
 
-  // Envoyer un email d'inscription
+  // Envoyer un email d'inscription à l'utilisateur
   static async sendRegistrationEmail(data: RegistrationData): Promise<EmailResponse> {
     try {
       // Vérifier que EmailJS est initialisé
@@ -35,29 +35,48 @@ export class EmailService {
         throw new Error('EmailJS n\'est pas initialisé');
       }
 
-      // Paramètres du template
+      // Paramètres du template pour l'utilisateur qui s'inscrit
       const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        phone: data.phone,
-        to_email: 'guillaumel1103@gmail.com', // Votre email de réception
-        message: `Nouvelle inscription Notifcar:
+        // Variables principales pour le template EmailJS
+        to_name: data.name,
+        to_email: data.email, // L'email de destination
+        from_name: 'Équipe Notifcar',
+        from_email: EMAILJS_CONFIG.ADMIN_EMAIL,
         
-Nom: ${data.name}
-Email: ${data.email}
-Téléphone: ${data.phone}
+        // Variables de contenu
+        user_name: data.name,
+        user_email: data.email,
+        user_phone: data.phone,
+        message: `Bonjour ${data.name},
 
-L'utilisateur souhaite recevoir des informations sur Notifcar.`,
+Merci pour votre inscription à Notifcar !
+
+Votre demande a bien été reçue et notre équipe vous contactera dans les plus brefs délais pour vous expliquer comment utiliser notre service de communication automobile.
+
+En attendant, n'hésitez pas à visiter notre site web pour en savoir plus sur nos fonctionnalités.
+
+Cordialement,
+L'équipe Notifcar`,
+        
+        // Variables pour le sujet et autres
+        subject: `Confirmation d'inscription Notifcar`,
+        phone: data.phone,
+        
+        // Variables alternatives (au cas où le template utilise d'autres noms)
+        recipient_name: data.name,
+        recipient_email: data.email,
+        client_name: data.name,
+        client_email: data.email,
       };
 
-      // Envoyer l'email
+      // Envoyer l'email à l'utilisateur
       const response = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams
       );
 
-      console.log('Email envoyé avec succès:', response);
+      console.log('Email envoyé à l\'utilisateur:', data.email, response);
       
       return {
         success: true,
@@ -75,50 +94,4 @@ L'utilisateur souhaite recevoir des informations sur Notifcar.`,
     }
   }
 
-  // Envoyer un email de confirmation à l'utilisateur
-  static async sendConfirmationEmail(data: RegistrationData): Promise<EmailResponse> {
-    try {
-      if (!this.initialized) {
-        throw new Error('EmailJS n\'est pas initialisé');
-      }
-
-      const templateParams = {
-        to_name: data.name,
-        to_email: data.email,
-        from_name: 'Équipe Notifcar',
-        message: `Bonjour ${data.name},
-
-Merci pour votre inscription à Notifcar !
-
-Votre demande a bien été reçue et notre équipe vous contactera dans les plus brefs délais pour vous expliquer comment utiliser notre service de communication automobile.
-
-En attendant, n'hésitez pas à visiter notre site web pour en savoir plus sur nos fonctionnalités.
-
-Cordialement,
-L'équipe Notifcar`,
-      };
-
-      const response = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams
-      );
-
-      console.log('Email de confirmation envoyé:', response);
-      
-      return {
-        success: true,
-        message: 'Email de confirmation envoyé !'
-      };
-
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi de l\'email de confirmation:', error);
-      
-      return {
-        success: false,
-        message: 'Erreur lors de l\'envoi de l\'email de confirmation',
-        error: error instanceof Error ? error.message : 'Erreur inconnue'
-      };
-    }
-  }
 }
