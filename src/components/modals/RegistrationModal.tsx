@@ -4,7 +4,6 @@ import Input from '../ui/Input';
 import Modal from '../ui/Modal';
 import { EmailService, type RegistrationData } from '../../services/emailService';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
-import { testEmailToAddress } from '../../utils/emailTest';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -21,7 +20,6 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string>('');
-  const [isTesting, setIsTesting] = useState(false);
 
   // Initialiser EmailJS au montage du composant
   useEffect(() => {
@@ -103,36 +101,6 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
     onClose();
   };
 
-  const handleTestEmail = async () => {
-    if (!formData.email) {
-      setSubmitError('Veuillez d\'abord saisir un email pour tester');
-      return;
-    }
-
-    setIsTesting(true);
-    setSubmitError('');
-
-    try {
-      // Test avec les paramètres exacts
-      console.log('🧪 Test EmailJS avec:', {
-        to_email: formData.email,
-        to_name: formData.name || 'Test User',
-        from_email: EMAILJS_CONFIG.ADMIN_EMAIL,
-        from_name: 'Équipe Notifcar'
-      });
-
-      const result = await testEmailToAddress(formData.email);
-      if (result.success) {
-        setSubmitError(`✅ Email de test envoyé à ${formData.email} ! Vérifiez votre boîte de réception.`);
-      } else {
-        setSubmitError(`❌ Erreur: ${result.error}`);
-      }
-    } catch (error) {
-      setSubmitError(`❌ Erreur de test: ${error}`);
-    } finally {
-      setIsTesting(false);
-    }
-  };
 
   if (isSubmitted) {
     return (
@@ -266,30 +234,6 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             </div>
           </Button>
           
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            loading={isTesting}
-            onClick={handleTestEmail}
-            className="w-full text-xs group border-purple-300 hover:border-purple-400 hover:bg-purple-50 transition-all duration-300"
-          >
-            <div className="flex items-center justify-center gap-2">
-              {isTesting ? (
-                <>
-                  <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-purple-600"></div>
-                  <span>Test en cours...</span>
-                </>
-              ) : (
-                <>
-                  <svg className="w-4 h-4 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                  <span>Tester l'envoi d'email</span>
-                </>
-              )}
-            </div>
-          </Button>
         </div>
       </form>
 
