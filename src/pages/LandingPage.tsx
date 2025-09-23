@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
 import { RegistrationModal } from '../components/modals';
 import QRCodeSection from '../components/features/QRCodeSection';
 import Fonctionnement from '../components/features/Fonctionnement';

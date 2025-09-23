@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 import LandingPage from './pages/LandingPage';
 
