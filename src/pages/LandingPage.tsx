@@ -5,6 +5,8 @@ import QRCodeSection from '../components/features/QRCodeSection';
 import Fonctionnement from '../components/features/Fonctionnement';
 import Amis from '../components/features/amis';
 import Securite from '../components/features/securité';
+import Price from '../components/features/price';
+import Footer from '../components/layout/Footer';
 import { type Page } from '../hooks/useNavigation';
 
 interface LandingPageProps {
@@ -66,8 +68,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       {/* Amis Section */}
       <Amis />
 
+      {/* Pricing Section */}
+      <Price />
+
      {/* Footer Section */}
-      {/* <Footer /> */}
+      <Footer />
       
       {/* Registration Modal */}
       <RegistrationModal 
