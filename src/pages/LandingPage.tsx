@@ -26,7 +26,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       />
       
       {/* Hero Section - Like the image */}
-      <section className="relative min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/photo1.png)' }}>
+      <section className="relative min-h-screen bg-cover bg-center bg-no-repeat pt-24" style={{ backgroundImage: 'url(/photo1.png)' }}>
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
         

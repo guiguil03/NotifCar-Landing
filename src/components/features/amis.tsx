@@ -15,7 +15,7 @@ const Amis: React.FC = () => {
         {/* Features Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-20">
           {/* First Card - Fiable & rassurant */}
-          <div className="bg-purple-100 rounded-xl p-4 shadow-sm h-full h-[260px]">
+          <div className="bg-purple-100 rounded-xl p-4 shadow-sm h-full w-[400px] relative right-[240px]">
             <div className="text-center">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
                 <img src="/Frame36.png" alt="Fiable & rassurant" className="w-6 h-6" />
@@ -33,7 +33,7 @@ const Amis: React.FC = () => {
           </div>
 
           {/* Second Card - Simple & rapide */}
-          <div className="bg-green-100 rounded-xl p-4 shadow-sm">
+          <div className="bg-green-100 rounded-xl p-4 shadow-sm w-[400px] relative right-[120px]">
             <div className="text-center">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
                 <img src="/Frame37.png" alt="Simple & rapide" className="w-6 h-6" />
@@ -51,7 +51,7 @@ const Amis: React.FC = () => {
           </div>
 
           {/* Third Card - Moderne & utile */}
-          <div className="bg-orange-100 rounded-xl p-4 shadow-sm">
+          <div className="bg-orange-100 rounded-xl p-4 shadow-sm w-[400px] relative right-[0px]">
             <div className="text-center">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
                 <img src="/Frame38.png" alt="Moderne & utile" className="w-6 h-6" />
