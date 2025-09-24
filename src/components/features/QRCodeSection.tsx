@@ -19,10 +19,10 @@ const QRCodeSection: React.FC = () => {
           {/* Right side - Text and Statistics */}
           <div className="space-y-8">
             {/* Main Title */}
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              <span className="text-indigo-700">Parce qu'un imprévu</span>
+            <h2 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight bg-gradient-to-r from-indigo-800 via-blue-600 to-emerald-500 bg-clip-text text-transparent filter saturate-150 contrast-125">
+              Parce qu'un imprévu
               <br />
-              <span className="text-teal-500">peut arriver à tout moment...</span>
+              peut arriver à tout moment...
             </h2>
 
             {/* Description */}

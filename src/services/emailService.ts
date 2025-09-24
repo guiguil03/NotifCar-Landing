@@ -53,7 +53,10 @@ export class EmailService {
         from_email: data.email,
         phone: data.phone,
         message: data.message || '',
-        to_email: EMAILJS_CONFIG.ADMIN_EMAIL,
+        // Adresse destinataire: l'utilisateur ayant renseigné son email
+        to_email: data.email,
+        // Optionnel: permet de répondre directement à l'utilisateur depuis la boîte de réception
+        reply_to: data.email,
         year: String(new Date().getFullYear()),
         website_url: 'https://notifcar.app',
       };

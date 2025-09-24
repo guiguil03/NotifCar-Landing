@@ -6,6 +6,7 @@ import Fonctionnement from '../components/features/Fonctionnement';
 import Amis from '../components/features/amis';
 import Securite from '../components/features/securité';
 import Price from '../components/features/price';
+import FAQ from '../components/features/FAQ';
 import Footer from '../components/layout/Footer';
 import { type Page } from '../hooks/useNavigation';
 
@@ -70,6 +71,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
 
       {/* Pricing Section */}
       <Price />
+
+      {/* FAQ Section */}
+      <FAQ />
 
      {/* Footer Section */}
       <Footer />

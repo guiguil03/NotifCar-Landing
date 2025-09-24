@@ -39,7 +39,8 @@ const Footer: React.FC = () => {
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-white text-indigo-700 hover:bg-indigo-100"
+                className="bg-indigo-600
+                 text-white "
                 onClick={handleSubscribe}
               >
                 M'inscrire

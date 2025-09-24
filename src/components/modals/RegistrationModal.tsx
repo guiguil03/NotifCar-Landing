@@ -122,7 +122,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
     return (
       <Modal isOpen={isOpen} onClose={handleClose} size="md">
         <div className="text-center py-8">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-green-200">
             <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
@@ -137,7 +137,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             Veuillez vérifier votre boîte de réception et suivre les instructions pour finaliser votre inscription.
           </p>
           
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
             <p className="text-sm text-blue-800">
               <strong>Note :</strong> Si vous ne recevez pas l'email dans les prochaines minutes, 
               vérifiez votre dossier spam ou courrier indésirable.
@@ -159,15 +159,15 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
   return (
     <Modal isOpen={isOpen} onClose={handleClose} size="md">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl mb-4 shadow-lg">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4 shadow-lg">
           <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
         </div>
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent mb-3">
+        <h2 className="text-3xl font-bold text-neutral-900 mb-3">
           S'inscrire à Notifcar
         </h2>
-        <p className="text-gray-600 text-lg">
+        <p className="text-neutral-600 text-lg">
           Rejoignez la communauté et recevez un email de confirmation
         </p>
       </div>
@@ -219,7 +219,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
         />
 
         {submitError && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-3">
             <p className="text-sm text-red-600">{submitError}</p>
           </div>
         )}
@@ -230,9 +230,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             variant="primary"
             size="lg"
             loading={isSubmitting}
-            className="w-full group relative overflow-hidden bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+            className="w-full group relative overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-md"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-purple-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative flex items-center justify-center gap-2">
               {isSubmitting ? (
                 <>

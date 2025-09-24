@@ -59,14 +59,14 @@ const Modal: React.FC<ModalProps> = ({
       <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         {/* Overlay */}
         <div
-          className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
+          className="fixed inset-0 transition-opacity bg-neutral-900/50 backdrop-blur-xs"
           onClick={closeOnOverlayClick ? onClose : undefined}
         />
 
         {/* Modal */}
         <div
           className={`
-            inline-block w-full ${sizeClasses[size]} px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:p-6
+            inline-block w-full ${sizeClasses[size]} px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-2xl border border-neutral-200 shadow-xl sm:my-8 sm:align-middle sm:p-6 animate-slide-up
           `}
         >
           {/* Header */}

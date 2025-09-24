@@ -22,11 +22,10 @@ const Securite: React.FC = () => {
           {/* div1 - Zero Data Exposed */}
 
           <div className=" div text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-purple-600">Sécurité</span> et{' '}
-            <span className="text-green-600">confiance garanties</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-indigo-600 to-teal-500 bg-clip-text text-transparent">
+            Sécurité et confiance garanties
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-neutral-600">
             Une solution simple et efficace en trois étapes
           </p>
         </div>
