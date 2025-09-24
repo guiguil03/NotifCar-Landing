@@ -3,6 +3,7 @@ import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Modal from '../ui/Modal';
 import { EmailService, type RegistrationData } from '../../services/emailService';
+import { createInscription } from '../../services/inscriptionService';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 
 interface RegistrationModalProps {
@@ -58,6 +59,21 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
       setSubmitError('');
       
       try {
+        // 1) Enregistrer en base Supabase
+        const dbResult = await createInscription({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+        });
+        if (!dbResult.success) {
+          // Message spécifique doublon
+          if (dbResult.code === '23505') {
+            throw new Error('Cet email est déjà inscrit. Merci !');
+          }
+          throw new Error(dbResult.error || 'Échec de l\'enregistrement en base');
+        }
+
+        // 2) Vérifier la config EmailJS avant envoi
         // Vérifier si EmailJS est configuré
         if (EMAILJS_CONFIG.USER_ID === 'YOUR_USER_ID_HERE') {
           throw new Error('EmailJS n\'est pas configuré. Veuillez ajouter votre User ID dans la configuration.');
@@ -69,7 +85,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
           phone: formData.phone,
         };
 
-        // Envoyer l'email de confirmation à l'utilisateur
+        // 3) Envoyer l'email de confirmation à l'utilisateur
         const response = await EmailService.sendRegistrationEmail(registrationData);
         
         if (!response.success) {

@@ -158,3 +158,9 @@ export const THEME_COLORS = {
     900: '#0c4a6e',
   },
 } as const;
+
+// Supabase - configuration (public anon key fournie par le client)
+export const SUPABASE_CONFIG = {
+  url: 'https://lifmyjdygwakmimjgkef.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxpZm15amR5Z3dha21pbWpna2VmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MzQ5NzAsImV4cCI6MjA3MjUxMDk3MH0.o9msOeNxdpq4zQNwX2D9W_OjJw-7gsOFB8H7q3Lla8g',
+} as const;

@@ -21,7 +21,7 @@ const Securite: React.FC = () => {
 
           {/* div1 - Zero Data Exposed */}
 
-          <div className=" div2 text-center mb-16">
+          <div className=" div text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-purple-600">Sécurité</span> et{' '}
             <span className="text-green-600">confiance garanties</span>
@@ -31,7 +31,7 @@ const Securite: React.FC = () => {
           </p>
         </div>
           <div 
-            className="div1 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
+            className="div2 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
             style={{ gridArea: '1 / 1 / 2 / 3' }}
           >
             <div className="flex flex-col items-center text-center">

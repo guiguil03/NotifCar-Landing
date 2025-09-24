@@ -44,13 +44,13 @@ const Header: React.FC<HeaderProps> = ({
   };
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-6">
         {/* Floating header container */}
-        <div className="bg-white rounded-2xl shadow-lg px-8 py-4">
-          <div className="flex justify-between items-center">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex justify-between items-center gap-3">
           {/* Logo with colored text */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-xl sm:text-2xl font-bold">
               <span className="text-indigo-700">Notif</span>
               <span className="text-teal-500">Car</span>
             </h1>
@@ -100,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({
                 variant="primary" 
                 size="sm" 
                 onClick={handleRegister}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-medium"
               >
                 Télécharger l'app
               </Button>
@@ -111,7 +111,7 @@ const Header: React.FC<HeaderProps> = ({
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-gray-900 focus:outline-none focus:text-gray-900"
+              className="text-gray-700 hover:text-gray-900 focus:outline-none focus:text-gray-900 p-2 -mr-2"
               aria-label="Menu"
             >
               <svg

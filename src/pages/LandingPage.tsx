@@ -26,7 +26,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       />
       
       {/* Hero Section - Like the image */}
-      <section className="relative min-h-screen bg-cover bg-center bg-no-repeat pt-24" style={{ backgroundImage: 'url(/photo1.png)' }}>
+      <section className="relative min-h-screen bg-cover bg-center bg-no-repeat pt-20 sm:pt-24" style={{ backgroundImage: 'url(/photo1.png)' }}>
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
         
@@ -35,19 +35,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             {/* Text content positioned on the left side */}
             <div className="max-w-2xl">
               {/* Main title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 sm:mb-8">
                 L'app qui veille sur votre voiture, même quand vous n'êtes pas là.
             </h1>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg md:text-2xl text-white/90 leading-relaxed mb-6 sm:mb-8">
                 Avec Notifcar, soyez alerté instantanément si votre véhicule gêne, est accidenté ou en danger.
               </p>
               
               {/* CTA Button */}
               <button 
                 onClick={() => setIsRegistrationModalOpen(true)}
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200"
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-5 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200"
               >
                 Me prévenir au lancement
               </button>
