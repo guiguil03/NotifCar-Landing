@@ -36,7 +36,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             {/* Text content positioned on the left side */}
             <div className="max-w-2xl">
               {/* Main title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 sm:mb-8">
+              <h1 className="font-Poppins text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 sm:mb-8">
                 L'app qui veille sur votre voiture, même quand vous n'êtes pas là.
             </h1>
 

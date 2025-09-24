@@ -12,8 +12,8 @@ const Securite: React.FC = () => {
           className="grid-container"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: 'repeat(3, auto)',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateRows: ' repeat(3, 1fr)',
             gridColumnGap: '16px',
             gridRowGap: '16px'
           }}
@@ -21,8 +21,10 @@ const Securite: React.FC = () => {
 
           {/* div1 - Zero Data Exposed */}
 
-          <div className=" div text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-indigo-600 to-teal-500 bg-clip-text text-transparent">
+          <div className=" div1 text-center mb-16"
+          style={{ gridArea: '1 / 1 / 2 / 3' }}
+          >
+          <h2 className="text-2xl md:text-5xl font-bold mb-7 mt-4 bg-gradient-to-t from-teal-500 via-indigo-600 to-indigo-700 bg-clip-text text-transparent">
             Sécurité et confiance garanties
           </h2>
           <p className="text-xl text-neutral-600">
@@ -30,8 +32,8 @@ const Securite: React.FC = () => {
           </p>
         </div>
           <div 
-            className="div2 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
-            style={{ gridArea: '1 / 1 / 2 / 3' }}
+            className="div4 grid-area: 1 / 3 / 3 / 6 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
+            style={{  gridArea: '3 / 1 / 4 /4' }}
           >
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
@@ -44,10 +46,9 @@ const Securite: React.FC = () => {
             </div>
           </div>
 
-          {/* div2 - Total confidentiality */}
           <div 
-            className="div2 bg-green-600 rounded-2xl p-8 text-white shadow-lg"
-            style={{ gridArea: '2 / 1 / 3 / 3' }}
+            className="div2 grid-area: 2 / 1 / 3 / 3 bg-green-600 rounded-2xl p-8 text-white shadow-lg"
+            style={{  gridArea: '2 / 1 / 3 / 3'    }}
           >
             <div className="flex items-start space-x-4">
               <div className="flex-1">
@@ -67,8 +68,8 @@ const Securite: React.FC = () => {
 
           {/* div3 - Protection against abuse */}
           <div 
-            className="div4 bg-blue-600 rounded-2xl p-8 text-white shadow-lg"
-            style={{ gridArea: '1 / 3 / 3 / 5' }}
+            className="div3 bg-blue-600 rounded-2xl p-8 text-white shadow-lg p-12"
+            style={{ gridArea: '1 / 3 / 3 / 6' }}
           >
             <div className="flex items-start space-x-4">
               <div className="flex-shrink-0">
@@ -89,11 +90,11 @@ const Securite: React.FC = () => {
           {/* div4 - Legitimate alerts */}
           <div 
             className="div5 bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-lg"
-            style={{ gridArea: '3 / 3 / 4 / 5' }}
+            style={{ gridArea: '3 / 4 / 4 / 6' }}
           >
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <img src="/octicon" alt="Protection contre les abus" className="w-16 h-16 mb-6" />
+              <div className="w-16 h-16  mx-auto mb-6">
+                <img src="/line-md_security(1).png" alt="Protection contre les abus" className="w-16 h-16 mb-6" />
               </div>
               <div className="text-5xl font-bold text-green-600 mb-2">92,3%</div>
               <p className="text-xl font-semibold text-gray-700">Alertes légitimes</p>
