@@ -2,44 +2,44 @@ import React from 'react';
 
 const QRCodeSection: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left side - Frame10.png Image */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-center lg:justify-start order-2 lg:order-1">
             <div className="relative w-full max-w-lg">
               <img 
                 src="/Frame10.png" 
                 alt="QR Code et notifications NotifCar" 
-                className="w-[2000px] h-[400px] rounded-2xl shadow-lg"
+                className="w-full h-auto max-h-[300px] sm:max-h-[400px] object-contain rounded-2xl shadow-lg"
               />
             </div>
           </div>
 
           {/* Right side - Text and Statistics */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
             {/* Main Title */}
-            <h2 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight bg-gradient-to-t from-emerald-500 via-blue-600 to-indigo-800 bg-clip-text text-transparent filter saturate-150 contrast-125">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight bg-gradient-to-t from-emerald-500 via-blue-600 to-indigo-800 bg-clip-text text-transparent filter saturate-150 contrast-125">
               Parce qu'un imprévu
               <br />
               peut arriver à tout moment...
             </h2>
 
             {/* Description */}
-            <p className="text-xl text-gray-700 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
               Une rayure, un accident, un stationnement gênant : grâce à Notifcar, 
               les conducteurs peuvent se prévenir entre eux en quelques secondes.
             </p>
 
             {/* Statistics */}
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               <div className="text-center">
-                <div className="text-5xl font-bold text-orange-500 mb-2">100%</div>
-                <p className="text-gray-700 font-medium">Anonyme et sécurisé</p>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-orange-500 mb-2">100%</div>
+                <p className="text-gray-700 font-medium text-sm sm:text-base">Anonyme et sécurisé</p>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-bold text-orange-500 mb-2">&lt; 5 sec</div>
-                <p className="text-gray-700 font-medium">Pour envoyer une alerte</p>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-orange-500 mb-2">&lt; 5 sec</div>
+                <p className="text-gray-700 font-medium text-sm sm:text-base">Pour envoyer une alerte</p>
               </div>
             </div>
           </div>

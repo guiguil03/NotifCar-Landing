@@ -22,18 +22,18 @@ const Securite: React.FC = () => {
           {/* div1 - Zero Data Exposed */}
 
           <div className=" div1 text-center mb-16"
-          style={{ gridArea: '1 / 1 / 2 / 3' }}
+          style={{ gridArea: '1 / 1 / 2 / 2' }}
           >
           <h2 className="text-2xl md:text-5xl font-bold mb-7 mt-4 bg-gradient-to-t from-teal-500 via-indigo-600 to-indigo-700 bg-clip-text text-transparent">
             Sécurité et confiance garanties
           </h2>
-          <p className="text-xl text-neutral-600">
+          <p className="text-xl text-neutral-600 ">
             Une solution simple et efficace en trois étapes
           </p>
         </div>
           <div 
-            className="div4 grid-area: 1 / 3 / 3 / 6 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
-            style={{  gridArea: '3 / 1 / 4 /4' }}
+            className="div3 grid-area: 1 / 3 / 3 / 6 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
+            style={{  gridArea: '2 / 1 / 2 / 2' }}
           >
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
@@ -47,8 +47,8 @@ const Securite: React.FC = () => {
           </div>
 
           <div 
-            className="div2 grid-area: 2 / 1 / 3 / 3 bg-green-600 rounded-2xl p-8 text-white shadow-lg"
-            style={{  gridArea: '2 / 1 / 3 / 3'    }}
+            className="div4 grid-area: 2 / 1 / 3 / 3 bg-green-600 rounded-2xl p-8 text-white shadow-lg"
+            style={{   gridArea: '3 / 1 / 4 / 4'   }}
           >
             <div className="flex items-start space-x-4">
               <div className="flex-1">
@@ -68,22 +68,21 @@ const Securite: React.FC = () => {
 
           {/* div3 - Protection against abuse */}
           <div 
-            className="div3 bg-blue-600 rounded-2xl p-8 text-white shadow-lg p-12"
-            style={{ gridArea: '1 / 3 / 3 / 6' }}
+            className="div2 relative overflow-hidden bg-blue-600 rounded-2xl p-8 md:p-12 text-white shadow-lg"
+            style={{ gridArea: '1 / 2 / 3 / 6' }}
           >
-            <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                 <img src="/lucide_lock.png" alt="Protection contre les abus" className="w-16 h-16 mb-6" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-2">Protection contre les abus</h3>
-                <p className="text-blue-200 text-lg mb-4">Système anti-spam intelligent</p>
-                <p className="text-white/90 leading-relaxed">
-                  Notre technologie avancée empêche les utilisations malveillantes grâce à des 'cooldowns' intelligents et des limites personnalisées qui s'adaptent à votre usage.
-                </p>
-              </div>
+            <img
+              src="/octicon_alert-16.png"
+              alt="Icône alerte"
+              className="pointer-events-none select-none absolute right-6 md:right-10 top-1/2 -translate-y-1/2 opacity-70 w-[220px] md:w-[320px] lg:w-[380px]"
+            />
+            <div className="max-w-2xl mt-[200px]">
+              <h3 className="text-2xl md:text-5xl font-bold mb-4 font-poppins">Protection contre les abus</h3>
+              <p className="text-green-300 text-lg md:text-2xl mb-2">Système anti-spam intelligent</p>
+              <p className="text-white/90 leading-relaxed">
+                Notre technologie avancée empêche les utilisations malveillantes grâce à des 'cooldowns' intelligents
+                et des limites personnalisées qui s'adaptent à votre usage.
+              </p>
             </div>
           </div>
 
