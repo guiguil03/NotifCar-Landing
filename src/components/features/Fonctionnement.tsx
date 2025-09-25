@@ -1,134 +1,153 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Fonctionnement: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const steps = [
+    {
+      id: 1,
+      title: "Scannez le QR code",
+      description: "Trouvez le QR code Notifcar sur le véhicule et scannez-le avec votre smartphone.",
+      color: "blue",
+      bgColor: "bg-blue-500/20",
+      borderColor: "border-blue-500/30",
+      iconBg: "bg-blue-500",
+      icon: "/1.jpg"
+    },
+    {
+      id: 2,
+      title: "Envoyez une alerte",
+      description: "Choisissez le type d'alerte et envoyez votre message en quelques secondes.",
+      color: "green",
+      bgColor: "bg-green-500/20",
+      borderColor: "border-green-500/30",
+      iconBg: "bg-green-500",
+      icon: "/2.jpg"
+    },
+    {
+      id: 3,
+      title: "Recevez la notification",
+      description: "Le propriétaire reçoit immédiatement votre alerte sur son téléphone.",
+      color: "blue",
+      bgColor: "bg-blue-600",
+      borderColor: "border-blue-600",
+      iconBg: "bg-blue-600",
+      icon: "/3.jpg"
+    }
+  ];
+
+  // Auto-scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % steps.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [steps.length]);
+
   return (
-    <section className="py-20 bg-secondary-50">
+    <section className="py-12 sm:py-16 md:py-20 bg-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative">
-          {/* Left side - How it works steps */}
-          <div className="relative z-10 max-w-2xl space-y-8">
-            {/* Section Title */}
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Comment ça marche ?
-              </h2>
-              <p className="text-xl text-gray-600">
-                Une solution simple et efficace en trois étapes
-              </p>
-            </div>
+        {/* Section Title */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+            Comment ça marche ?
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600">
+            Une solution simple et efficace en trois étapes
+          </p>
+        </div>
 
-            {/* Steps */}
-            <div className="space-y-6">
-               {/* Step 1 */}
-               <div className="flex items-start space-x-4 bg-white rounded-2xl p-6 shadow-sm">
-                 <div className="flex-shrink-0 relative">
-                   <img src="/Subtract.png" alt="QR Code" className="w-12 h-12 relative bottom-10 right-8" />
-                   
-                 </div>
-                 <div className="flex-1">
-                   <h3 className="text-xl font-bold text-gray-900 mb-2">Scannez le QR code</h3>
-                   <p className="text-gray-600">
-                     Trouvez le QR code Notifcar sur le véhicule et scannez-le avec votre smartphone.
-                   </p>
-                 </div>
-               </div>
-
-              {/* Step 2 */}
-              <div className="flex items-start space-x-4 bg-white rounded-2xl p-6 shadow-sm">
-                <div className="flex-shrink-0">
-                  <img src="/Subtract(1).png" alt="QR Code" className="w-12 h-12 relative bottom-10 right-8" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center">
-                      <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900">Envoyez une alerte en un clic</h3>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+          {/* Left side - Step indicators */}
+          <div className="w-full lg:w-1/2 space-y-6">
+            {steps.map((step, index) => (
+              <div 
+                key={step.id}
+                className={`bg-white rounded-2xl p-4 sm:p-6 shadow-lg border-l-4 transition-all duration-500 ${
+                  index === currentStep 
+                    ? `border-${step.color}-500 opacity-100 scale-105` 
+                    : `border-gray-200 opacity-60`
+                }`}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-300 ${
+                    index === currentStep 
+                      ? 'ring-2 ring-blue-500 bg-blue-500 text-white' 
+                      : 'ring-1 ring-gray-300 bg-gray-100 text-gray-600'
+                  }`}>
+                    {step.id}
                   </div>
-                  <p className="text-gray-600">
-                    Choisissez le type d'alerte et envoyez votre message en quelques secondes.
-                  </p>
+                  <div className="flex-1">
+                    <h3 className={`text-lg sm:text-xl font-bold mb-1 transition-colors duration-300 ${
+                      index === currentStep ? 'text-gray-900' : 'text-gray-600'
+                    }`}>
+                      {step.title}
+                    </h3>
+                    <p className={`text-sm sm:text-base transition-colors duration-300 ${
+                      index === currentStep ? 'text-gray-600' : 'text-gray-400'
+                    }`}>
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-
-               {/* Step 3 */}
-               <div className="flex items-start space-x-4 bg-white rounded-2xl p-6 shadow-sm">
-                 <div className="flex-shrink-0 relative">
-                   <img src="/Subtract(2).png" alt="Notification" className="w-12 h-12 relative bottom-10 right-8" />
-                   
-                 </div>
-                 <div className="flex-1">
-                   <h3 className="text-xl font-bold text-gray-900 mb-2">Recevez la notification instantanément</h3>
-                   <p className="text-gray-600">
-                     Le propriétaire reçoit immédiatement votre alerte sur son téléphone.
-                   </p>
-                 </div>
-               </div>
-            </div>
-          {/* Large Blue Background - positioned absolutely */}
-          <div className="absolute top-0 left-80 w-[600px] h-[600px] white rounded-3xl z-[-1]">
-            <div className="absolute top-0 left-60 w-[600px] h-[600px] bg-blue-700 rounded-3xl z-[-1]">
-
-            <div className="absolute top-16 right-20 z-20">
-            <div className="w-[270px] h-[600px] relative bottom-24 right-14 bg-gray-900 rounded-3xl p-2 shadow-2xl">
-              {/* Phone Screen */}
-              <div className="w-full h-full bg-black rounded-2xl overflow-hidden relative">
-                {/* Status Bar */}
-                <div className="flex justify-between items-center px-6 pt-2 pb-1">
-                  <span className="text-white text-sm font-medium">9:41</span>
-                  <div className="flex items-center space-x-1">
-                    <div className="w-4 h-2 bg-white rounded-sm"></div>
-                    <div className="w-4 h-2 bg-white rounded-sm"></div>
-                    <div className="w-6 h-3 border border-white rounded-sm"></div>
-                  </div>
-                </div>
-
-                {/* Main Content */}
-                <div className="flex flex-col items-center justify-center h-full px-6 pb-20">
-                  <div className="text-center mb-8">
-                    <h3 className="text-white text-2xl font-bold mb-2">Mockup</h3>
-                    <div className="text-4xl">✌️</div>
-                  </div>
-
-                  {/* Content Card */}
-                  <div className="w-full max-w-xs bg-white rounded-2xl p-6 shadow-lg">
-                    <div className="flex justify-end mb-4">
-                      <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="h-4 bg-gray-200 rounded"></div>
-                      <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                      <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Home Indicator */}
-                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-                  <div className="w-32 h-1 bg-white rounded-full opacity-60"></div>
-                </div>
-              </div>
-            </div>
-            </div>
-
-          </div>
-          
-          {/* Phone Mockup positioned on the blue background */}
-         
-          </div>
-
+            ))}
 
             {/* CTA Button */}
-            <div className="pt-4 relative z-10">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200">
+            <div className="pt-4">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto">
                 Découvrir l'app
               </button>
             </div>
           </div>
 
-        
+          {/* Right side - Real Phone with scrollable content */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Real Phone Image */}
+              <div className="relative w-80 h-[600px]">
+                <img 
+                  src="/tel.png" 
+                  alt="Téléphone NotifCar" 
+                  className="w-full h-full object-contain"
+                />
+                
+                {/* Screen Content Overlay */}
+                <div className="absolute top-[80px] left-[40px] right-[40px] bottom-[100px] overflow-hidden">
+                  {/* Scrollable Content */}
+                  <div className="relative h-full overflow-hidden">
+                    <div 
+                      className="absolute inset-0 transition-transform duration-500 ease-in-out"
+                      style={{ transform: `translateY(-${currentStep * 100}%)` }}
+                    >
+                      {steps.map((step) => (
+                        <div key={step.id} className="h-full flex items-center justify-center">
+                          {/* Image plein écran */}
+                          <div className="w-full h-full overflow-hidden">
+                            <img 
+                              src={step.icon} 
+                              alt={`Étape ${step.id}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white text-sm">📱</span>
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white text-sm">⚡</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -136,3 +155,4 @@ const Fonctionnement: React.FC = () => {
 };
 
 export default Fonctionnement;
+
