@@ -7,23 +7,12 @@ const Securite: React.FC = () => {
         {/* Section Title */}
        
 
-        {/* Security Features Grid */}
-        <div 
-          className="grid-container"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gridTemplateRows: ' repeat(3, 1fr)',
-            gridColumnGap: '16px',
-            gridRowGap: '16px'
-          }}
-        >
+        {/* Security Features Grid - responsive layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
 
           {/* div1 - Zero Data Exposed */}
 
-          <div className=" div1 text-center mb-16"
-          style={{ gridArea: '1 / 1 / 2 / 2' }}
-          >
+          <div className="div1 text-center mb-8 md:mb-16 md:col-start-1 md:row-start-1 order-1">
           <h2 className="text-2xl md:text-5xl font-bold mb-7 mt-4 bg-gradient-to-t from-teal-500 via-indigo-600 to-indigo-700 bg-clip-text text-transparent">
             Sécurité et confiance garanties
           </h2>
@@ -32,8 +21,7 @@ const Securite: React.FC = () => {
           </p>
         </div>
           <div 
-            className="div3 grid-area: 1 / 3 / 3 / 6 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-8 text-white shadow-lg"
-            style={{  gridArea: '2 / 1 / 2 / 2' }}
+            className="div3 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-6 md:p-8 text-white shadow-lg md:col-start-1 md:row-start-2 order-3 md:order-none"
           >
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
@@ -47,8 +35,7 @@ const Securite: React.FC = () => {
           </div>
 
           <div 
-            className="div4 grid-area: 2 / 1 / 3 / 3 bg-green-600 rounded-2xl p-8 text-white shadow-lg"
-            style={{   gridArea: '3 / 1 / 4 / 4'   }}
+            className="div4 bg-green-600 rounded-2xl p-6 md:p-8 text-white shadow-lg order-3 md:order-none md:col-start-1 md:row-start-3"
           >
             <div className="flex items-start space-x-4">
               <div className="flex-1">
@@ -68,15 +55,14 @@ const Securite: React.FC = () => {
 
           {/* div3 - Protection against abuse */}
           <div 
-            className="div2 relative overflow-hidden bg-blue-600 rounded-2xl p-8 md:p-12 text-white shadow-lg"
-            style={{ gridArea: '1 / 2 / 3 / 6' }}
+            className="div2 relative overflow-hidden bg-blue-600 rounded-2xl p-6 md:p-12 text-white shadow-lg order-2 md:order-none md:col-span-2 md:row-span-2 md:col-start-2 md:row-start-1"
           >
             <img
               src="/octicon_alert-16.png"
               alt="Icône alerte"
-              className="pointer-events-none select-none absolute right-6 md:right-10 top-1/2 -translate-y-1/2 opacity-70 w-[220px] md:w-[320px] lg:w-[380px]"
+              className="pointer-events-none select-none absolute opacity-60 right-2 bottom-2 w-[160px] sm:w-[220px] md:right-10 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:w-[320px] lg:w-[380px]"
             />
-            <div className="max-w-2xl mt-[200px]">
+            <div className="max-w-2xl mt-20 md:mt-40 lg:mt-52">
               <h3 className="text-2xl md:text-5xl font-bold mb-4 font-poppins">Protection contre les abus</h3>
               <p className="text-green-300 text-lg md:text-2xl mb-2">Système anti-spam intelligent</p>
               <p className="text-white/90 leading-relaxed">
@@ -88,8 +74,7 @@ const Securite: React.FC = () => {
 
           {/* div4 - Legitimate alerts */}
           <div 
-            className="div5 bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-lg"
-            style={{ gridArea: '3 / 4 / 4 / 6' }}
+            className="div5 bg-white border-2 border-gray-200 rounded-2xl p-6 md:p-8 shadow-lg order-4 md:order-none md:col-start-3 md:row-start-3"
           >
             <div className="text-center">
               <div className="w-16 h-16  mx-auto mb-6">

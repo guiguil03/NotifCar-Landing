@@ -26,12 +26,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
         onOpenRegistration={() => setIsRegistrationModalOpen(true)}
       />
       
-      {/* Hero Section - Like the image */}
-      <section className="relative min-h-screen bg-cover bg-center bg-no-repeat pt-20 sm:pt-24" style={{ backgroundImage: 'url(/photo1.png)' }}>
+      {/* Hero Section - Image responsive */}
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] md:min-h-screen pt-20 sm:pt-24 overflow-hidden">
+        {/* Background image (better responsive control) */}
+        <img
+          src="/photo1.png"
+          alt="Notifcar hero"
+          className="absolute inset-0 w-full h-full object-cover object-[65%_center] sm:object-center"
+        />
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
+        <div className="absolute inset-0 bg-black/50 sm:bg-black/40"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[70vh] sm:min-h-[80vh] md:min-h-screen">
           <div className="w-full">
             {/* Text content positioned on the left side */}
             <div className="max-w-2xl">
@@ -54,7 +60,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               </button>
             </div>
           </div>
-                </div>
+        </div>
       </section>
 
       {/* QR Code Section */}

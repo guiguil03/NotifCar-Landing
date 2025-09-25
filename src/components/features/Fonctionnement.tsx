@@ -12,7 +12,7 @@ const Fonctionnement: React.FC = () => {
       bgColor: "bg-blue-500/20",
       borderColor: "border-blue-500/30",
       iconBg: "bg-blue-500",
-      icon: "/1.jpg"
+      icon: "/1.png"
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ const Fonctionnement: React.FC = () => {
       bgColor: "bg-green-500/20",
       borderColor: "border-green-500/30",
       iconBg: "bg-green-500",
-      icon: "/2.jpg"
+      icon: "/2.png"
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ const Fonctionnement: React.FC = () => {
       bgColor: "bg-blue-600",
       borderColor: "border-blue-600",
       iconBg: "bg-blue-600",
-      icon: "/3.jpg"
+      icon: "/3.png"
     }
   ];
 
@@ -114,25 +114,31 @@ const Fonctionnement: React.FC = () => {
                 />
                 
                 {/* Screen Content Overlay */}
-                <div className="absolute top-[80px] left-[40px] right-[40px] bottom-[100px] overflow-hidden">
+                <div className="absolute h-[574px] w-[260px] top-[14px] left-[30px] right-[40px] bottom-[100px] overflow-hidden rounded-[30px]">
                   {/* Scrollable Content */}
                   <div className="relative h-full overflow-hidden">
                     <div 
                       className="absolute inset-0 transition-transform duration-500 ease-in-out"
-                      style={{ transform: `translateY(-${currentStep * 100}%)` }}
+                      style={{ transform: `translateX(-${currentStep * (100 )}%)` }}
                     >
-                      {steps.map((step) => (
-                        <div key={step.id} className="h-full flex items-center justify-center">
-                          {/* Image plein écran */}
-                          <div className="w-full h-full overflow-hidden">
+                      <div 
+                        className="flex h-full"
+                        style={{ width: `${steps.length * 100}%` }}
+                      >
+                        {steps.map((step) => (
+                          <div 
+                            key={step.id} 
+                            className="h-full flex-shrink-0"
+                            style={{ width: `${100 / steps.length}%` }}
+                          >
                             <img 
                               src={step.icon} 
                               alt={`Étape ${step.id}`}
                               className="w-full h-full object-cover"
                             />
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
 
