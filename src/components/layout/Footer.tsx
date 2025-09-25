@@ -48,14 +48,9 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="mt-8 flex items-center gap-4">
-              <a href="#" aria-label="Instagram" className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                <span className="text-2xl">📸</span>
-              </a>
+             
               <a href="#" aria-label="LinkedIn" className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
                 <span className="text-2xl">in</span>
-              </a>
-              <a href="#" aria-label="Facebook" className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                <span className="text-2xl">f</span>
               </a>
             </div>
           </div>
