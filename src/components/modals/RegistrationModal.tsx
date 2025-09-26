@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Modal from '../ui/Modal';
-import { EmailService, type RegistrationData } from '../../services/emailService';
+import { type RegistrationData } from '../../services/emailService';
 import { createInscription } from '../../services/inscriptionService';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 
@@ -22,12 +22,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string>('');
 
-  // Initialiser EmailJS au montage du composant
-  useEffect(() => {
-    if (isOpen && EMAILJS_CONFIG.USER_ID !== 'YOUR_USER_ID_HERE') {
-      EmailService.init(EMAILJS_CONFIG.USER_ID);
-    }
-  }, [isOpen]);
+  // Plus besoin d'initialiser EmailJS ici car c'est fait dans le service d'inscription
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -73,23 +68,10 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
           throw new Error(dbResult.error || 'Échec de l\'enregistrement en base');
         }
 
-        // 2) Vérifier la config EmailJS avant envoi
-        // Vérifier si EmailJS est configuré
-        if (EMAILJS_CONFIG.USER_ID === 'YOUR_USER_ID_HERE') {
-          throw new Error('EmailJS n\'est pas configuré. Veuillez ajouter votre User ID dans la configuration.');
-        }
-
-        const registrationData: RegistrationData = {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-        };
-
-        // 3) Envoyer l'email de confirmation à l'utilisateur
-        const response = await EmailService.sendRegistrationEmail(registrationData);
-        
-        if (!response.success) {
-          throw new Error(response.error || 'Erreur lors de l\'envoi de l\'email');
+        // 2) Les emails sont déjà envoyés par createInscription (utilisateur + admin)
+        // Vérifier si au moins un email a été envoyé
+        if (!dbResult.userEmailSent && !dbResult.adminEmailSent) {
+          console.warn('Aucun email envoyé, mais l\'inscription a réussi');
         }
 
         setIsSubmitted(true);

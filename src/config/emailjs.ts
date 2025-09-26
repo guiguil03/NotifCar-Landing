@@ -9,8 +9,8 @@ export const EMAILJS_CONFIG = {
   // Template ID principal (doit exister dans EmailJS)
   TEMPLATE_ID: 'template_xldj7kq',
   
-  // Laisser vide pour utiliser le TEMPLATE_ID ci-dessus
-  REGISTRATION_TEMPLATE_ID: '',
+  // Template pour notification admin lors d'inscription
+  ADMIN_NOTIFICATION_TEMPLATE_ID: 'template_alc6qjc',
   
   // Email de l'administrateur (vous)
   ADMIN_EMAIL: 'guillaumel1103@gmail.com',

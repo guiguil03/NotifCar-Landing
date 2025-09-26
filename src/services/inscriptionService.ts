@@ -1,5 +1,6 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { SUPABASE_CONFIG } from '../config/constants';
+import { EmailService } from './emailService';
 
 export interface InscriptionRecord {
   id?: string;
@@ -20,7 +21,7 @@ function getClient(): SupabaseClient {
 
 export async function createInscription(
   data: InscriptionRecord
-): Promise<{ success: boolean; id?: string; error?: string; code?: string }>{
+): Promise<{ success: boolean; id?: string; error?: string; code?: string; emailSent?: boolean }>{
   try {
     const client = getClient();
     const { data: inserted, error } = await client
@@ -38,7 +39,37 @@ export async function createInscription(
       return { success: false, error: error.message, code };
     }
 
-    return { success: true, id: (inserted as { id: string }).id };
+    // Envoyer les deux emails (utilisateur + admin) en parallèle
+    let userEmailSent = false;
+    let adminEmailSent = false;
+    
+    try {
+      const emailResults = await EmailService.sendBothEmails({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: ''
+      });
+      
+      userEmailSent = emailResults.userEmail.success;
+      adminEmailSent = emailResults.adminEmail.success;
+      
+      if (!userEmailSent) {
+        console.warn('Erreur envoi email utilisateur:', emailResults.userEmail.error);
+      }
+      if (!adminEmailSent) {
+        console.warn('Erreur envoi email admin:', emailResults.adminEmail.error);
+      }
+    } catch (emailError) {
+      console.warn('Erreur lors de l\'envoi des emails:', emailError);
+    }
+
+    return { 
+      success: true, 
+      id: (inserted as { id: string }).id,
+      userEmailSent,
+      adminEmailSent
+    };
   } catch (e) {
     const message = e instanceof Error ? e.message : 'Erreur inconnue';
     return { success: false, error: message };
