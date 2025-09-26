@@ -21,7 +21,7 @@ function getClient(): SupabaseClient {
 
 export async function createInscription(
   data: InscriptionRecord
-): Promise<{ success: boolean; id?: string; error?: string; code?: string; emailSent?: boolean }>{
+): Promise<{ success: boolean; id?: string; error?: string; code?: string; userEmailSent?: boolean; adminEmailSent?: boolean }>{
   try {
     const client = getClient();
     const { data: inserted, error } = await client

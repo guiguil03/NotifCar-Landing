@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Modal from '../ui/Modal';
-import { type RegistrationData } from '../../services/emailService';
 import { createInscription } from '../../services/inscriptionService';
-import { EMAILJS_CONFIG } from '../../config/emailjs';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -22,7 +20,6 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string>('');
 
-  // Plus besoin d'initialiser EmailJS ici car c'est fait dans le service d'inscription
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
