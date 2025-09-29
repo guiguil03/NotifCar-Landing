@@ -23,7 +23,7 @@ const Securite: React.FC = () => {
           <div className=" div1 text-center mb-16"
           style={{ gridArea: '1 / 1 / 2 / 2' }}
           >
-          <h2 className="text-2xl md:text-5xl font-bold mb-7 mt-4 bg-gradient-to-t from-teal-500 via-indigo-600 to-indigo-700 bg-clip-text text-transparent">
+          <h2 className="text-xl md:text-4xl pt-2 mb-7 mt-4 bg-gradient-to-t from-teal-500 via-indigo-600 to-indigo-700 bg-clip-text text-transparent">
             Sécurité et confiance garanties
           </h2>
           <p className="text-xl text-neutral-600 ">

@@ -83,7 +83,7 @@ const PlanCard: React.FC<{ plan: Plan }> = ({ plan }) => {
     <div className={`relative rounded-2xl bg-white p-4 sm:p-6 md:p-8 shadow-sm ${cardRing}`}> 
       {badge}
       <div className="mb-4 sm:mb-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{plan.name}</h3>
+        <h3 className="text-xl sm:text-2xl  text-gray-900">{plan.name}</h3>
         <p className="text-sm sm:text-base text-gray-600 mt-1">{plan.subtitle}</p>
       </div>
 
@@ -130,7 +130,7 @@ const Price: React.FC = () => {
     <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-indigo-700 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-indigo-700 leading-tight">
             Choisissez le plan qui correspond à vos besoins
           </h2>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">

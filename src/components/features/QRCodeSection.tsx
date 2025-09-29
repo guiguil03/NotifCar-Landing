@@ -18,8 +18,8 @@ const QRCodeSection: React.FC = () => {
 
           {/* Right side - Text and Statistics */}
           <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
-            {/* Main Title */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight bg-gradient-to-t from-emerald-500 via-blue-600 to-indigo-800 bg-clip-text text-transparent filter saturate-150 contrast-125">
+            {/* Main Title with gradient like screenshot (left-to-right blue→green) */}
+            <h2 className="text-2xl font-Poppins sm:text-3xl md:text-3xl lg:text-6xl leading-tight tracking-tight bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-500 bg-clip-text text-transparent">
               Parce qu'un imprévu
               <br />
               peut arriver à tout moment...

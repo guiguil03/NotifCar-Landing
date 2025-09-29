@@ -6,9 +6,8 @@ const Amis: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="text-gray-700">Un ami qui veille sur votre</span>{' '}
-            <span className="text-green-500">voiture</span>
+          <h2 className="text-3xl md:text-4xl  mb-2">
+            <span className="font-poppins bg-gradient-to-t from-emerald-500 via-blue-700 to-indigo-700 bg-clip-text text-transparent">Un ami qui veille sur votre voiture</span>{' '}
           </h2>
         </div>
 
