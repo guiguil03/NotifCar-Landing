@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               <ul className="mt-6 space-y-4 text-white/90">
                 <li><a href="#how-it-works" className="hover:underline">Comment ça marche?</a></li>
                 <li><a href="#security" className="hover:underline">Sécurité</a></li>
-                <li><a href="#pillars" className="hover:underline">Nos piliers</a></li>
+                <li><a href="#pillars" className="hover:underline">Nos valeurs</a></li>
                 <li><a href="#pricing" className="hover:underline">Tarif</a></li>
             </ul>
           </div>
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-12 border-t border-white/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-3xl font-extrabold">NotifCar</div>
+          <div className="text-3xl font-extrabold font-poppins bg-gradient-to-r from-indigo-700 via-blue-600 to-emerald-400 bg-clip-text text-transparent">NotifCar</div>
           <p className="text-white/80">© {new Date().getFullYear()} NotifCar. Tous droits réservés.</p>
         </div>
       </div>

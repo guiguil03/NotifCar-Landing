@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex justify-between items-center gap-3">
           <div className="flex items-center">
-            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-t from-teal-500 via-indigo-600 to-indigo-700 bg-clip-text text-transparent">
+            <h1 className="text-xl sm:text-2xl font-extrabold font-poppins bg-gradient-to-r from-indigo-700 via-blue-700 to-emerald-500 bg-clip-text text-transparent">
               NotifCar
             </h1>
           </div>
@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({
               onClick={() => handleScrollToSection('pillars')}
               className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200"
             >
-              Nos piliers
+              Nos valeurs
             </button>
             <button 
               onClick={() => handleScrollToSection('pricing')}
@@ -158,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleScrollToSection('pillars')}
                 className="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-medium w-full text-left"
               >
-                Nos piliers
+                Nos valeurs
               </button>
               <button 
                 onClick={() => handleScrollToSection('pricing')}
