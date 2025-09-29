@@ -7,7 +7,7 @@ const Amis: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl  mb-2">
-            <span className="font-poppins bg-gradient-to-t from-emerald-500 via-blue-700 to-indigo-700 bg-clip-text text-transparent">Un ami qui veille sur votre voiture</span>{' '}
+            <span className="font-poppins bg-gradient-to-br from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent">Un ami qui veille sur votre voiture</span>{' '}
           </h2>
         </div>
 

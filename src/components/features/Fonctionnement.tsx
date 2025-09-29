@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { RegistrationModal } from '../modals';
 
 const Fonctionnement: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
   const steps = [
     {
@@ -78,40 +80,43 @@ const Fonctionnement: React.FC = () => {
     <section className="py-12 sm:py-16 md:py-20 bg-[#FBF0E9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+        <div className="">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 relative left-14">
             Comment ça marche ?
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 relative left-14">
             Une solution simple et efficace en trois étapes
           </p>
         </div>
 
-        {/* Layout wrapper */}
+        {/* Layout wrapper with blue background */}
         <div className="relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-10 relative">
+          {/* Blue background block - positioned behind content - hidden on mobile */}
+          <div className="hidden lg:block absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[80%] rounded-3xl" style={{backgroundColor: '#2633E1'}}></div>
+          
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-10 py-12 px-4 sm:px-6 lg:px-8">
             {/* Left column: numbered rail + cards */}
             <div className="w-full space-y-5 md:space-y-6">
             {steps.map((step, index) => {
               const isActive = index === currentStep;
               // visual emphasis handled directly on elements; no container border
               return (
-                <div key={step.id} className="flex items-stretch gap-4">
+                <div key={step.id} className=" relative  flex items-stretch gap-4">
                   {/* Number bullet */}
-                  <div className={`${isActive ? 'bg-blue-600 text-white ring-2 ring-blue-400' : 'bg-blue-600 text-white opacity-80'} w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-base md:text-lg shrink-0 transition-all duration-300 shadow-md`}>
+                  <div className={`${isActive ? 'text-white ring-4 ring-white-200' : 'text-white'} relative bottom-10 left-14 z-10  w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-bold text-lg md:text-xl shrink-0 transition-all duration-300 shadow-lg`} style={{background: 'linear-gradient(135deg, #2633E1 0%, #26C29E 100%)'}}>
                     {step.id}
                   </div>
                   {/* Step card */}
-                  <div className={`flex-1 bg-white rounded-2xl p-4 sm:p-5 shadow-[0_10px_25px_rgba(0,0,0,0.08)] border transition-all duration-500 ${isActive ? 'border-blue-100' : 'border-gray-100'}`}>
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                  <div className={`flex-1 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 transition-all duration-500 transform hover:scale-105 ${isActive ? 'border-blue-200 shadow-blue-200/50' : 'border-gray-200 shadow-gray-200/50'}`}>
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${isActive ? 'bg-blue-100' : 'bg-gray-100'}`}>
                         {renderStepIcon(step.id)}
                       </div>
-                      <div>
-                        <h3 className={`${isActive ? 'text-gray-900' : 'text-gray-700'} text-[15px] sm:text-base font-bold mb-1 transition-colors duration-300`}>
+                      <div className="flex-1">
+                        <h3 className={`${isActive ? 'text-gray-900' : 'text-gray-700'} font-poppins text-lg sm:text-xl font-bold mb-2 transition-colors duration-300`}>
                           {step.title}
                         </h3>
-                        <p className={`${isActive ? 'text-gray-600' : 'text-gray-500'} text-xs sm:text-sm transition-colors duration-300`}>
+                        <p className={`${isActive ? 'text-gray-600' : 'text-gray-500'} text-sm sm:text-base transition-colors duration-300 leading-relaxed`}>
                           {step.description}
                         </p>
                       </div>
@@ -124,18 +129,14 @@ const Fonctionnement: React.FC = () => {
           </div>
 
           {/* Right side - Phone centered over blue block */}
-          <div className="w-full flex justify-center lg:justify-center relative">
-            {/* Blue block behind phone, centered */}
-            <div className="hidden md:flex absolute inset-0 items-center justify-center">
-              <div className="w-[100px] md:w-[900px] h-[450px] md:h-[550px] bg-indigo-700 rounded-[28px] relative right-28 z-index-10"></div>
-            </div>
-            <div className="relative z-10">
+          <div className="w-full flex justify-center lg:justify-center relative z-10">
+            <div className="relative">
               {/* Real Phone Image */}
               <div className="relative w-72 md:w-80 h-[520px] md:h-[600px]">
                 <img 
                   src="/tel.png" 
                   alt="Téléphone NotifCar" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain drop-shadow-2xl"
                 />
                 
                 {/* Screen Content Overlay */}
@@ -175,15 +176,24 @@ const Fonctionnement: React.FC = () => {
           </div>
         </div>
         {/* Global CTA centered below */}
-        <div className="mt-8 flex justify-center">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colors duration-200">
+        <div className="mt-8 flex justify-center relative right-28 z-10">
+          <button 
+            onClick={() => setIsRegistrationModalOpen(true)}
+            className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 shadow-lg"
+          >
             Découvrir l'app
           </button>
         </div>
         {/* close grid */}
+          </div>
         </div>
       </div>
-      </div>
+      
+      {/* Registration Modal */}
+      <RegistrationModal 
+        isOpen={isRegistrationModalOpen}
+        onClose={() => setIsRegistrationModalOpen(false)}
+      />
     </section>
   );
 };

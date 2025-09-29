@@ -36,3 +36,39 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+/* Styles responsive pour la section sécurité */
+@media (max-width: 768px) {
+  .grid-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .div1, .div2, .div3, .div4, .div5 {
+    grid-area: unset !important;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto !important;
+    gap: 1rem !important;
+  }
+  .div1 { grid-area: 1 / 1 / 2 / 3 !important; }
+  .div2 { grid-area: 2 / 1 / 4 / 3 !important; }
+  .div3 { grid-area: 4 / 1 / 5 / 2 !important; }
+  .div4 { grid-area: 4 / 2 / 5 / 3 !important; }
+  .div5 { grid-area: 5 / 1 / 6 / 3 !important; }
+}
+
+@media (min-width: 1025px) {
+  .grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+    gap: 1rem !important;
+  }
+}

@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-12 border-t border-white/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-3xl font-extrabold font-poppins bg-gradient-to-r from-indigo-700 via-blue-600 to-emerald-400 bg-clip-text text-transparent">NotifCar</div>
+          <div className="text-3xl font-extrabold font-poppins  text-white bg-clip-text text-transparent">NotifCar</div>
           <p className="text-white/80">© {new Date().getFullYear()} NotifCar. Tous droits réservés.</p>
         </div>
       </div>
