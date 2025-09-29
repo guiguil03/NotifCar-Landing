@@ -140,7 +140,7 @@ const Fonctionnement: React.FC = () => {
                 />
                 
                 {/* Screen Content Overlay */}
-                <div className="absolute h-[498px] md:h-[574px] w-[230px] md:w-[260px] top-[10px] md:top-[14px] left-[24px] md:left-[30px] right-[40px] bottom-[100px] overflow-hidden rounded-[26px] md:rounded-[30px]">
+                <div className="absolute h-[494px] md:h-[579px] w-[236px] md:w-[270px] top-[10px] md:top-[10px] left-[26px] md:left-[26px] right-[40px] bottom-[100px] overflow-hidden rounded-[26px] md:rounded-[30px]">
                   {/* Scrollable Content */}
                   <div className="relative h-full overflow-hidden">
                     <div 

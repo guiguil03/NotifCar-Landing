@@ -75,7 +75,7 @@ const Securite: React.FC = () => {
               alt="Icône alerte"
               className="pointer-events-none select-none absolute right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 opacity-70 w-[120px] sm:w-[180px] md:w-[220px] lg:w-[320px] xl:w-[380px]"
             />
-            <div className="max-w-2xl mt-[120px] sm:mt-[150px] md:mt-[180px] lg:mt-[200px]">
+            <div className="max-w-2xl mt-[80px] sm:mt-[100px] md:mt-[120px] lg:mt-[140px] text-center md:text-left">
               <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-4 font-poppins">Protection contre les abus</h3>
               <p className="text-green-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-2">Système anti-spam intelligent</p>
               <p className="text-white/90 leading-relaxed text-sm sm:text-base md:text-lg">
