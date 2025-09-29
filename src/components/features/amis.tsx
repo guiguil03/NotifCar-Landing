@@ -2,7 +2,7 @@ import React from 'react';
 
 const Amis: React.FC = () => {
   return (
-    <section id="friends" className="py-12 bg-[#F6F6F6]">
+    <section id="pillars" className="py-12 bg-[#F6F6F6]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-8">

@@ -77,7 +77,7 @@ const Fonctionnement: React.FC = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#FBF0E9]">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-[#FBF0E9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="">
