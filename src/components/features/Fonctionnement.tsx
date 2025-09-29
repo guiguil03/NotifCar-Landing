@@ -81,10 +81,10 @@ const Fonctionnement: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 relative left-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 relative left-4">
             Comment ça marche ?
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 relative left-8">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 relative left-4">
             Une solution simple et efficace en trois étapes
           </p>
         </div>
