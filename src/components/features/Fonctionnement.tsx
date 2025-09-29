@@ -81,10 +81,10 @@ const Fonctionnement: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 relative left-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 relative left-8">
             Comment ça marche ?
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 relative left-14">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 relative left-8">
             Une solution simple et efficace en trois étapes
           </p>
         </div>
@@ -101,13 +101,13 @@ const Fonctionnement: React.FC = () => {
               const isActive = index === currentStep;
               // visual emphasis handled directly on elements; no container border
               return (
-                <div key={step.id} className=" relative  flex items-stretch gap-4">
-                  {/* Number bullet */}
-                  <div className={`${isActive ? 'text-white ring-4 ring-white-200' : 'text-white'} relative bottom-10 left-14 z-10  w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-bold text-lg md:text-xl shrink-0 transition-all duration-300 shadow-lg`} style={{background: 'linear-gradient(135deg, #2633E1 0%, #26C29E 100%)'}}>
+                <div key={step.id} className="relative flex items-stretch">
+                  {/* Number bullet - positioned to overlap the card */}
+                  <div className={`${isActive ? 'text-white ring-4 ring-white-200' : 'text-white'} absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-bold text-lg md:text-xl shrink-0 transition-all duration-300 shadow-lg`} style={{background: 'linear-gradient(135deg, #2633E1 0%, #26C29E 100%)'}}>
                     {step.id}
                   </div>
                   {/* Step card */}
-                  <div className={`flex-1 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 transition-all duration-500 transform hover:scale-105 ${isActive ? 'border-blue-200 shadow-blue-200/50' : 'border-gray-200 shadow-gray-200/50'}`}>
+                  <div className={`flex-1 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 transition-all duration-500 transform hover:scale-105 ml-4 ${isActive ? 'border-blue-200 shadow-blue-200/50' : 'border-gray-200 shadow-gray-200/50'}`}>
                     <div className="flex items-center gap-4">
                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${isActive ? 'bg-blue-100' : 'bg-gray-100'}`}>
                         {renderStepIcon(step.id)}
