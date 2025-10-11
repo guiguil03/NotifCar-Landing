@@ -23,7 +23,7 @@ const Securite: React.FC = () => {
           <div className="div1 text-center col-span-1 md:col-span-2 lg:col-span-1"
           style={{ gridArea: '1 / 1 / 2 / 2' }}
           >
-          <h2 className="text-xl relative bottom-6 sm:text-3xl md:text-4xl lg:text-5xl pt-4 pb-4 mb-6 md:mb-8 mt-4 bg-gradient-to-br from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent leading-loose">
+          <h2 className="section-title relative bottom-6 pt-4 pb-4 mb-6 md:mb-8 mt-4 bg-gradient-to-br from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent leading-loose">
             Sécurité et confiance<br />garanties
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-neutral-600">

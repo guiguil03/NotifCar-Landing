@@ -130,7 +130,7 @@ const Price: React.FC = () => {
     <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight" style={{color: '#2633E1'}}>
+          <h2 className="section-title leading-tight" style={{color: '#2633E1'}}>
             Choisissez le plan qui correspond à vos besoins
           </h2>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
