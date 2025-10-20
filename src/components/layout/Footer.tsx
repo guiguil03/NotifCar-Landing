@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
+import notifcarLogo from '../../assets/notifcarlogo.png';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -79,7 +80,11 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-12 border-t border-white/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-3xl font-extrabold font-poppins  text-white bg-clip-text text-transparent">NotifCar</div>
+          <img 
+            src={notifcarLogo} 
+            alt="NotifCar Logo" 
+            className="h-12 w-auto filter brightness-0 invert"
+          />
           <p className="text-white/80">© {new Date().getFullYear()} NotifCar. Tous droits réservés.</p>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '../ui/Button';
 import { useAuth } from '../../contexts/AuthContext';
 import { type Page } from '../../hooks/useNavigation';
+import notifcarLogo from '../../assets/notifcarlogo.png';
 
 interface HeaderProps {
   onNavigate?: (page: Page) => void;
@@ -48,9 +49,11 @@ const Header: React.FC<HeaderProps> = ({
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex justify-between items-center gap-3">
           <div className="flex items-center">
-            <h1 className="text-xl sm:text-2xl font-extrabold font-poppins bg-gradient-to-t from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent">
-              NotifCar
-            </h1>
+            <img 
+              src={notifcarLogo} 
+              alt="NotifCar Logo" 
+              className="h-5 sm:h-6 w-auto"
+            />
           </div>
 
           {/* Navigation Desktop */}

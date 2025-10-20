@@ -146,14 +146,14 @@ const Price: React.FC = () => {
         </div>
 
         {/* Mobile/Tablet Slider */}
-        <div className="md:hidden mb-8">
-          <div className="relative overflow-hidden mt-6 sm:mt-8">
+        <div className="md:hidden ">
+          <div className="relative overflow-hidden pt-2 sm:pt-12">
             <div 
               className="flex transition-transform duration-300 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {plans.map((plan) => (
-                <div key={plan.name} className="font-poppins w-full flex-shrink-0 px-3 sm:px-4">
+                <div key={plan.name} className="font-poppins w-full flex-shrink-0 px-3 sm:px-4 pb-2">
                   <PlanCard plan={plan} />
                 </div>
               ))}
