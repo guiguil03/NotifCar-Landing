@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
           <img 
             src={notifcarLogo} 
             alt="NotifCar Logo" 
-            className="h-12 w-auto filter brightness-0 invert"
+            className="h-12 w-auto object-contain"
           />
           <p className="text-white/80">© {new Date().getFullYear()} NotifCar. Tous droits réservés.</p>
         </div>
