@@ -1,8 +1,6 @@
 import React from 'react';
 import { AuthProvider } from './contexts/AuthContext';
-import { SpeedInsights } from "@vercel/speed-insights/react" 
-
-
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import LandingPage from './pages/LandingPage';
 
 import './App.css';
@@ -17,7 +15,14 @@ const AppContent: React.FC = () => {
   }, []);
   return (
     <>
-      <SpeedInsights />
+      <SpeedInsights 
+        framework="vite"
+        sampleRate={1}
+        beforeSend={(data) => {
+          // Optionnel: filtrer les données sensibles
+          return data;
+        }}
+      />
       <LandingPage />
     </>
   );
