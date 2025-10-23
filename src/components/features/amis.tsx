@@ -17,7 +17,7 @@ const Amis: React.FC = () => {
           <div className="rounded-xl p-4 shadow-sm h-full w-full" style={{backgroundColor: '#E9EBFC'}}>
             <div className="text-center">
               <div className="mx-auto mb-3 flex items-center justify-center">
-                <img src="/Frame36.png" alt="Fiable & rassurant" className="w-12 h-12" />
+                <img src="/Frame36.png" alt="Fiable & rassurant" className="w-16 h-16" />
               </div>
               <h3 className="text-[32px] font-light text-gray-700 mb-1">
                 Fiable & rassurant
@@ -35,7 +35,7 @@ const Amis: React.FC = () => {
           <div className="bg-green-100 rounded-xl p-4 shadow-sm w-full">
             <div className="text-center">
               <div className="mx-auto mb-3 flex items-center justify-center">
-                <img src="/Frame37.png" alt="Simple & rapide" className="w-12 h-12" />
+                <img src="/Frame37.png" alt="Simple & rapide" className="w-16 h-16" />
               </div>
               <h3 className="text-[32px] font-light text-gray-700 mb-1">
                 Simple & rapide
@@ -53,7 +53,7 @@ const Amis: React.FC = () => {
           <div className="rounded-xl p-4 shadow-sm w-full" style={{backgroundColor: '#FFF4ED'}}>
             <div className="text-center">
               <div className="mx-auto mb-3 flex items-center justify-center">
-                <img src="/Frame38.png" alt="Moderne & utile" className="w-12 h-12" />
+                <img src="/Frame38.png" alt="Moderne & utile" className="w-16 h-16" />
               </div>
               <h3 className="text-[32px] font-light text-gray-700 mb-1">
                 Moderne & utile

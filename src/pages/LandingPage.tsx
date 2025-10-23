@@ -42,12 +42,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             {/* Text content positioned on the left side */}
             <div className="max-w-2xl">
               {/* Main title */}
-              <h1 className="font-Poppins font-semibold text-white text-[32px] leading-[40px] sm:text-[40px] sm:leading-[52px] lg:text-[60px] lg:leading-[76px] mb-6 sm:mb-8">
+              <h1 className="font-Poppins font-semibold text-white text-[32px] leading-[40px] lg:text-[60px] lg:leading-[76px] mb-6 sm:mb-8">
                 L'app qui veille sur votre voiture, même quand vous n'êtes pas là.
             </h1>
 
               {/* Subtitle */}
-              <p className="text-white/90 font-semibold text-[24px] leading-[32px] lg:text-[32px] lg:leading-[40px] mb-6 sm:mb-8">
+              <p className="text-white/90 font-normal text-[20px] leading-[32px] lg:text-[32px] lg:leading-[40px] mb-6 sm:mb-8">
                 Avec Notifcar, soyez alerté instantanément si votre véhicule gêne, est accidenté ou en danger.
               </p>
               

@@ -28,7 +28,7 @@ const QRCodeSection: React.FC = () => {
             </h2>
 
             {/* Description */}
-            <p className="font-generalSans text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
+            <p className="subtitle text-gray-700">
               Une rayure, un accident, un stationnement gênant : grâce à Notifcar, 
               les conducteurs peuvent se prévenir entre eux en quelques secondes.
             </p>

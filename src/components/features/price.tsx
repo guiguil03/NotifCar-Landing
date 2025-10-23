@@ -133,7 +133,7 @@ const Price: React.FC = () => {
           <h2 className="section-title leading-tight" style={{color: '#2633E1'}}>
             Choisissez le plan qui correspond à vos besoins
           </h2>
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="subtitle text-gray-600 max-w-3xl mx-auto mt-4 sm:mt-6">
             Des options flexibles pour tous types d'utilisateurs, des particuliers aux entreprises avec des flottes importantes.
           </p>
         </div>

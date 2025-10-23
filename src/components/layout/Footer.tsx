@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
-import notifcarLogo from '../../assets/notifcarlogo.png';
+import notifcarLogo from '../../assets/logo3.png';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');

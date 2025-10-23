@@ -84,7 +84,7 @@ const Fonctionnement: React.FC = () => {
           <h2 className="section-title text-gray-900 mb-2 relative left-4">
             Comment ça marche ?
           </h2>
-          <p className="text-gray-600 font-semibold text-[24px] leading-[32px] lg:text-[32px] lg:leading-[40px] relative left-4">
+          <p className="subtitle text-gray-600 relative left-4">
             Une solution simple et efficace en trois étapes
           </p>
         </div>
