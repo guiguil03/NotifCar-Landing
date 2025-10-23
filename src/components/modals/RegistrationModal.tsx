@@ -100,6 +100,17 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
   if (isSubmitted) {
     return (
       <Modal isOpen={isOpen} onClose={handleClose} size="md">
+        {/* Bouton de fermeture */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+          aria-label="Fermer la modal"
+        >
+          <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
         <div className="text-center py-8">
           <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-green-200">
             <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,6 +148,17 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} size="md">
+      {/* Bouton de fermeture */}
+      <button
+        onClick={handleClose}
+        className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+        aria-label="Fermer la modal"
+      >
+        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4 shadow-lg">
           <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,11 +256,11 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600">
           En vous inscrivant, vous acceptez nos{' '}
-          <a href="#" className="font-medium text-purple-600 hover:text-purple-500">
+          <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
             conditions d'utilisation
           </a>{' '}
           et notre{' '}
-          <a href="#" className="font-medium text-purple-600 hover:text-purple-500">
+          <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
             politique de confidentialité
           </a>
         </p>

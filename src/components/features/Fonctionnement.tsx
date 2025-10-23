@@ -176,7 +176,7 @@ const Fonctionnement: React.FC = () => {
           </div>
         </div>
         {/* Global CTA centered below */}
-        <div className="mt-8 flex justify-center relative right-28 z-10">
+        <div className="mt-8 flex justify-center z-10">
           <button 
             onClick={() => setIsRegistrationModalOpen(true)}
             className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 shadow-lg"

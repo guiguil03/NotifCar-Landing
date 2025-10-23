@@ -7,11 +7,11 @@ const QRCodeSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left side - Frame10.svg Image */}
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="relative w-full max-w-lg">
+            <div className="relative w-full max-w-xl">
               <img 
                 src="/Frame10.svg" 
                 alt="QR Code et notifications NotifCar" 
-                className="w-[900px] h-auto max-h-[300px] sm:max-h-[400px] object-contain rounded-2xl shadow-lg"
+                className="w-[1500px] h-auto max-h-[600px] sm:max-h-[500px] object-contain rounded-2xl shadow-lg"
               />
             </div>
           </div>
