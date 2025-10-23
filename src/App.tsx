@@ -1,5 +1,7 @@
 import React from 'react';
 import { AuthProvider } from './contexts/AuthContext';
+import { SpeedInsights } from "@vercel/speed-insights/react" 
+
 
 import LandingPage from './pages/LandingPage';
 
