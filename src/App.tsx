@@ -16,7 +16,10 @@ const AppContent: React.FC = () => {
     }
   }, []);
   return (
-    <LandingPage />
+    <>
+      <SpeedInsights />
+      <LandingPage />
+    </>
   );
 };
 
