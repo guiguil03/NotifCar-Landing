@@ -23,7 +23,7 @@ const Securite: React.FC = () => {
           <div className="div1 text-center col-span-1 md:col-span-2 lg:col-span-1"
           style={{ gridArea: '1 / 1 / 2 / 2' }}
           >
-          <h2 className="section-title relative bottom-6 pt-4 pb-4 mb-6 md:mb-8 mt-4 bg-gradient-to-br from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent leading-loose">
+          <h2 className="section-title relative bottom-6 pt-4 pb-4  bg-gradient-to-br from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent leading-loose">
             Sécurité et confiance<br />garanties
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-neutral-600">
@@ -31,25 +31,26 @@ const Securite: React.FC = () => {
           </p>
         </div>
           <div 
-            className="div3 grid-area: 1 / 3 / 3 / 6 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl p-6 md:p-8 text-white shadow-lg col-span-1 md:col-span-1 lg:col-span-1"
-            style={{  gridArea: '2 / 1 / 2 / 2' }}
+            className="div3 grid-area: 1 / 3 / 3 / 6 rounded-2xl p-6 md:p-8 text-white shadow-lg col-span-1 md:col-span-1 lg:col-span-1"
+            style={{  gridArea: '2 / 1 / 2 / 2', background: 'linear-gradient(to right, #2633E1 0%, #26C29E 100%)' }}
           >
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            <div className="flex flex-col items-center justify-center text-center h-full">
+              <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-4 md:mb-6">
+                <svg className="w-16 h-16 md:w-20 md:h-20 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <ellipse cx="12" cy="12" rx="8" ry="5" stroke="currentColor" fill="none"/>
+                  <circle cx="12" cy="12" r="3" fill="currentColor"/>
                 </svg>
               </div>
-              <div className="text-4xl md:text-6xl font-bold mb-2">0</div>
+              <div className="text-5xl md:text-7xl font-bold mb-3 md:mb-4">0</div>
               <p className="text-lg md:text-xl font-semibold">Données exposées</p>
             </div>
           </div>
 
           <div 
-            className="div4 grid-area: 2 / 1 / 3 / 3 bg-green-600 rounded-2xl p-6 md:p-8 text-white shadow-lg col-span-1 md:col-span-2 lg:col-span-3"
-            style={{   gridArea: '3 / 1 / 4 / 4'   }}
+            className="div4 grid-area: 2 / 1 / 3 / 3 rounded-2xl p-6 md:p-8 text-white shadow-lg col-span-1 md:col-span-2 lg:col-span-3"
+            style={{   gridArea: '3 / 1 / 4 / 4', backgroundColor: '#26C29E'   }}
           >
-            <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-4">
+            <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-4===============">
               <div className="flex-1">
                 <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">Confidentialité totale</h3>
                 <p className="text-green-200 text-base md:text-lg lg:text-xl mb-4">Communication sécurisée et anonyme</p>
@@ -75,8 +76,8 @@ const Securite: React.FC = () => {
               alt="Icône alerte"
               className="pointer-events-none select-none absolute right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 opacity-70 w-[120px] sm:w-[180px] md:w-[220px] lg:w-[320px] xl:w-[380px]"
             />
-            <div className="max-w-2xl mt-[80px] sm:mt-[100px] md:mt-[120px] lg:mt-[140px] text-center md:text-left">
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-4 font-poppins">Protection contre les abus</h3>
+            <div className="max-w-2xl mt-[20px] sm:mt-[140px] md:mt-[160px] lg:mt-[180px] text-center md:text-left">
+              <h3 className="text-xl mt-[240px] sm:mt-[220px] md:mt-[240px] lg:mt-[260px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-4 font-poppins">Protection contre les abus</h3>
               <p className="text-green-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-2">Système anti-spam intelligent</p>
               <p className="text-white/90 leading-relaxed text-sm sm:text-base md:text-lg">
                 Notre technologie avancée empêche les utilisations malveillantes grâce à des 'cooldowns' intelligents

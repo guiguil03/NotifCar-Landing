@@ -16,44 +16,55 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    name: 'Gratuit',
-    subtitle: "Pour essayer l'application",
+    name: 'Basic',
+    subtitle: 'Gratuit',
     price: '0€',
     per: '/mois',
     cta: 'Commencer gratuitement',
     features: [
-      { label: "Jusqu'à 5 notifications/mois" },
-      { label: '1 véhicule' },
-      { label: 'Support par email' },
+      { label: 'Notifications mensuelles : 5 / mois' },
+      { label: 'Nombre de véhicules : 1' },
+      { label: "Historique des alertes : 7 jours" },
+      { label: 'Support utilisateur : Email standard' },
+      { label: 'QR Code véhicule : Standard (générique)' },
+      { label: 'Messagerie instantanée : Non' },
+      { label: "Rapports d’activité : Non" },
+      { label: 'Gestion multi-utilisateurs : Non' },
     ],
   },
   {
-    name: 'Professionnel',
-    subtitle: 'Pour les utilisateurs réguliers',
-    price: '9,99€',
+    name: 'Premium',
+    subtitle: '3,99 euros / mois',
+    price: '3,99€',
     per: '/mois',
     cta: 'Choisir ce plan',
     highlighted: true,
     features: [
-      { label: 'Notifications illimitées' },
-      { label: 'Jusqu’à 5 véhicules' },
-      { label: 'Historique complet' },
-      { label: 'Support prioritaire' },
-      { label: 'Statistiques avancées' },
+      { label: 'Notifications mensuelles : Illimitées' },
+      { label: 'Nombre de véhicules : 3' },
+      { label: 'Historique des alertes : Historique complet' },
+      { label: 'Support utilisateur : Prioritaire' },
+      { label: 'QR Code véhicule : Personnalisé (couleur)' },
+      { label: 'Messagerie instantanée : Chat direct entre conducteurs' },
+      { label: "Rapports d’activité : Avancées" },
+      { label: 'Gestion multi-utilisateurs : Non' },
     ],
   },
   {
     name: 'Entreprise',
-    subtitle: 'Pour les flottes automobiles',
+    subtitle: 'Ajustable',
     price: '29,99€',
     per: '/mois',
-    cta: 'Nous Contacter',
+    cta: 'Nous contacter',
     features: [
-      { label: 'Tout du plan Professionnel' },
-      { label: 'Véhicules illimités' },
-      { label: 'Gestion multi-utilisateurs' },
-      { label: 'API personnalisée' },
-      { label: 'Support dédié 24/7' },
+      { label: 'Notifications mensuelles : Illimitées' },
+      { label: 'Nombre de véhicules : Illimité' },
+      { label: 'Historique des alertes : Historique complet' },
+      { label: 'Support utilisateur : Dédié 24/7' },
+      { label: 'QR Code véhicule : Personnalisation entreprise' },
+      { label: 'Messagerie instantanée : Chat personnalisé' },
+      { label: "Rapports d’activité : Multi‑véhicules" },
+      { label: 'Gestion multi-utilisateurs : Oui' },
     ],
   },
 ];
@@ -130,10 +141,10 @@ const Price: React.FC = () => {
     <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="section-title leading-tight" style={{color: '#2633E1'}}>
+          <h2 className=" text-[#2633E1] font-light text-4xl">
             Choisissez le plan qui correspond à vos besoins
           </h2>
-          <p className="subtitle text-gray-600 max-w-3xl mx-auto mt-4 sm:mt-6">
+          <p className=" text-gray-600 text-2xl max-w-2xl mx-auto mt-4 sm:mt-6">
             Des options flexibles pour tous types d'utilisateurs, des particuliers aux entreprises avec des flottes importantes.
           </p>
         </div>

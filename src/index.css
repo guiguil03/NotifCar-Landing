@@ -77,7 +77,7 @@ html, body {
 .section-title {
   font-size: 1.875rem; /* text-3xl / 30px */
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 @media (min-width: 640px) {

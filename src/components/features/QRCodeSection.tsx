@@ -11,7 +11,7 @@ const QRCodeSection: React.FC = () => {
               <img 
                 src="/Frame10.svg" 
                 alt="QR Code et notifications NotifCar" 
-                className="w-[1500px] h-auto max-h-[600px] sm:max-h-[500px] object-contain rounded-2xl shadow-lg"
+                className="w-[1500px] h-auto max-h-[600px] sm:max-h-[500px] object-contain rounded-2xl"
               />
             </div>
           </div>
@@ -28,7 +28,7 @@ const QRCodeSection: React.FC = () => {
             </h2>
 
             {/* Description */}
-            <p className="subtitle text-gray-700">
+            <p className="subtitle text-gray-700 font-light">
               Une rayure, un accident, un stationnement gênant : grâce à Notifcar, 
               les conducteurs peuvent se prévenir entre eux en quelques secondes.
             </p>
