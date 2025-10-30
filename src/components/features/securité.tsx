@@ -47,21 +47,21 @@ const Securite: React.FC = () => {
           </div>
 
           <div 
-            className="div4 grid-area: 2 / 1 / 3 / 3 rounded-2xl p-6 md:p-8 text-white shadow-lg col-span-1 md:col-span-2 lg:col-span-3"
+            className="div4 grid-area: 2 / 1 / 3 / 3 rounded-2xl p-6 md:p-8 lg:p-10 text-white shadow-lg col-span-1 md:col-span-2 lg:col-span-3"
             style={{   gridArea: '3 / 1 / 4 / 4', backgroundColor: '#26C29E'   }}
           >
-            <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-4===============">
-              <div className="flex-1">
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">Confidentialité totale</h3>
-                <p className="text-green-200 text-base md:text-lg lg:text-xl mb-4">Communication sécurisée et anonyme</p>
-                <p className="text-white/90 leading-relaxed text-sm md:text-base lg:text-lg">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative">
+              <div className="flex-1 w-full md:w-auto">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">Confidentialité totale</h3>
+                <p className="text-base md:text-lg lg:text-xl mb-4 md:mb-5" style={{ color: '#2633E1' }}>Communication sécurisée et anonyme</p>
+                <p className="text-white/90 leading-relaxed text-sm md:text-base lg:text-lg max-w-2xl">
                   Échangez avec d'autres conducteurs sans jamais exposer vos informations personnelles. Zéro risque de harcèlement ou de contact non désiré.
                 </p>
               </div>
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center">
-                  
-                </div>
+              <div className="flex-shrink-0 flex items-center justify-center md:absolute md:right-4 lg:right-6 md:top-4 lg:top-6 self-end md:self-auto mt-4 md:mt-0">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
               </div>
             </div>
           </div>
@@ -76,9 +76,9 @@ const Securite: React.FC = () => {
               alt="Icône alerte"
               className="pointer-events-none select-none absolute right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 opacity-70 w-[120px] sm:w-[180px] md:w-[220px] lg:w-[320px] xl:w-[380px]"
             />
-            <div className="max-w-2xl mt-[20px] sm:mt-[140px] md:mt-[160px] lg:mt-[180px] text-center md:text-left">
-              <h3 className="text-xl mt-[240px] sm:mt-[220px] md:mt-[240px] lg:mt-[260px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-4 font-poppins">Protection contre les abus</h3>
-              <p className="text-green-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-2">Système anti-spam intelligent</p>
+            <div className="max-w-2xl pt-6 sm:pt-8 md:pt-20 lg:pt-24 xl:pt-28 pb-6 md:pb-8 text-center md:text-left relative z-10">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-4 font-poppins">Protection contre les abus</h3>
+              <p className="text-green-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">Système anti-spam intelligent</p>
               <p className="text-white/90 leading-relaxed text-sm sm:text-base md:text-lg">
                 Notre technologie avancée empêche les utilisations malveillantes grâce à des 'cooldowns' intelligents
                 et des limites personnalisées qui s'adaptent à votre usage.
