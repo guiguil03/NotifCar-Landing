@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
 
             <div className="mt-8 flex items-center gap-4">
              
-              <a href="#" aria-label="LinkedIn" className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
+              <a href="https://www.linkedin.com/company/notifcar" aria-label="LinkedIn" className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
                 <span className="text-2xl">in</span>
               </a>
             </div>
