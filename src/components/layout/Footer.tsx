@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import Input from '../ui/Input';
+import React from 'react';
 import Button from '../ui/Button';
 import notifcarLogo from '../../assets/logo3.png';
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-
   const handleSubscribe = () => {
-    // TODO: brancher sur un service d'emailing si besoin
-    // Pour l’instant, simple console
-    console.log('Subscribe:', email);
+    const targetEmail = 'notifcar@contact.com';
+    const subject = encodeURIComponent('Demande de contact NotifCar');
+    
+    const mailtoUrl = `mailto:${targetEmail}?subject=${subject}`;
+
+    window.location.href = mailtoUrl;
   };
 
   return (
@@ -27,32 +27,39 @@ const Footer: React.FC = () => {
               Notifcar arrive bientôt ! Laissez votre email pour être averti dès son lancement.
             </p>
 
-            <div className="mt-8 flex gap-4 max-w-2xl">
-              <div className="flex-1">
-                <Input
-                  type="email"
-                  placeholder="Votre adresse email"
-                  value={email}
-                  onChange={setEmail}
-                  className="text-gray-900"
-                />
+            <div className="mt-8 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 max-w-2xl">
+                <div className="flex-1 text-white/90">
+                  <p>
+                    Besoin d&apos;échanger avec nous ? Cliquez sur le bouton ou écrivez directement à{' '}
+                    <a href="mailto:notifcar@contact.com" className="underline font-semibold">
+                      notifcar@contact.com
+                    </a>
+                    .
+                  </p>
+                </div>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="bg-indigo-600 text-white shadow-lg shadow-indigo-900/30 hover:shadow-xl"
+                  onClick={handleSubscribe}
+                >
+                  Nous contacter
+                </Button>
               </div>
-              <Button
-                variant="primary"
-                size="lg"
-                className="bg-indigo-600
-                 text-white "
-                onClick={handleSubscribe}
-              >
-                M'inscrire
-              </Button>
-            </div>
 
-            <div className="mt-8 flex items-center gap-4">
-             
-              <a href="https://www.linkedin.com/company/notifcar" aria-label="LinkedIn" className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                <span className="text-2xl">in</span>
-              </a>
+              <div className="flex items-center gap-3 text-white/80">
+                <span className="text-sm uppercase tracking-wide">Pour suivre notre actualité et les MAJ de l'application</span>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.linkedin.com/company/notifcar"
+                    aria-label="LinkedIn"
+                    className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
+                  >
+                    <span className="text-2xl">in</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 

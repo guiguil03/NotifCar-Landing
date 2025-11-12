@@ -53,8 +53,8 @@ const plans: Plan[] = [
   {
     name: 'Entreprise',
     subtitle: 'Ajustable',
-    price: '29,99€',
-    per: '/mois',
+    price: 'AJuster selon vos besoins',
+    per: '',
     cta: 'Nous contacter',
     features: [
       { label: 'Notifications mensuelles : Illimitées' },
@@ -69,12 +69,25 @@ const plans: Plan[] = [
   },
 ];
 
-const CheckItem: React.FC<{ text: string }> = ({ text }) => (
-  <li className="flex items-start space-x-2 sm:space-x-3">
-    <span className="mt-0.5 inline-flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 text-xs sm:text-sm">✓</span>
-    <span className="text-gray-600 text-sm sm:text-base">{text}</span>
-  </li>
-);
+const CheckItem: React.FC<{ text: string }> = ({ text }) => {
+  const [, rawStatus = ''] = text.split(':');
+  const status = rawStatus.trim().toLowerCase();
+  const isNegative = status === 'non';
+
+  const iconClasses = isNegative
+    ? 'bg-red-100 text-red-600'
+    : 'bg-emerald-100 text-emerald-600';
+  const iconSymbol = isNegative ? '✗' : '✓';
+
+  return (
+    <li className="flex items-start space-x-2 sm:space-x-3">
+      <span className={`mt-0.5 inline-flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full text-xs sm:text-sm ${iconClasses}`}>
+        {iconSymbol}
+      </span>
+      <span className="text-gray-600 text-sm sm:text-base">{text}</span>
+    </li>
+  );
+};
 
 const PlanCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const cardRing = plan.highlighted ? 'ring-2 ring-blue-500 border-l-4 border-l-blue-500' : 'ring-1 ring-gray-200';
