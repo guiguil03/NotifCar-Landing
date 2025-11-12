@@ -53,7 +53,7 @@ const plans: Plan[] = [
   {
     name: 'Entreprise',
     subtitle: 'Ajustable',
-    price: 'AJuster selon vos besoins',
+    price: 'Echangeons ensemble',
     per: '',
     cta: 'Nous contacter',
     features: [
@@ -122,15 +122,28 @@ const PlanCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         ))}
       </ul>
 
-      <button
-        className={`w-full font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-all duration-200 text-sm sm:text-base ${
-          plan.highlighted 
-            ? 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105' 
-            : 'bg-gray-100 hover:bg-gray-200 text-gray-700 hover:scale-105'
-        }`}
-      >
-        {plan.cta}
-      </button>
+      {plan.cta.toLowerCase().includes('contacter') ? (
+        <a
+          href="mailto:notifcar@contact.com?subject=Prise%20de%20contact%20entreprise&body=Bonjour%20Notifcar,%0D%0A%0D%0ANous%20souhaitons%20discuter%20d%27une%20offre%20entreprise."
+          className={`w-full font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-all duration-200 text-sm sm:text-base text-center ${
+            plan.highlighted
+              ? 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
+              : 'bg-gray-100 hover:bg-gray-200 text-gray-700 hover:scale-105'
+          }`}
+        >
+          {plan.cta}
+        </a>
+      ) : (
+        <button
+          className={`w-full font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-all duration-200 text-sm sm:text-base ${
+            plan.highlighted 
+              ? 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105' 
+              : 'bg-gray-100 hover:bg-gray-200 text-gray-700 hover:scale-105'
+          }`}
+        >
+          {plan.cta}
+        </button>
+      )}
     </div>
   );
 };

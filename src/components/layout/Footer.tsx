@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
             </p>
 
             <div className="mt-8 space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 max-w-2xl">
-                <div className="flex-1 text-white/90">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 max-w-2xl w-full">
+                <div className="flex-1 text-white/90 sm:pr-6">
                   <p>
                     Besoin d&apos;échanger avec nous ? Cliquez sur le bouton ou écrivez directement à{' '}
                     <a href="mailto:notifcar@contact.com" className="underline font-semibold">
@@ -41,24 +41,32 @@ const Footer: React.FC = () => {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="bg-indigo-600 text-white shadow-lg shadow-indigo-900/30 hover:shadow-xl"
+                  className="bg-indigo-600 text-white shadow-lg shadow-indigo-900/30 hover:shadow-xl w-full sm:w-auto"
                   onClick={handleSubscribe}
                 >
                   Nous contacter
                 </Button>
               </div>
 
-              <div className="flex items-center gap-3 text-white/80">
-                <span className="text-sm uppercase tracking-wide">Pour suivre notre actualité et les MAJ de l'application</span>
-                <div className="flex items-center gap-3">
-                  <a
-                    href="https://www.linkedin.com/company/notifcar"
-                    aria-label="LinkedIn"
-                    className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-white/80 max-w-2xl w-full">
+                <span className="text-sm uppercase tracking-wide flex-1 sm:pr-6">
+                  Pour suivre notre actualité et les MAJ de l&apos;application
+                </span>
+                <a
+                  href="https://www.linkedin.com/company/notifcar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full sm:w-auto"
+                  aria-label="LinkedIn"
+                >
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="bg-indigo-600 text-white shadow-lg shadow-indigo-900/30 hover:shadow-xl px-6 w-full sm:w-auto"
                   >
-                    <span className="text-2xl">in</span>
-                  </a>
-                </div>
+                    LinkedIn
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
