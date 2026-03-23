@@ -1,75 +1,153 @@
 import React from 'react';
 
+const pillars = [
+  {
+    tag: 'Sécurité',
+    title: 'Fiable &\nrassurant',
+    subtitle: 'Vos alertes sont sécurisées',
+    description:
+      'Notifications cryptées, données personnelles protégées selon les standards européens. Votre identité reste toujours privée.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.8">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      </svg>
+    ),
+    gradient: 'linear-gradient(135deg, #2633E1 0%, #6366f1 100%)',
+    bgLight: '#EEF0FD',
+    textAccent: '#2633E1',
+    img: '/Frame36.png',
+  },
+  {
+    tag: 'Simplicité',
+    title: 'Simple &\nrapide',
+    subtitle: "Pas besoin d'échanger vos numéros",
+    description:
+      "Interface intuitive, alerte envoyée en 3 clics. Zéro inscription nécessaire pour signaler, zéro donnée partagée.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.8">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+      </svg>
+    ),
+    gradient: 'linear-gradient(135deg, #0ea5e9 0%, #26C29E 100%)',
+    bgLight: '#E8F8F5',
+    textAccent: '#0d9488',
+    img: '/Frame37.png',
+  },
+  {
+    tag: 'Communauté',
+    title: 'Solidaire &\nbienveillant',
+    subtitle: "Une communauté qui s'entraide",
+    description:
+      'Chaque alerte est un geste simple qui évite des désagréments inutiles et renforce le respect entre conducteurs.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.8">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+    ),
+    gradient: 'linear-gradient(135deg, #f97316 0%, #fbbf24 100%)',
+    bgLight: '#FEF3E8',
+    textAccent: '#ea580c',
+    img: '/Frame38.png',
+  },
+];
+
 const Amis: React.FC = () => {
   return (
-    <section id="pillars" className="py-12 bg-[#F6F6F6]">
+    <section id="pillars" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-4">
-            <span className="bg-gradient-to-br from-[#5340E2] from-20% via-[#4FA65C] via-60% to-[#4EC633] to-100% bg-clip-text text-transparent">Un ami qui veille sur votre voiture</span>
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="inline-block mb-3 text-xs font-bold tracking-widest uppercase text-[#26C29E]">
+            Nos valeurs
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight mb-4">
+            Un ami qui veille sur{' '}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(90deg, #2633E1 0%, #26C29E 100%)' }}
+            >
+              votre voiture
+            </span>
           </h2>
+          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
+            Notifcar repose sur trois piliers essentiels pour vous offrir une expérience de confiance.
+          </p>
         </div>
 
-        {/* Features Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-          {/* First Card - Fiable & rassurant */}
-          <div className="rounded-2xl p-10 shadow-lg h-full w-full transition-transform duration-300 hover:scale-105" style={{backgroundColor: '#E9EBFC'}}>
-            <div className="text-center h-full flex flex-col">
-              {/* Zone icône fixée pour même hauteur et rendu net */}
-              <div className="mx-auto mb-6 flex items-center justify-center h-20">
-                <img src="/Frame36.png" alt="Fiable & rassurant" className="w-16 h-16 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
-              </div>
-              {/* Zone titre fixée pour alignement */}
-              <h3 className="text-[32px] font-light text-gray-700 mb-3 min-h-[48px] flex items-end justify-center">
-                Fiable & rassurant
-              </h3>
-              {/* Zone sous-titre fixée pour alignement */}
-              <p className="text-purple-600 text-[20px] font-light mb-4 min-h-[56px] flex items-center justify-center text-center">
-                Vos alertes sont sécurisées
-              </p>
-              <p className="text-gray-600 text-[16px] font-light leading-relaxed">
-                Système de notifications cryptées et données personnelles protégées selon les standards européens.
-              </p>
-            </div>
-          </div>
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {pillars.map((p) => (
+            <div
+              key={p.tag}
+              className="group relative rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              style={{ backgroundColor: p.bgLight }}
+            >
+              {/* Top gradient bar */}
+              <div className="h-1.5 w-full" style={{ background: p.gradient }} />
 
-          {/* Second Card - Simple & rapide */}
-          <div className="rounded-2xl p-10 shadow-lg h-full w-full transition-transform duration-300 hover:scale-105" style={{backgroundColor: '#E9F9F5'}}>
-            <div className="text-center h-full flex flex-col">
-              <div className="mx-auto mb-6 flex items-center justify-center h-20">
-                <img src="/Frame37.png" alt="Simple & rapide" className="w-16 h-16 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
-              </div>
-              <h3 className="text-[32px] font-light text-gray-700 mb-3 min-h-[48px] flex items-end justify-center">
-                Simple & rapide
-              </h3>
-              <p className="text-green-600 text-[20px] font-light mb-4 min-h-[56px] flex items-center justify-center text-center">
-                Pas besoin d'échanger vos numéros
-              </p>
-              <p className="text-gray-600 text-[16px] font-light leading-relaxed">
-                Interface intuitive, alerte envoyée en 3 clics maximum. Aucune donnée personnelle partagée.
-              </p>
-            </div>
-          </div>
+              <div className="p-8 flex flex-col flex-1">
+                {/* Tag pill */}
+                <span
+                  className="self-start text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-6"
+                  style={{ background: p.gradient, color: '#fff' }}
+                >
+                  {p.tag}
+                </span>
 
-          {/* Third Card - Solidaire & bienveillant */}
-          <div className="rounded-2xl p-10 shadow-lg h-full w-full transition-transform duration-300 hover:scale-105" style={{backgroundColor: '#FFF4ED'}}>
-            <div className="text-center h-full flex flex-col">
-              <div className="mx-auto mb-6 flex items-center justify-center h-20">
-                <img src="/Frame38.png" alt="Solidaire & bienveillant" className="w-16 h-16 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+                {/* Icon circle */}
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg"
+                  style={{ background: p.gradient }}
+                >
+                  {p.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 whitespace-pre-line leading-tight">
+                  {p.title}
+                </h3>
+
+                {/* Subtitle */}
+                <p className="font-medium text-sm mb-4" style={{ color: p.textAccent }}>
+                  {p.subtitle}
+                </p>
+
+                {/* Description */}
+                <p className="text-gray-500 text-sm leading-relaxed flex-1">
+                  {p.description}
+                </p>
+
+                {/* Bottom image */}
+                <div className="mt-8 flex justify-end">
+                  <img
+                    src={p.img}
+                    alt={p.tag}
+                    className="w-14 h-14 object-contain opacity-60 group-hover:opacity-90 transition-opacity duration-300"
+                  />
+                </div>
               </div>
-              <h3 className="text-[32px] font-light text-gray-700 mb-3 min-h-[48px] flex items-end justify-center whitespace-normal md:whitespace-nowrap">
-                Solidaire & bienveillant
-              </h3>
-              <p className="text-orange-600 text-[20px] font-light mb-4 min-h-[56px] flex items-center justify-center text-center">
-                Une communauté qui s'entraident au quotidien
-              </p>
-              <p className="text-gray-600 text-[16px] font-light leading-relaxed">
-                Chaque alerte est un geste simple qui évite des désagréments et favorise plus de respect sur la route.
-              </p>
             </div>
-          </div>
+          ))}
         </div>
+
+        {/* Bottom stat bar */}
+        <div
+          className="mt-10 rounded-3xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center"
+          style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #14b8a6 100%)' }}
+        >
+          {[
+            { value: '100%', label: 'Anonyme & sécurisé' },
+            { value: '< 5 sec', label: 'Pour envoyer une alerte' },
+            { value: '0', label: 'Donnée personnelle exposée' },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-white/60 text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

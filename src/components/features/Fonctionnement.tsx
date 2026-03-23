@@ -1,196 +1,248 @@
 import React, { useState, useEffect } from 'react';
 import { RegistrationModal } from '../modals';
 
+const steps = [
+  {
+    id: '01',
+    title: 'Collez votre QR code',
+    description:
+      "À l'inscription, vous recevez un QR code unique Notifcar. Collez-le sur votre pare-brise — discret et résistant aux intempéries.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="3" height="3" rx="0.5" />
+        <rect x="19" y="14" width="2" height="2" rx="0.5" />
+        <rect x="14" y="19" width="2" height="2" rx="0.5" />
+        <rect x="18" y="18" width="3" height="3" rx="0.5" />
+      </svg>
+    ),
+    screen: '/screen3.jpg',
+  },
+  {
+    id: '02',
+    title: 'Un passant scanne',
+    description:
+      "N'importe qui peut scanner le QR code avec son téléphone, sans télécharger d'application. Il choisit le motif et envoie l'alerte anonymement.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z" />
+        <path d="M12 14a2 2 0 100-4 2 2 0 000 4z" fill="currentColor" stroke="none" />
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" strokeLinecap="round" />
+      </svg>
+    ),
+    screen: '/screen1.jpg',
+  },
+  {
+    id: '03',
+    title: 'Vous êtes alerté immédiatement',
+    description:
+      "Vous recevez une notification push en moins de 3 secondes avec le motif du signalement, l'adresse exacte et l'heure — où que vous soyez.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8">
+        <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" strokeLinecap="round" />
+        <circle cx="12" cy="21" r="1.5" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+    screen: '/screen2.jpg',
+  },
+];
+
+const details = [
+  {
+    emoji: '🔍',
+    title: 'Scan du QR code',
+    desc: 'Un passant scanne depuis son appareil photo natif — aucune app requise.',
+  },
+  {
+    emoji: '📨',
+    title: 'Motif du signalement',
+    tags: ['Choc / accrochage', 'Rayure', 'Stationnement gênant', 'Autre'],
+  },
+  {
+    emoji: '🔔',
+    title: 'Notification envoyée !',
+    desc: 'Propriétaire alerté en < 3 secondes',
+  },
+];
+
 const Fonctionnement: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [active, setActive] = useState(0);
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
-  const steps = [
-    {
-      id: 1,
-      title: "Scannez le QR code",
-      description: "Trouvez le QR code Notifcar sur le véhicule et scannez-le avec votre smartphone.",
-      color: "blue",
-      bgColor: "bg-blue-500/20",
-      borderColor: "border-blue-500/30",
-      iconBg: "bg-blue-500",
-      icon: "/1.png"
-    },
-    {
-      id: 2,
-      title: "Envoyez une alerte",
-      description: "Choisissez le type d'alerte et envoyez votre message en quelques secondes.",
-      color: "green",
-      bgColor: "bg-green-500/20",
-      borderColor: "border-green-500/30",
-      iconBg: "bg-green-500",
-      icon: "/2.png"
-    },
-    {
-      id: 3,
-      title: "Recevez la notification",
-      description: "Le propriétaire reçoit immédiatement votre alerte sur son téléphone.",
-      color: "blue",
-      bgColor: "bg-blue-600",
-      borderColor: "border-blue-600",
-      iconBg: "bg-blue-600",
-      icon: "/3.png"
-    }
-  ];
-
-  // Auto-scroll effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [steps.length]);
-
-  // Small helper to render the icon inside each step card
-  const renderStepIcon = (id: number) => {
-    if (id === 1) {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-700">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/>
-          <circle cx="7" cy="7" r="1.2" fill="currentColor"/>
-        </svg>
-      );
-    }
-    if (id === 2) {
-      return (
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-700">
-          <path d="M3 12l18-7-7 18-2.5-7.5L3 12z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
-          <path d="M11.5 15.5L21 5" stroke="currentColor" strokeWidth="1.8"/>
-        </svg>
-      );
-    }
-    return (
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-700">
-        <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-        <circle cx="12" cy="20" r="1.6" fill="currentColor"/>
-      </svg>
-    );
-  };
+    const id = setInterval(() => setActive((p) => (p + 1) % steps.length), 3500);
+    return () => clearInterval(id);
+  }, []);
 
   return (
-    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-[#FBF0E9]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="">
-          <h2 className="section-title text-gray-900 mb-2 relative left-4">
+    <section
+      id="how-it-works"
+      className="relative overflow-hidden"
+      style={{ background: 'linear-gradient(145deg, #1A55E8 0%, #3B7FFF 50%, #4E8FFF 100%)' }}
+    >
+      {/* Cercles déco fond */}
+      <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-10"
+        style={{ background: 'radial-gradient(circle, #ffffff 0%, transparent 70%)' }} />
+      <div className="pointer-events-none absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full opacity-10"
+        style={{ background: 'radial-gradient(circle, #26C29E 0%, transparent 70%)' }} />
+
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
+
+        {/* ── En-tête ── */}
+        <div className="text-center mb-16">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase mb-4 px-3 py-1 rounded-full"
+            style={{ background: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.9)' }}>
+            Simple &amp; rapide
+          </span>
+          <h2
+            className="font-extrabold text-white mb-4 leading-tight"
+            style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
+          >
             Comment ça marche ?
           </h2>
-          <p className="subtitle text-gray-600 relative left-4">
-            Une solution simple et efficace en trois étapes
+          <p className="text-white/60 text-lg max-w-md mx-auto">
+            Trois étapes. Quelques secondes. Zéro tracas.
           </p>
         </div>
 
-        {/* Layout wrapper with blue background */}
-        <div className="relative">
-          {/* Blue background block - positioned behind content - hidden on mobile */}
-          <div className="hidden lg:block absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[80%] rounded-3xl" style={{backgroundColor: '#2633E1'}}></div>
-          
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-10 py-12 px-4 sm:px-6 lg:px-8">
-            {/* Left column: numbered rail + cards */}
-            <div className="w-full space-y-5 md:space-y-6">
-            {steps.map((step, index) => {
-              const isActive = index === currentStep;
-              // visual emphasis handled directly on elements; no container border
+        {/* ── Layout principal ── */}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-20">
+
+          {/* Étapes */}
+          <div className="flex-1 w-full space-y-3">
+            {steps.map((step, i) => {
+              const isActive = i === active;
               return (
-                <div key={step.id} className="relative flex items-stretch">
-                  {/* Number bullet - positioned to overlap the card */}
-                  <div className={`${isActive ? 'text-white ring-4 ring-white-200' : 'text-white'} absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-bold text-lg md:text-xl shrink-0 transition-all duration-300 shadow-lg`} style={{background: 'linear-gradient(135deg, #2633E1 0%, #26C29E 100%)'}}>
-                    {step.id}
-                  </div>
-                  {/* Step card */}
-                  <div className={`flex-1 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 transition-all duration-500 transform hover:scale-105 ml-4 ${isActive ? 'border-blue-200 shadow-blue-200/50' : 'border-gray-200 shadow-gray-200/50'}`}>
-                    <div className="flex items-center gap-4">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${isActive ? 'bg-blue-100' : 'bg-gray-100'}`}>
-                        {renderStepIcon(step.id)}
+                <button key={step.id} onClick={() => setActive(i)} className="w-full text-left">
+                  <div
+                    className="relative rounded-2xl px-5 py-5 transition-all duration-300 border"
+                    style={{
+                      background: isActive ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.06)',
+                      borderColor: isActive ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.10)',
+                    }}
+                  >
+                    {isActive && (
+                      <div className="absolute bottom-0 left-0 h-[2px] rounded-b-2xl overflow-hidden w-full">
+                        <div className="h-full rounded-full bg-white"
+                          style={{ animation: 'progressBar 3.5s linear forwards' }} />
                       </div>
-                      <div className="flex-1">
-                        <h3 className={`${isActive ? 'text-gray-900' : 'text-gray-700'} font-poppins text-lg sm:text-xl font-bold mb-2 transition-colors duration-300`}>
+                    )}
+                    <div className="flex items-start gap-4">
+                      <span
+                        className="flex-shrink-0 text-3xl font-black w-12 leading-none pt-0.5"
+                        style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.25)' }}
+                      >
+                        {step.id}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className={`font-bold text-base sm:text-lg mb-1.5 transition-all duration-300 ${isActive ? 'text-white' : 'text-white/45'}`}>
                           {step.title}
-                        </h3>
-                        <p className={`${isActive ? 'text-gray-600' : 'text-gray-500'} text-sm sm:text-base transition-colors duration-300 leading-relaxed`}>
+                        </p>
+                        <p className={`text-sm leading-relaxed transition-all duration-500 ${isActive ? 'text-white/85 max-h-20' : 'text-white/0 max-h-0 overflow-hidden sm:max-h-10 sm:text-white/30'}`}>
                           {step.description}
                         </p>
                       </div>
+                      <span className={`flex-shrink-0 transition-all duration-300 mt-1 ${isActive ? 'text-white opacity-100' : 'opacity-0'}`}>
+                        {step.icon}
+                      </span>
                     </div>
                   </div>
-                </div>
+                </button>
               );
             })}
 
+            <div className="pt-3">
+              <button
+                onClick={() => setIsRegistrationModalOpen(true)}
+                className="font-semibold px-8 py-3.5 rounded-xl text-sm transition-all hover:opacity-90 bg-white"
+                style={{ color: '#3B7FFF' }}
+              >
+                Découvrir l'app →
+              </button>
+            </div>
           </div>
 
-          {/* Right side - Phone centered over blue block */}
-          <div className="w-full flex justify-center lg:justify-center relative z-10">
-            <div className="relative">
-              {/* Real Phone Image */}
-              <div className="relative w-72 md:w-80 h-[520px] md:h-[600px]">
-                <img 
-                  src="/tel.png" 
-                  alt="Téléphone NotifCar" 
-                  className="w-full h-full object-contain drop-shadow-2xl"
-                />
-                
-                {/* Screen Content Overlay */}
-                <div className="absolute h-[494px] md:h-[579px] w-[236px] md:w-[270px] top-[10px] md:top-[10px] left-[26px] md:left-[26px] right-[40px] bottom-[100px] overflow-hidden rounded-[26px] md:rounded-[30px]">
-                  {/* Scrollable Content */}
-                  <div className="relative h-full overflow-hidden">
-                    <div 
-                      className="absolute inset-0 transition-transform duration-500 ease-in-out"
-                      style={{ transform: `translateX(-${currentStep * (100 )}%)` }}
-                    >
-                      <div 
-                        className="flex h-full"
-                        style={{ width: `${steps.length * 100}%` }}
-                      >
-                        {steps.map((step) => (
-                          <div 
-                            key={step.id} 
-                            className="h-full flex-shrink-0"
-                            style={{ width: `${100 / steps.length}%` }}
-                          >
-                            <img 
-                              src={step.icon} 
-                              alt={`Étape ${step.id}`}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+          {/* Téléphone */}
+          <div className="flex-shrink-0 relative">
+            <div className="absolute inset-0 blur-3xl opacity-25 rounded-full scale-75"
+              style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />
+            <div className="relative w-52 sm:w-60 h-[390px] sm:h-[450px]">
+              <img src="/tel.png" alt="App NotifCar" className="w-full h-full object-contain drop-shadow-2xl relative z-10" />
+              <div className="absolute z-20 overflow-hidden rounded-[22px] sm:rounded-[26px]"
+                style={{ top: '1.8%', left: '9%', width: '82%', height: '96.5%' }}>
+                {steps.map((step, i) => (
+                  <img
+                    key={step.id}
+                    src={step.screen}
+                    alt={step.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                    style={{ opacity: i === active ? 1 : 0 }}
+                  />
+                ))}
               </div>
+            </div>
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-5">
+              {steps.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className="transition-all duration-300 rounded-full"
+                  style={{
+                    width: i === active ? '28px' : '8px',
+                    height: '8px',
+                    background: i === active ? 'white' : 'rgba(255,255,255,0.3)',
+                  }}
+                />
+              ))}
+            </div>
+          </div>
 
-              {/* Floating elements */}
-             
-          </div>
         </div>
-        {/* Global CTA centered below */}
-        <div className="mt-8 flex justify-center z-10">
-          <button 
-            onClick={() => setIsRegistrationModalOpen(true)}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-colors duration-200 shadow-lg"
-          >
-            Découvrir l'app
-          </button>
+
+        {/* ── Détails bas ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {details.map((d) => (
+            <div
+              key={d.title}
+              className="rounded-2xl p-6"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.12)',
+              }}
+            >
+              <span className="text-2xl mb-3 block">{d.emoji}</span>
+              <p className="text-white font-semibold text-sm mb-2">{d.title}</p>
+              {d.desc && <p className="text-white/55 text-sm leading-relaxed">{d.desc}</p>}
+              {d.tags && (
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {d.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-2.5 py-1 rounded-full font-medium"
+                      style={{ background: 'rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.8)' }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-        {/* close grid */}
-          </div>
-        </div>
+
       </div>
-      
-      {/* Registration Modal */}
-      <RegistrationModal 
+
+      <style>{`
+        @keyframes progressBar {
+          from { width: 0% }
+          to   { width: 100% }
+        }
+      `}</style>
+
+      <RegistrationModal
         isOpen={isRegistrationModalOpen}
         onClose={() => setIsRegistrationModalOpen(false)}
       />
@@ -199,4 +251,3 @@ const Fonctionnement: React.FC = () => {
 };
 
 export default Fonctionnement;
-

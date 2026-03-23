@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/guill/Documents/Freelance/NotifCar-Landing/resized_0.jpg\" \"C:/Users/guill/Documents/Freelance/NotifCar-Landing/public/screen1.jpg\")",
+      "Bash(cp \"C:/Users/guill/Documents/Freelance/NotifCar-Landing/resized_1.jpg\" \"C:/Users/guill/Documents/Freelance/NotifCar-Landing/public/screen2.jpg\")",
+      "Bash(cp \"C:/Users/guill/Documents/Freelance/NotifCar-Landing/resized_2.jpg\" \"C:/Users/guill/Documents/Freelance/NotifCar-Landing/public/screen3.jpg\")",
+      "Bash(npm run:*)",
+      "WebFetch(domain:www.unify-run.fr)",
+      "WebFetch(domain:unify-run.fr)"
+    ]
+  }
+}
