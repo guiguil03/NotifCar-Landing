@@ -4,10 +4,7 @@ import { RegistrationModal } from '../components/modals';
 import QRCodeSection from '../components/features/QRCodeSection';
 import Scenarios from '../components/features/Scenarios';
 import Fonctionnement from '../components/features/Fonctionnement';
-import Amis from '../components/features/amis';
-import Securite from '../components/features/securité';
-import Price from '../components/features/price';
-import FAQ from '../components/features/FAQ';
+
 import Footer from '../components/layout/Footer';
 import CookieBanner from '../components/ui/CookieBanner';
 import { type Page } from '../hooks/useNavigation';
