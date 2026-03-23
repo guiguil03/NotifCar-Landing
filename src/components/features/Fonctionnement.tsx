@@ -34,7 +34,7 @@ const steps = [
       </svg>
     ),
     screen: '/screen1.jpg',
-    accent: '#818CF8',
+    accent: '#3B7FFF',
   },
   {
     id: '03',
@@ -48,7 +48,7 @@ const steps = [
       </svg>
     ),
     screen: '/screen2.jpg',
-    accent: '#26C29E',
+    accent: '#3B7FFF',
   },
 ];
 
@@ -82,7 +82,7 @@ const Fonctionnement: React.FC = () => {
   const currentAccent = steps[active].accent;
 
   return (
-    <section id="how-it-works" className="relative overflow-hidden" style={{ background: '#060C24' }}>
+    <section id="how-it-works" className="relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}>
 
       {/* Orbes animés */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -106,7 +106,7 @@ const Fonctionnement: React.FC = () => {
         <div className="text-center mb-20">
           <span
             className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-3 py-1 rounded-full"
-            style={{ background: 'rgba(59,127,255,0.15)', color: '#3B7FFF', border: '1px solid rgba(59,127,255,0.25)' }}
+            style={{ background: 'rgba(255,255,255,0.18)', color: 'white', border: '1px solid rgba(255,255,255,0.35)' }}
           >
             Simple &amp; rapide
           </span>
@@ -116,7 +116,7 @@ const Fonctionnement: React.FC = () => {
           >
             Comment ça marche ?
           </h2>
-          <p className="text-white/45 text-lg max-w-md mx-auto">
+          <p className="text-white/80 text-lg max-w-md mx-auto">
             Trois étapes. Quelques secondes. Zéro tracas.
           </p>
         </div>
@@ -134,10 +134,10 @@ const Fonctionnement: React.FC = () => {
                     className="relative rounded-2xl px-6 py-5 transition-all duration-400 border"
                     style={{
                       background: isActive
-                        ? `linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)`
-                        : 'rgba(255,255,255,0.03)',
-                      borderColor: isActive ? step.accent + '60' : 'rgba(255,255,255,0.07)',
-                      boxShadow: isActive ? `0 0 0 1px ${step.accent}30, 0 8px 32px rgba(0,0,0,0.3)` : 'none',
+                        ? 'rgba(255,255,255,0.22)'
+                        : 'rgba(255,255,255,0.08)',
+                      borderColor: isActive ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.15)',
+                      boxShadow: isActive ? '0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3)' : 'none',
                     }}
                   >
                     {/* Barre de progression */}
@@ -163,7 +163,7 @@ const Fonctionnement: React.FC = () => {
                       <div className="flex-shrink-0 flex flex-col items-center gap-1 pt-0.5">
                         <span
                           className="text-2xl font-black leading-none transition-all duration-300"
-                          style={{ color: isActive ? step.accent : 'rgba(255,255,255,0.18)' }}
+                          style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.45)' }}
                         >
                           {step.id}
                         </span>
@@ -173,7 +173,7 @@ const Fonctionnement: React.FC = () => {
                         <div className="flex items-center gap-2 mb-1.5">
                           <p
                             className="font-bold text-base sm:text-lg transition-all duration-300"
-                            style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.35)' }}
+                            style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.6)' }}
                           >
                             {step.title}
                           </p>
@@ -189,7 +189,7 @@ const Fonctionnement: React.FC = () => {
                         <p
                           className="text-sm leading-relaxed transition-all duration-500 overflow-hidden"
                           style={{
-                            color: isActive ? 'rgba(255,255,255,0.65)' : 'transparent',
+                            color: isActive ? 'white' : 'transparent',
                             maxHeight: isActive ? '80px' : '0',
                           }}
                         >
@@ -214,58 +214,62 @@ const Fonctionnement: React.FC = () => {
           </div>
 
           {/* Téléphone */}
-          <div className="flex-shrink-0 relative">
+          <div className="flex-shrink-0 relative" style={{ width: '260px' }}>
 
-            {/* Halo animé derrière le téléphone */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full transition-all duration-700"
-              style={{
-                background: `radial-gradient(circle, ${currentAccent}35 0%, transparent 70%)`,
-                animation: 'pulse-glow 3s ease-in-out infinite',
-                filter: 'blur(20px)',
-              }}
-            />
+            {/* Halo glow */}
+            <div className="absolute pointer-events-none" style={{
+              top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '320px', height: '320px',
+              borderRadius: '50%',
+              background: `radial-gradient(circle, ${currentAccent}30 0%, transparent 70%)`,
+              filter: 'blur(24px)',
+              transition: 'background 0.7s ease',
+            }} />
 
-            {/* Anneaux concentriques animés */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border opacity-15 ring-spin"
-              style={{ borderColor: currentAccent }}
-            />
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border opacity-8 ring-spin-reverse"
-              style={{ borderColor: currentAccent, borderStyle: 'dashed' }}
-            />
-
-            {/* Téléphone */}
-            <div className="relative w-56 sm:w-64 h-[410px] sm:h-[470px] z-10">
-              <img
-                src="/tel.png"
-                alt="App NotifCar"
-                className="w-full h-full object-contain relative z-10"
-                style={{ filter: 'drop-shadow(0 32px 64px rgba(0,0,0,0.6))' }}
-              />
-              <div
-                className="absolute z-20 overflow-hidden rounded-[22px] sm:rounded-[26px]"
-                style={{ top: '1.8%', left: '9%', width: '82%', height: '96.5%' }}
-              >
+            {/* Mockup CSS */}
+            <div className="relative mx-auto" style={{
+              width: '240px', height: '498px',
+              background: 'linear-gradient(160deg, #1e1e20 0%, #0d0d0d 100%)',
+              borderRadius: '44px',
+              border: '1.5px solid rgba(255,255,255,0.16)',
+              boxShadow: `0 0 0 1px rgba(0,0,0,0.9), 0 50px 80px rgba(0,0,0,0.65), 0 0 40px ${currentAccent}20, inset 0 1px 0 rgba(255,255,255,0.1)`,
+              overflow: 'hidden',
+              transition: 'box-shadow 0.7s ease',
+              animation: 'fonc-float 5s ease-in-out infinite',
+            }}>
+              {/* Écran */}
+              <div style={{ position: 'absolute', inset: '11px', borderRadius: '34px', overflow: 'hidden', background: '#000' }}>
                 {steps.map((step, i) => (
                   <img
                     key={step.id}
                     src={step.screen}
                     alt={step.title}
-                    className="absolute inset-0 w-full h-full object-cover"
                     style={{
+                      position: 'absolute', inset: 0,
+                      width: '100%', height: '100%', objectFit: 'cover',
                       opacity: i === active ? 1 : 0,
                       transition: 'opacity 0.7s ease',
                     }}
                   />
                 ))}
               </div>
+              {/* Dynamic island */}
+              <div style={{ position: 'absolute', top: '18px', left: '50%', transform: 'translateX(-50%)', width: '84px', height: '25px', background: '#000', borderRadius: '16px', zIndex: 10 }} />
+              {/* Barre home */}
+              <div style={{ position: 'absolute', bottom: '17px', left: '50%', transform: 'translateX(-50%)', width: '96px', height: '4px', background: 'rgba(255,255,255,0.28)', borderRadius: '4px', zIndex: 10 }} />
+              {/* Bouton power */}
+              <div style={{ position: 'absolute', right: '-3px', top: '115px', width: '3px', height: '60px', background: 'rgba(255,255,255,0.17)', borderRadius: '2px' }} />
+              {/* Boutons volume */}
+              <div style={{ position: 'absolute', left: '-3px', top: '100px', width: '3px', height: '40px', background: 'rgba(255,255,255,0.14)', borderRadius: '2px' }} />
+              <div style={{ position: 'absolute', left: '-3px', top: '150px', width: '3px', height: '40px', background: 'rgba(255,255,255,0.14)', borderRadius: '2px' }} />
+              {/* Reflet */}
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 45%)', borderRadius: '44px', pointerEvents: 'none', zIndex: 20 }} />
             </div>
 
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-6 relative z-10">
-              {steps.map((s, i) => (
+            <div className="flex justify-center gap-2 mt-6">
+              {steps.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
@@ -273,7 +277,7 @@ const Fonctionnement: React.FC = () => {
                   style={{
                     width: i === active ? '24px' : '6px',
                     height: '6px',
-                    background: i === active ? s.accent : 'rgba(255,255,255,0.2)',
+                    background: i === active ? '#3B7FFF' : 'rgba(255,255,255,0.2)',
                   }}
                 />
               ))}
@@ -284,25 +288,25 @@ const Fonctionnement: React.FC = () => {
 
         {/* ── Détails bas ── */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {details.map((d, i) => (
+          {details.map((d) => (
             <div
               key={d.title}
               className="rounded-2xl p-6 transition-all duration-300"
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'rgba(255,255,255,0.15)',
+                border: '1px solid rgba(255,255,255,0.25)',
               }}
             >
               <span className="text-2xl mb-4 block">{d.emoji}</span>
               <p className="text-white font-semibold text-sm mb-2">{d.title}</p>
-              {d.desc && <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{d.desc}</p>}
+              {d.desc && <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>{d.desc}</p>}
               {d.tags && (
                 <div className="flex flex-wrap gap-2 mt-1">
                   {d.tags.map((tag) => (
                     <span
                       key={tag}
                       className="text-xs px-2.5 py-1 rounded-full font-medium"
-                      style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.7)' }}
+                      style={{ background: 'rgba(255,255,255,0.2)', color: 'white' }}
                     >
                       {tag}
                     </span>
@@ -338,13 +342,9 @@ const Fonctionnement: React.FC = () => {
           0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
           50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
         }
-        @keyframes ring-spin {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to   { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        @keyframes ring-spin-reverse {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to   { transform: translate(-50%, -50%) rotate(-360deg); }
+        @keyframes fonc-float {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-10px); }
         }
         .orb {
           position: absolute;
@@ -355,19 +355,19 @@ const Fonctionnement: React.FC = () => {
         .orb-1 {
           width: 500px; height: 500px;
           top: -150px; right: -100px;
-          background: radial-gradient(circle, rgba(59,127,255,0.25) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
           animation: float-1 12s ease-in-out infinite;
         }
         .orb-2 {
           width: 400px; height: 400px;
           bottom: -100px; left: -80px;
-          background: radial-gradient(circle, rgba(38,194,158,0.2) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(20,53,184,0.5) 0%, transparent 70%);
           animation: float-2 15s ease-in-out infinite;
         }
         .orb-3 {
           width: 300px; height: 300px;
           top: 40%; left: 40%;
-          background: radial-gradient(circle, rgba(129,140,248,0.15) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(110,198,245,0.2) 0%, transparent 70%);
           animation: float-3 10s ease-in-out infinite;
         }
         .ring-spin {
