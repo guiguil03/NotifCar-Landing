@@ -4,7 +4,9 @@ import { RegistrationModal } from '../components/modals';
 import QRCodeSection from '../components/features/QRCodeSection';
 import Scenarios from '../components/features/Scenarios';
 import Fonctionnement from '../components/features/Fonctionnement';
-
+import Fonctionnalites from '../components/features/Fonctionnalites';
+import Profils from '../components/features/Profils';
+import Price from '../components/features/price';
 import Footer from '../components/layout/Footer';
 import CookieBanner from '../components/ui/CookieBanner';
 import { type Page } from '../hooks/useNavigation';
@@ -28,7 +30,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       {/* ── HERO ── */}
       <section
         className="relative min-h-screen overflow-hidden flex items-center"
-        style={{ background: 'linear-gradient(135deg, #0B1340 0%, #1A2FA8 55%, #1B6FA8 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #0B1340 0%,rgb(55, 79, 218) 55%, #1B6FA8 100%)' }}
       >
         {/* Glow haut-gauche */}
         <div
@@ -38,7 +40,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
         {/* Glow bas-droite */}
         <div
           className="pointer-events-none absolute -bottom-32 right-0 w-[500px] h-[500px] rounded-full opacity-20"
-          style={{ background: 'radial-gradient(circle, #26C29E 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(circle,rgb(15, 59, 237) 0%, transparent 65%)' }}
         />
 
         <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-28 pb-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
@@ -143,22 +145,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       <Scenarios />
 
       {/* Fonctionnement Section */}
-      <Fonctionnement />  
-    {/* {
-          {/* Sécurité Section */}
-         {/* <Securite /> */}
+      <Fonctionnement />
 
-          {/* Amis Section */}
-          {/* <Amis /> */}
+      {/* Fonctionnalités Section */}
+      <Fonctionnalites />
 
-          {/* Pricing Section */}
-          {/* <Price /> */}
+      {/* Profils Section */}
+      <Profils onNavigate={onNavigate} />
 
-          {/* FAQ Section */}
-          {/* <FAQ />  */}
+    
+   
 
       {/* Footer Section */}
-      <Footer />
+      <Footer onNavigate={onNavigate} />
 
       {/* Cookie Banner */}
       <CookieBanner />

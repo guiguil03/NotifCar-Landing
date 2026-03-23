@@ -19,6 +19,7 @@ const steps = [
       </svg>
     ),
     screen: '/screen3.jpg',
+    accent: '#3B7FFF',
   },
   {
     id: '02',
@@ -33,6 +34,7 @@ const steps = [
       </svg>
     ),
     screen: '/screen1.jpg',
+    accent: '#818CF8',
   },
   {
     id: '03',
@@ -46,24 +48,25 @@ const steps = [
       </svg>
     ),
     screen: '/screen2.jpg',
+    accent: '#26C29E',
   },
 ];
 
 const details = [
   {
     emoji: '🔍',
-    title: 'Scan du QR code',
-    desc: 'Un passant scanne depuis son appareil photo natif — aucune app requise.',
+    title: 'Scan natif',
+    desc: 'Appareil photo natif — aucune app requise.',
   },
   {
     emoji: '📨',
-    title: 'Motif du signalement',
-    tags: ['Choc / accrochage', 'Rayure', 'Stationnement gênant', 'Autre'],
+    title: 'Motifs',
+    tags: ['Choc', 'Rayure', 'Stationnement gênant', 'Autre'],
   },
   {
-    emoji: '🔔',
-    title: 'Notification envoyée !',
-    desc: 'Propriétaire alerté en < 3 secondes',
+    emoji: '⚡',
+    title: '< 3 secondes',
+    desc: 'Alerte reçue en temps réel, partout dans le monde.',
   },
 ];
 
@@ -76,88 +79,134 @@ const Fonctionnement: React.FC = () => {
     return () => clearInterval(id);
   }, []);
 
+  const currentAccent = steps[active].accent;
+
   return (
-    <section
-      id="how-it-works"
-      className="relative overflow-hidden"
-      style={{ background: 'linear-gradient(145deg, #1A55E8 0%, #3B7FFF 50%, #4E8FFF 100%)' }}
-    >
-      {/* Cercles déco fond */}
-      <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-10"
-        style={{ background: 'radial-gradient(circle, #ffffff 0%, transparent 70%)' }} />
-      <div className="pointer-events-none absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full opacity-10"
-        style={{ background: 'radial-gradient(circle, #26C29E 0%, transparent 70%)' }} />
+    <section id="how-it-works" className="relative overflow-hidden" style={{ background: '#060C24' }}>
+
+      {/* Orbes animés */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+      </div>
+
+      {/* Grille de points */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
 
         {/* ── En-tête ── */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase mb-4 px-3 py-1 rounded-full"
-            style={{ background: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.9)' }}>
+        <div className="text-center mb-20">
+          <span
+            className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-3 py-1 rounded-full"
+            style={{ background: 'rgba(59,127,255,0.15)', color: '#3B7FFF', border: '1px solid rgba(59,127,255,0.25)' }}
+          >
             Simple &amp; rapide
           </span>
           <h2
-            className="font-extrabold text-white mb-4 leading-tight"
+            className="font-extrabold text-white mb-5 leading-tight"
             style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
           >
             Comment ça marche ?
           </h2>
-          <p className="text-white/60 text-lg max-w-md mx-auto">
+          <p className="text-white/45 text-lg max-w-md mx-auto">
             Trois étapes. Quelques secondes. Zéro tracas.
           </p>
         </div>
 
         {/* ── Layout principal ── */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-20">
+        <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20 mb-16">
 
           {/* Étapes */}
           <div className="flex-1 w-full space-y-3">
             {steps.map((step, i) => {
               const isActive = i === active;
               return (
-                <button key={step.id} onClick={() => setActive(i)} className="w-full text-left">
+                <button key={step.id} onClick={() => setActive(i)} className="w-full text-left group">
                   <div
-                    className="relative rounded-2xl px-5 py-5 transition-all duration-300 border"
+                    className="relative rounded-2xl px-6 py-5 transition-all duration-400 border"
                     style={{
-                      background: isActive ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.06)',
-                      borderColor: isActive ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.10)',
+                      background: isActive
+                        ? `linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)`
+                        : 'rgba(255,255,255,0.03)',
+                      borderColor: isActive ? step.accent + '60' : 'rgba(255,255,255,0.07)',
+                      boxShadow: isActive ? `0 0 0 1px ${step.accent}30, 0 8px 32px rgba(0,0,0,0.3)` : 'none',
                     }}
                   >
+                    {/* Barre de progression */}
                     {isActive && (
                       <div className="absolute bottom-0 left-0 h-[2px] rounded-b-2xl overflow-hidden w-full">
-                        <div className="h-full rounded-full bg-white"
-                          style={{ animation: 'progressBar 3.5s linear forwards' }} />
+                        <div
+                          className="h-full rounded-full"
+                          style={{ background: step.accent, animation: 'progressBar 3.5s linear forwards' }}
+                        />
                       </div>
                     )}
-                    <div className="flex items-start gap-4">
-                      <span
-                        className="flex-shrink-0 text-3xl font-black w-12 leading-none pt-0.5"
-                        style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.25)' }}
-                      >
-                        {step.id}
-                      </span>
+
+                    {/* Accent gauche */}
+                    {isActive && (
+                      <div
+                        className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full"
+                        style={{ background: step.accent }}
+                      />
+                    )}
+
+                    <div className="flex items-start gap-5">
+                      {/* Numéro */}
+                      <div className="flex-shrink-0 flex flex-col items-center gap-1 pt-0.5">
+                        <span
+                          className="text-2xl font-black leading-none transition-all duration-300"
+                          style={{ color: isActive ? step.accent : 'rgba(255,255,255,0.18)' }}
+                        >
+                          {step.id}
+                        </span>
+                      </div>
+
                       <div className="flex-1 min-w-0">
-                        <p className={`font-bold text-base sm:text-lg mb-1.5 transition-all duration-300 ${isActive ? 'text-white' : 'text-white/45'}`}>
-                          {step.title}
-                        </p>
-                        <p className={`text-sm leading-relaxed transition-all duration-500 ${isActive ? 'text-white/85 max-h-20' : 'text-white/0 max-h-0 overflow-hidden sm:max-h-10 sm:text-white/30'}`}>
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <p
+                            className="font-bold text-base sm:text-lg transition-all duration-300"
+                            style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.35)' }}
+                          >
+                            {step.title}
+                          </p>
+                          {isActive && (
+                            <span
+                              className="flex-shrink-0 p-1 rounded-lg"
+                              style={{ background: step.accent + '20', color: step.accent }}
+                            >
+                              {step.icon}
+                            </span>
+                          )}
+                        </div>
+                        <p
+                          className="text-sm leading-relaxed transition-all duration-500 overflow-hidden"
+                          style={{
+                            color: isActive ? 'rgba(255,255,255,0.65)' : 'transparent',
+                            maxHeight: isActive ? '80px' : '0',
+                          }}
+                        >
                           {step.description}
                         </p>
                       </div>
-                      <span className={`flex-shrink-0 transition-all duration-300 mt-1 ${isActive ? 'text-white opacity-100' : 'opacity-0'}`}>
-                        {step.icon}
-                      </span>
                     </div>
                   </div>
                 </button>
               );
             })}
 
-            <div className="pt-3">
+            <div className="pt-4">
               <button
                 onClick={() => setIsRegistrationModalOpen(true)}
-                className="font-semibold px-8 py-3.5 rounded-xl text-sm transition-all hover:opacity-90 bg-white"
-                style={{ color: '#3B7FFF' }}
+                className="font-semibold px-8 py-3.5 rounded-xl text-sm transition-all hover:opacity-90 text-white"
+                style={{ background: currentAccent, boxShadow: `0 8px 24px ${currentAccent}50` }}
               >
                 Découvrir l'app →
               </button>
@@ -166,34 +215,65 @@ const Fonctionnement: React.FC = () => {
 
           {/* Téléphone */}
           <div className="flex-shrink-0 relative">
-            <div className="absolute inset-0 blur-3xl opacity-25 rounded-full scale-75"
-              style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />
-            <div className="relative w-52 sm:w-60 h-[390px] sm:h-[450px]">
-              <img src="/tel.png" alt="App NotifCar" className="w-full h-full object-contain drop-shadow-2xl relative z-10" />
-              <div className="absolute z-20 overflow-hidden rounded-[22px] sm:rounded-[26px]"
-                style={{ top: '1.8%', left: '9%', width: '82%', height: '96.5%' }}>
+
+            {/* Halo animé derrière le téléphone */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full transition-all duration-700"
+              style={{
+                background: `radial-gradient(circle, ${currentAccent}35 0%, transparent 70%)`,
+                animation: 'pulse-glow 3s ease-in-out infinite',
+                filter: 'blur(20px)',
+              }}
+            />
+
+            {/* Anneaux concentriques animés */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border opacity-15 ring-spin"
+              style={{ borderColor: currentAccent }}
+            />
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border opacity-8 ring-spin-reverse"
+              style={{ borderColor: currentAccent, borderStyle: 'dashed' }}
+            />
+
+            {/* Téléphone */}
+            <div className="relative w-56 sm:w-64 h-[410px] sm:h-[470px] z-10">
+              <img
+                src="/tel.png"
+                alt="App NotifCar"
+                className="w-full h-full object-contain relative z-10"
+                style={{ filter: 'drop-shadow(0 32px 64px rgba(0,0,0,0.6))' }}
+              />
+              <div
+                className="absolute z-20 overflow-hidden rounded-[22px] sm:rounded-[26px]"
+                style={{ top: '1.8%', left: '9%', width: '82%', height: '96.5%' }}
+              >
                 {steps.map((step, i) => (
                   <img
                     key={step.id}
                     src={step.screen}
                     alt={step.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-                    style={{ opacity: i === active ? 1 : 0 }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      opacity: i === active ? 1 : 0,
+                      transition: 'opacity 0.7s ease',
+                    }}
                   />
                 ))}
               </div>
             </div>
+
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-5">
-              {steps.map((_, i) => (
+            <div className="flex justify-center gap-2 mt-6 relative z-10">
+              {steps.map((s, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
                   className="transition-all duration-300 rounded-full"
                   style={{
-                    width: i === active ? '28px' : '8px',
-                    height: '8px',
-                    background: i === active ? 'white' : 'rgba(255,255,255,0.3)',
+                    width: i === active ? '24px' : '6px',
+                    height: '6px',
+                    background: i === active ? s.accent : 'rgba(255,255,255,0.2)',
                   }}
                 />
               ))}
@@ -204,25 +284,25 @@ const Fonctionnement: React.FC = () => {
 
         {/* ── Détails bas ── */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {details.map((d) => (
+          {details.map((d, i) => (
             <div
               key={d.title}
-              className="rounded-2xl p-6"
+              className="rounded-2xl p-6 transition-all duration-300"
               style={{
-                background: 'rgba(255,255,255,0.08)',
-                border: '1px solid rgba(255,255,255,0.12)',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
               }}
             >
-              <span className="text-2xl mb-3 block">{d.emoji}</span>
+              <span className="text-2xl mb-4 block">{d.emoji}</span>
               <p className="text-white font-semibold text-sm mb-2">{d.title}</p>
-              {d.desc && <p className="text-white/55 text-sm leading-relaxed">{d.desc}</p>}
+              {d.desc && <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>{d.desc}</p>}
               {d.tags && (
                 <div className="flex flex-wrap gap-2 mt-1">
                   {d.tags.map((tag) => (
                     <span
                       key={tag}
                       className="text-xs px-2.5 py-1 rounded-full font-medium"
-                      style={{ background: 'rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.8)' }}
+                      style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.7)' }}
                     >
                       {tag}
                     </span>
@@ -239,6 +319,62 @@ const Fonctionnement: React.FC = () => {
         @keyframes progressBar {
           from { width: 0% }
           to   { width: 100% }
+        }
+        @keyframes float-1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(60px, -40px) scale(1.1); }
+          66% { transform: translate(-30px, 30px) scale(0.95); }
+        }
+        @keyframes float-2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(-50px, 60px) scale(1.05); }
+          66% { transform: translate(40px, -20px) scale(1.1); }
+        }
+        @keyframes float-3 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(30px, 50px) scale(1.08); }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+          50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+        }
+        @keyframes ring-spin {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to   { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes ring-spin-reverse {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to   { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+        .orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+          pointer-events: none;
+        }
+        .orb-1 {
+          width: 500px; height: 500px;
+          top: -150px; right: -100px;
+          background: radial-gradient(circle, rgba(59,127,255,0.25) 0%, transparent 70%);
+          animation: float-1 12s ease-in-out infinite;
+        }
+        .orb-2 {
+          width: 400px; height: 400px;
+          bottom: -100px; left: -80px;
+          background: radial-gradient(circle, rgba(38,194,158,0.2) 0%, transparent 70%);
+          animation: float-2 15s ease-in-out infinite;
+        }
+        .orb-3 {
+          width: 300px; height: 300px;
+          top: 40%; left: 40%;
+          background: radial-gradient(circle, rgba(129,140,248,0.15) 0%, transparent 70%);
+          animation: float-3 10s ease-in-out infinite;
+        }
+        .ring-spin {
+          animation: ring-spin 20s linear infinite;
+        }
+        .ring-spin-reverse {
+          animation: ring-spin-reverse 30s linear infinite;
         }
       `}</style>
 

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-export type Page = 'landing' | 'auth' | 'dashboard' | 'profile';
+export type Page = 'landing' | 'auth' | 'dashboard' | 'profile' | 'contact' | 'pricing';
 
 export const useNavigation = () => {
   const [currentPage, setCurrentPage] = useState<Page>('landing');

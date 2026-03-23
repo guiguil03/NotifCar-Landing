@@ -83,7 +83,7 @@ const QRCodeSection: React.FC = () => {
               Vous garez votre voiture le matin. Le soir, vous trouvez un{' '}
               <span className="font-bold" style={{ color: '#3B7FFF' }}>pare-choc enfoncé</span>{' '}
               et un mot qui dit... rien. Sans preuve, votre assurance paie,{' '}
-              <span className="font-bold" style={{ color: '#26C29E' }}>votre bonus trinque.</span>
+              <span className="font-bold" style={{ color: '#3B7FFF' }}>votre bonus trinque.</span>
             </p>
             <p className="text-gray-400 text-sm">
               Le scénario vécu par des millions de Français chaque année — que Notifcar peut changer.
