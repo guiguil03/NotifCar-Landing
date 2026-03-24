@@ -282,13 +282,25 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       <div className="border-y border-gray-100 bg-gray-50 py-12 px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
           {[
-            { icon: '🔒', label: 'Données sécurisées', sub: 'Hébergement France' },
-            { icon: '↩️', label: 'Sans engagement', sub: 'Résiliation libre' },
-            { icon: '🎁', label: '7 jours offerts', sub: 'Plan Premium' },
-            { icon: '💬', label: 'Support réactif', sub: 'Réponse < 24h' },
+            {
+              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" /></svg>,
+              label: 'Données sécurisées', sub: 'Hébergement France',
+            },
+            {
+              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 14l-4-4 4-4M5 10h14a4 4 0 010 8h-1" /></svg>,
+              label: 'Sans engagement', sub: 'Résiliation libre',
+            },
+            {
+              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+              label: '7 jours offerts', sub: 'Plan Premium',
+            },
+            {
+              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
+              label: 'Support réactif', sub: 'Réponse < 24h',
+            },
           ].map((g) => (
-            <div key={g.label}>
-              <span className="text-2xl block mb-2">{g.icon}</span>
+            <div key={g.label} className="flex flex-col items-center">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-blue-500" style={{ background: 'rgba(59,127,255,0.08)' }}>{g.icon}</div>
               <p className="font-semibold text-gray-800 text-sm">{g.label}</p>
               <p className="text-gray-400 text-xs mt-0.5">{g.sub}</p>
             </div>

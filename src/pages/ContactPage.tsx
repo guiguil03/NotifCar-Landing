@@ -71,15 +71,14 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           {/* Chips info */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             {[
-              { icon: '✉️', text: 'notifcar@contact.com' },
-              { icon: '⚡', text: 'Réponse < 24h' },
-              { icon: '🇫🇷', text: 'Hébergé en France' },
-            ].map((chip) => (
-              <div key={chip.text}
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white"
+              'notifcar@contact.com',
+              'Réponse sous 24h',
+              'Hébergé en France',
+            ].map((text) => (
+              <div key={text}
+                className="px-4 py-2 rounded-full text-sm font-medium text-white"
                 style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.22)' }}>
-                <span>{chip.icon}</span>
-                {chip.text}
+                {text}
               </div>
             ))}
           </div>

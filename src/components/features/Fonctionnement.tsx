@@ -54,28 +54,42 @@ const steps = [
 
 const details = [
   {
-    emoji: '🔍',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5">
+        <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" strokeLinecap="round" />
+      </svg>
+    ),
     title: 'Scan natif',
     desc: 'Appareil photo natif — aucune app requise.',
   },
   {
-    emoji: '📨',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
     title: 'Motifs',
     tags: ['Choc', 'Rayure', 'Stationnement gênant', 'Autre'],
   },
   {
-    emoji: '⚡',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5">
+        <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
     title: '< 3 secondes',
     desc: 'Alerte reçue en temps réel, partout dans le monde.',
   },
 ];
+
+const STEP_DURATION_MS = 9000;
 
 const Fonctionnement: React.FC = () => {
   const [active, setActive] = useState(0);
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
   useEffect(() => {
-    const id = setInterval(() => setActive((p) => (p + 1) % steps.length), 3500);
+    const id = setInterval(() => setActive((p) => (p + 1) % steps.length), STEP_DURATION_MS);
     return () => clearInterval(id);
   }, []);
 
@@ -145,7 +159,7 @@ const Fonctionnement: React.FC = () => {
                       <div className="absolute bottom-0 left-0 h-[2px] rounded-b-2xl overflow-hidden w-full">
                         <div
                           className="h-full rounded-full"
-                          style={{ background: step.accent, animation: 'progressBar 3.5s linear forwards' }}
+                          style={{ background: step.accent, animation: `progressBar ${STEP_DURATION_MS}ms linear forwards` }}
                         />
                       </div>
                     )}
@@ -297,7 +311,7 @@ const Fonctionnement: React.FC = () => {
                 border: '1px solid rgba(255,255,255,0.25)',
               }}
             >
-              <span className="text-2xl mb-4 block">{d.emoji}</span>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-4 text-white" style={{ background: 'rgba(255,255,255,0.2)' }}>{d.icon}</div>
               <p className="text-white font-semibold text-sm mb-2">{d.title}</p>
               {d.desc && <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>{d.desc}</p>}
               {d.tags && (

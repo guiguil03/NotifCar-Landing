@@ -7,7 +7,6 @@ interface ProfilsProps {
 
 const profils = [
   {
-    emoji: '🚗',
     title: 'Particuliers',
     subtitle: 'Protection 24h/24 sans effort',
     points: [
@@ -20,7 +19,6 @@ const profils = [
     border: 'rgba(59,127,255,0.15)',
   },
   {
-    emoji: '🏢',
     title: 'Flottes pros',
     subtitle: 'Dashboard centralisé par véhicule',
     points: [
@@ -33,7 +31,6 @@ const profils = [
     border: 'rgba(99,102,241,0.15)',
   },
   {
-    emoji: '🔧',
     title: 'Garages & concessionnaires',
     subtitle: 'Protection du parc exposition',
     points: [
@@ -46,7 +43,6 @@ const profils = [
     border: 'rgba(14,165,233,0.15)',
   },
   {
-    emoji: '🛡️',
     title: 'Assureurs',
     subtitle: 'Preuves certifiées pour vos dossiers',
     points: [
@@ -61,7 +57,7 @@ const profils = [
 ];
 
 const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(2);
   const current = profils[active];
 
   return (
@@ -88,29 +84,36 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
         </div>
 
         {/* Layout */}
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
 
           {/* Onglets gauche */}
-          <div className="flex flex-row lg:flex-col gap-3 lg:w-64 flex-shrink-0">
+          <div className="w-full lg:w-64 flex-shrink-0">
+            <div className="flex flex-row lg:flex-col gap-3">
             {profils.map((p, i) => (
               <button
                 key={p.title}
                 onClick={() => setActive(i)}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 border"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 border w-full"
                 style={{
                   background: active === i ? p.bg : 'transparent',
                   borderColor: active === i ? p.border : 'transparent',
+                  boxShadow: active === i ? '0 8px 24px rgba(14,165,233,0.08)' : 'none',
                 }}
+                aria-pressed={active === i}
               >
-                <span className="text-xl flex-shrink-0">{p.emoji}</span>
+                <div
+                  className="flex-shrink-0 w-2.5 h-2.5 rounded-full"
+                  style={{ background: active === i ? p.color : '#d1d5db' }}
+                />
                 <span
-                  className="font-semibold text-sm hidden sm:block"
+                  className="font-semibold text-sm"
                   style={{ color: active === i ? p.color : '#6b7280' }}
                 >
                   {p.title}
                 </span>
               </button>
             ))}
+            </div>
           </div>
 
           {/* Contenu droite */}
@@ -118,8 +121,11 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
             className="flex-1 rounded-2xl p-8 sm:p-10 border transition-all duration-300"
             style={{ background: current.bg, borderColor: current.border }}
           >
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-4xl">{current.emoji}</span>
+            <div className="flex items-center gap-4 mb-7">
+              <div
+                className="w-11 h-11 rounded-xl flex-shrink-0 border"
+                style={{ background: current.border, borderColor: current.border }}
+              />
               <div>
                 <h3
                   className="font-bold text-xl"
@@ -131,13 +137,23 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3.5 mb-8">
               {current.points.map((pt) => (
                 <li key={pt} className="flex items-start gap-3">
                   <span
-                    className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold"
+                    className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
                     style={{ background: current.border, color: current.color }}
-                  >✓</span>
+                  >
+                    <svg viewBox="0 0 20 20" fill="none" className="w-3 h-3">
+                      <path
+                        d="M5.5 10.3l2.4 2.4 6.6-6.6"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
                   <span className="text-gray-700 text-base">{pt}</span>
                 </li>
               ))}
@@ -145,7 +161,7 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
 
             <button
               onClick={() => onNavigate?.('contact')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-95 hover:translate-y-[-1px]"
               style={{ background: current.color }}
             >
               Nous contacter →
