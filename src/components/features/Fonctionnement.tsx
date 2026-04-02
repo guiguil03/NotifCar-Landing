@@ -23,9 +23,9 @@ const steps = [
   },
   {
     id: '02',
-    title: 'Un passant scanne',
+    title: 'Un passant scanne le QR code NotifCar',
     description:
-      "N'importe qui peut scanner le QR code avec son téléphone, sans télécharger d'application. Il choisit le motif et envoie l'alerte anonymement.",
+      "N'importe qui peut scanner le QR code NotifCar avec son téléphone, sans télécharger d'application. Il choisit le motif et envoie l'alerte anonymement.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="1.8">
         <path d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z" />
@@ -128,7 +128,7 @@ const Fonctionnement: React.FC = () => {
             className="font-extrabold text-white mb-5 leading-tight"
             style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
           >
-            Comment ça marche ?
+            Comment fonctionne NotifCar ?
           </h2>
           <p className="text-white/80 text-lg max-w-md mx-auto">
             Trois étapes. Quelques secondes. Zéro tracas.

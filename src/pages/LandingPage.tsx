@@ -52,20 +52,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               className="font-bold text-white leading-none mb-6"
               style={{ fontSize: 'clamp(44px, 6.5vw, 82px)', lineHeight: 1.05 }}
             >
-              Votre voiture<br />
-              protégée,<br />
+              NotifCar —<br />
+              votre voiture<br />
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'linear-gradient(90deg, #BFCEFF 0%, #26C29E 100%)' }}
               >
-                en temps réel.
+                protégée en temps réel.
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-10 max-w-md">
               Rayure, accident, stationnement gênant —<br />
-              Notifcar vous alerte instantanément,<br />de manière anonyme et sécurisée.
+              NotifCar vous alerte instantanément,<br />de manière anonyme et sécurisée.
             </p>
 
             {/* CTAs */}

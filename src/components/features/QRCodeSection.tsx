@@ -86,7 +86,7 @@ const QRCodeSection: React.FC = () => {
               <span className="font-bold" style={{ color: '#3B7FFF' }}>votre bonus trinque.</span>
             </p>
             <p className="text-gray-400 text-sm">
-              Le scénario vécu par des millions de Français chaque année — que Notifcar peut changer.
+              Le scénario vécu par des millions de Français chaque année — que NotifCar peut changer.
             </p>
           </div>
         </div>
