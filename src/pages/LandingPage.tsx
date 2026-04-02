@@ -127,7 +127,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 opacity: 0.88,
               }}>
                 <div style={{ position: 'absolute', inset: '10px', borderRadius: '32px', overflow: 'hidden', background: '#000' }}>
-                  <img src="/screen2.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/screen2.jpg" alt="Interface NotifCar - réception d'alerte sur le véhicule" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ position: 'absolute', top: '17px', left: '50%', transform: 'translateX(-50%)', width: '76px', height: '22px', background: '#000', borderRadius: '14px', zIndex: 10 }} />
                 <div style={{ position: 'absolute', right: '-3px', top: '105px', width: '3px', height: '54px', background: 'rgba(255,255,255,0.14)', borderRadius: '2px' }} />
@@ -153,7 +153,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 opacity: 0.88,
               }}>
                 <div style={{ position: 'absolute', inset: '10px', borderRadius: '32px', overflow: 'hidden', background: '#000' }}>
-                  <img src="/screen3.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/screen3.jpg" alt="Interface NotifCar - scan du QR code et envoi d'alerte anonyme" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ position: 'absolute', top: '17px', left: '50%', transform: 'translateX(-50%)', width: '76px', height: '22px', background: '#000', borderRadius: '14px', zIndex: 10 }} />
                 <div style={{ position: 'absolute', right: '-3px', top: '105px', width: '3px', height: '54px', background: 'rgba(255,255,255,0.14)', borderRadius: '2px' }} />

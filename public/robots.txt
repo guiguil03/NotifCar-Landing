@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://notifcar.fr/sitemap.xml
