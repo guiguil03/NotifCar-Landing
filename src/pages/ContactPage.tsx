@@ -20,6 +20,12 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   const [form, setForm] = useState({ name: '', email: '', profil: '', message: '' });
   const [status, setStatus] = useState<Status>('idle');
 
+  React.useEffect(() => {
+    document.title = 'Contacter NotifCar — Réponse sous 24h';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', 'Contactez l\'équipe NotifCar pour toute question, projet ou partenariat. Réponse garantie sous 24h.');
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };

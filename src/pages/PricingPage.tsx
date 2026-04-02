@@ -102,6 +102,12 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
   const [yearly, setYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  React.useEffect(() => {
+    document.title = 'Tarifs NotifCar — Basic, Premium et Entreprise';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', 'Découvrez les offres NotifCar : version gratuite, Premium à 3,99€/mois et formule Entreprise sur mesure pour les flottes de véhicules.');
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header onNavigate={onNavigate} />

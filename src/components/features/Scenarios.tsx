@@ -58,7 +58,7 @@ const losses = [
 
 const Scenarios: React.FC = () => {
   return (
-    <section className="bg-white">
+    <section id="scenarios" className="bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pt-10 sm:pt-12 pb-24 sm:pb-32">
 
         {/* ── En-tête ── */}
@@ -77,7 +77,7 @@ const Scenarios: React.FC = () => {
             <span
               style={{ color: '#3B7FFF' }}
             >
-              Notifcar change tout.
+              NotifCar change tout.
             </span>
           </h2>
         </div>
@@ -122,7 +122,7 @@ const Scenarios: React.FC = () => {
                     style={{ background: 'rgba(239,68,68,0.10)', color: '#ef4444' }}
                   >✗</span>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider mb-1 text-red-400">Sans Notifcar</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wider mb-1 text-red-400">Sans NotifCar</p>
                     <p className="text-gray-500 text-sm leading-relaxed">{s.sans}</p>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ const Scenarios: React.FC = () => {
                     style={{ background: 'rgba(38,194,158,0.12)', color: '#26C29E' }}
                   >✓</span>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider mb-1" style={{ color: '#26C29E' }}>Avec Notifcar</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wider mb-1" style={{ color: '#26C29E' }}>Avec NotifCar</p>
                     <p className="text-gray-500 text-sm leading-relaxed">{s.avec}</p>
                   </div>
                 </div>
@@ -148,7 +148,7 @@ const Scenarios: React.FC = () => {
               className="font-bold text-gray-900"
               style={{ fontSize: 'clamp(20px, 3vw, 28px)' }}
             >
-              Ce que vous perdez sans Notifcar
+              Ce que vous perdez sans NotifCar
             </h3>
             <p className="text-gray-400 text-sm">Par sinistre non résolu</p>
           </div>

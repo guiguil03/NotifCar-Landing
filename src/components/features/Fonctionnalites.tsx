@@ -69,7 +69,7 @@ const features = [
 
 const Fonctionnalites: React.FC = () => {
   return (
-    <section className="bg-white">
+    <section id="features" className="bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
 
         <div className="text-center max-w-xl mx-auto mb-16">
@@ -77,11 +77,11 @@ const Fonctionnalites: React.FC = () => {
             className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-3 py-1 rounded-full"
             style={{ background: 'rgba(59,127,255,0.08)', color: '#3B7FFF' }}
           >
-            Fonctionnalités
+            Fonctionnalités NotifCar
           </span>
           <h2 className="font-extrabold text-gray-900 leading-tight mb-4"
             style={{ fontSize: 'clamp(30px, 4vw, 48px)' }}>
-            Tout ce dont vous avez besoin
+            Tout ce dont vous avez besoin avec NotifCar
           </h2>
           <p className="text-gray-500 text-lg">
             Conçu pour être simple à l'usage, puissant en cas d'incident.

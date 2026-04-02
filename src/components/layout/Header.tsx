@@ -9,7 +9,7 @@ interface HeaderProps {
   onOpenRegistration?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection, onOpenRegistration }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
   const { isAuthenticated, user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -24,24 +24,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection, onOpenRe
 
   const scrollTo = (id: string) => {
     setIsMenuOpen(false);
-    if (onScrollToSection) {
-      onScrollToSection(id);
-    } else {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        onNavigate?.('landing');
-        setTimeout(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    }
+    onNavigate?.('landing');
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   const navLinks = [
     { label: 'Comment ça marche ?', action: () => scrollTo('how-it-works') },
-    { label: 'Fonctionnalités', action: () => scrollTo('how-it-works') },
+    { label: 'Fonctionnalités', action: () => scrollTo('features') },
     { label: 'Tarifs', action: () => onNavigate?.('pricing') },
     { label: 'Contact', action: () => onNavigate?.('contact') },
   ];

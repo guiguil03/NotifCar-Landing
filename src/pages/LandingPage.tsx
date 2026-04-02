@@ -6,6 +6,7 @@ import Scenarios from '../components/features/Scenarios';
 import Fonctionnement from '../components/features/Fonctionnement';
 import Fonctionnalites from '../components/features/Fonctionnalites';
 import Profils from '../components/features/Profils';
+import FAQ from '../components/features/FAQ';
 import Footer from '../components/layout/Footer';
 import CookieBanner from '../components/ui/CookieBanner';
 import { type Page } from '../hooks/useNavigation';
@@ -217,8 +218,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       {/* Profils Section */}
       <Profils onNavigate={onNavigate} />
 
-    
-   
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Footer Section */}
       <Footer onNavigate={onNavigate} />

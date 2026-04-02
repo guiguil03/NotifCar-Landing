@@ -18,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="md:col-span-4">
             <img src={notifcarLogo} alt="NotifCar" className="h-5 w-auto mb-5" style={{ filter: 'brightness(0) invert(1)' }} />
             <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.45)' }}>
-              Notifcar protège votre véhicule 24h/24 grâce à un système d'alertes anonymes par QR code. Simple, rapide, sécurisé.
+              NotifCar protège votre véhicule 24h/24 grâce à un système d'alertes anonymes par QR code. Simple, rapide, sécurisé.
             </p>
             <div className="flex gap-3">
               <a
