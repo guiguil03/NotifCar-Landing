@@ -76,7 +76,17 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="md:col-span-2">
             <h3 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Légal</h3>
             <ul className="space-y-3">
-              {['Confidentialité', 'CGU', 'Cookies', 'RGPD'].map((l) => (
+              <li>
+                <button onClick={() => onNavigate?.('privacy')} className="text-sm transition-colors hover:text-white text-left" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  Confidentialité
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate?.('cgu')} className="text-sm transition-colors hover:text-white text-left" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  CGU
+                </button>
+              </li>
+              {['Cookies', 'RGPD'].map((l) => (
                 <li key={l}>
                   <a href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {l}

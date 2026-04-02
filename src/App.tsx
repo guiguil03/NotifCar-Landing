@@ -5,6 +5,8 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import LandingPage from './pages/LandingPage';
 import ContactPage from './pages/ContactPage';
 import PricingPage from './pages/PricingPage';
+import PrivacyPage from './pages/PrivacyPage';
+import CGUPage from './pages/CGUPage';
 import { type Page } from './hooks/useNavigation';
 import './App.css';
 import { EmailService } from './services/emailService';
@@ -14,6 +16,8 @@ const PAGE_PATHS: Record<Page, string> = {
   landing: '/',
   contact: '/contact',
   pricing: '/tarifs',
+  privacy: '/confidentialite',
+  cgu: '/cgu',
   auth: '/',
   dashboard: '/',
   profile: '/',
@@ -55,6 +59,8 @@ const AppRoutes: React.FC = () => {
         <Route path="/" element={<LandingPage onNavigate={navigateTo} onScrollToSection={scrollToSection} />} />
         <Route path="/contact" element={<ContactPage onNavigate={navigateTo} />} />
         <Route path="/tarifs" element={<PricingPage onNavigate={navigateTo} />} />
+        <Route path="/confidentialite" element={<PrivacyPage onNavigate={navigateTo} />} />
+        <Route path="/cgu" element={<CGUPage onNavigate={navigateTo} />} />
       </Routes>
     </>
   );
