@@ -104,6 +104,38 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 0%, 100% { transform: rotate(10deg) translateY(0px); }
                 50% { transform: rotate(10deg) translateY(-7px); }
               }
+
+              @keyframes phone-enter-left {
+                0%   { opacity: 0; transform: rotate(-10deg) translateX(-60px) translateY(40px) scale(0.88); }
+                60%  { opacity: 1; transform: rotate(-10deg) translateX(4px) translateY(-3px) scale(1.01); }
+                100% { opacity: 0.88; transform: rotate(-10deg) translateY(0px) scale(1); }
+              }
+              @keyframes phone-enter-right {
+                0%   { opacity: 0; transform: rotate(10deg) translateX(60px) translateY(40px) scale(0.88); }
+                60%  { opacity: 1; transform: rotate(10deg) translateX(-4px) translateY(-3px) scale(1.01); }
+                100% { opacity: 0.88; transform: rotate(10deg) translateY(0px) scale(1); }
+              }
+              @keyframes phone-enter-center {
+                0%   { opacity: 0; transform: translateX(-50%) translateY(70px) scale(0.85); }
+                55%  { opacity: 1; transform: translateX(-50%) translateY(-8px) scale(1.02); }
+                100% { opacity: 1; transform: translateX(-50%) translateY(0px) scale(1); }
+              }
+
+              .phone-left-anim {
+                animation:
+                  phone-enter-left 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both,
+                  phone-left-float 5s ease-in-out 1.1s infinite;
+              }
+              .phone-right-anim {
+                animation:
+                  phone-enter-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both,
+                  phone-right-float 5s ease-in-out 1.25s infinite;
+              }
+              .phone-center-anim {
+                animation:
+                  phone-enter-center 1s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both,
+                  phone-center-float 6s ease-in-out 1.05s infinite;
+              }
             `}</style>
 
             {/* Halo glow */}
@@ -113,9 +145,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             }} />
 
             {/* ── Téléphone gauche (incliné à gauche) ── */}
-            <div className="absolute" style={{
+            <div className="absolute phone-left-anim" style={{
               left: '10px', bottom: '20px', zIndex: 1,
-              animation: 'phone-left-float 5s ease-in-out infinite',
             }}>
               <div style={{
                 width: '210px', height: '436px',
@@ -139,9 +170,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             </div>
 
             {/* ── Téléphone droit (incliné à droite) ── */}
-            <div className="absolute" style={{
+            <div className="absolute phone-right-anim" style={{
               right: '10px', bottom: '20px', zIndex: 1,
-              animation: 'phone-right-float 5s ease-in-out infinite',
             }}>
               <div style={{
                 width: '210px', height: '436px',
@@ -165,10 +195,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             </div>
 
             {/* ── Téléphone central (droit, devant) ── */}
-            <div className="absolute" style={{
+            <div className="absolute phone-center-anim" style={{
               left: '50%', bottom: '0px',
               zIndex: 3,
-              animation: 'phone-center-float 6s ease-in-out infinite 0.5s',
             }}>
               <div style={{
                 width: '230px', height: '478px',

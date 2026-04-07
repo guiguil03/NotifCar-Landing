@@ -71,24 +71,10 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           <h1 className="font-black text-white mb-4" style={{ fontSize: 'clamp(36px, 5vw, 60px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
             On vous répond sous 24h.
           </h1>
-          <p className="text-white/70 text-base mb-10 max-w-md mx-auto">
+          <p className="text-white/70 text-base max-w-md mx-auto">
             Question, projet ou partenariat — notre équipe est disponible pour vous aider.
           </p>
 
-          {/* Chips info */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {[
-              'contact@notifcar.fr',
-              'Réponse sous 24h',
-              'Hébergé en France',
-            ].map((text) => (
-              <div key={text}
-                className="px-4 py-2 rounded-full text-sm font-medium text-white"
-                style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.22)' }}>
-                {text}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

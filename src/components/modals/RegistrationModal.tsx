@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
+import React from 'react';
 import Modal from '../ui/Modal';
-import { createInscription } from '../../services/inscriptionService';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -10,261 +7,78 @@ interface RegistrationModalProps {
 }
 
 const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string>('');
-
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.name) {
-      newErrors.name = 'Le nom est requis';
-    }
-
-    if (!formData.email) {
-      newErrors.email = 'L\'email est requis';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'L\'email n\'est pas valide';
-    }
-
-    if (!formData.phone) {
-      newErrors.phone = 'Le numéro de téléphone est requis';
-    } else if (!/^(\+33|0)[1-9](\d{8})$/.test(formData.phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Le numéro de téléphone n\'est pas valide';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
-      setSubmitError('');
-      
-      try {
-        // 1) Enregistrer en base Supabase
-        const dbResult = await createInscription({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-        });
-        if (!dbResult.success) {
-          // Message spécifique doublon
-          if (dbResult.code === '23505') {
-            throw new Error('Cet email est déjà inscrit. Merci !');
-          }
-          throw new Error(dbResult.error || 'Échec de l\'enregistrement en base');
-        }
-
-        // 2) Les emails sont déjà envoyés par createInscription (utilisateur + admin)
-        // Vérifier si au moins un email a été envoyé
-        if (!dbResult.userEmailSent && !dbResult.adminEmailSent) {
-          console.warn('Aucun email envoyé, mais l\'inscription a réussi');
-        }
-
-        setIsSubmitted(true);
-      } catch (error) {
-        console.error('Erreur lors de l\'envoi:', error);
-        setSubmitError(error instanceof Error ? error.message : 'Une erreur est survenue');
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
-  };
-
-  const handleClose = () => {
-    setFormData({ name: '', email: '', phone: '' });
-    setErrors({});
-    setIsSubmitted(false);
-    setSubmitError('');
-    onClose();
-  };
-
-
-  if (isSubmitted) {
-    return (
-      <Modal isOpen={isOpen} onClose={handleClose} size="md">
-        {/* Bouton de fermeture */}
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
-          aria-label="Fermer la modal"
-        >
-          <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-        
-        <div className="text-center py-8">
-          <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-green-200">
-            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Email envoyé avec succès !
-          </h2>
-          
-          <p className="text-gray-600 mb-6">
-            Nous avons envoyé un email de confirmation à <strong>{formData.email}</strong>. 
-            Veuillez vérifier votre boîte de réception et suivre les instructions pour finaliser votre inscription.
-          </p>
-          
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
-            <p className="text-sm text-blue-800">
-              <strong>Note :</strong> Si vous ne recevez pas l'email dans les prochaines minutes, 
-              vérifiez votre dossier spam ou courrier indésirable.
-            </p>
-          </div>
-          
-          <Button
-            variant="primary"
-            onClick={handleClose}
-            className="w-full"
-          >
-            Fermer
-          </Button>
-        </div>
-      </Modal>
-    );
-  }
-
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} size="md">
-      {/* Bouton de fermeture */}
+    <Modal isOpen={isOpen} onClose={onClose} size="md">
       <button
-        onClick={handleClose}
-        className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
-        aria-label="Fermer la modal"
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 transition-colors"
+        aria-label="Fermer"
       >
-        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      
+
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4 shadow-lg">
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        <div
+          className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-5"
+          style={{ background: 'rgba(59,127,255,0.1)' }}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3B7FFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+            <path d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z" />
+            <path d="M8.5 12l2.5 2.5 4.5-4.5" />
           </svg>
         </div>
-        <h2 className="text-3xl font-bold text-neutral-900 mb-3">
-          S'inscrire à Notifcar
+        <h2 className="font-extrabold text-gray-900 text-2xl mb-2" style={{ letterSpacing: '-0.02em' }}>
+          Télécharger NotifCar
         </h2>
-        <p className="text-neutral-600 text-lg">
-          Rejoignez la communauté et recevez un email de confirmation
+        <p className="text-gray-400 text-sm">
+          Disponible sur iPhone dès maintenant.
         </p>
       </div>
 
-      <form className="space-y-6" onSubmit={handleSubmit}>
-        <Input
-          label="Nom complet"
-          type="text"
-          value={formData.name}
-          onChange={(value) => handleInputChange('name', value)}
-          error={errors.name}
-          required
-          placeholder="Votre nom complet"
-          icon={
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      <div className="space-y-3">
+        {/* App Store */}
+        <a
+          href="https://apps.apple.com/fr/iphone/today"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-4 w-full px-5 py-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group"
+        >
+          <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-black flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-          }
-        />
-
-        <Input
-          label="Adresse email"
-          type="email"
-          value={formData.email}
-          onChange={(value) => handleInputChange('email', value)}
-          error={errors.email}
-          required
-          placeholder="votre@email.com"
-          icon={
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-            </svg>
-          }
-        />
-
-        <Input
-          label="Numéro de téléphone"
-          type="tel"
-          value={formData.phone}
-          onChange={(value) => handleInputChange('phone', value)}
-          error={errors.phone}
-          required
-          placeholder="06 12 34 56 78"
-          icon={
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-          }
-        />
-
-        {submitError && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-3">
-            <p className="text-sm text-red-600">{submitError}</p>
           </div>
-        )}
+          <div className="flex-1 text-left">
+            <div className="text-xs text-gray-400 mb-0.5">Télécharger sur l'</div>
+            <div className="font-bold text-gray-900 text-base">App Store</div>
+          </div>
+          <svg className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 18l6-6-6-6" />
+          </svg>
+        </a>
 
-        <div className="space-y-4">
-          <Button
-            type="submit"
-            variant="primary"
-            size="lg"
-            loading={isSubmitting}
-            className="w-full group relative overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-md"
-          >
-            <div className="relative flex items-center justify-center gap-2">
-              {isSubmitting ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  <span>Envoi en cours...</span>
-                </>
-              ) : (
-                <>
-                  <svg className="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                  <span>S'inscrire et recevoir un email</span>
-                </>
-              )}
-            </div>
-          </Button>
-          
+        {/* Google Play — bientôt */}
+        <div className="flex items-center gap-4 w-full px-5 py-4 rounded-2xl border border-gray-100 bg-gray-50 cursor-not-allowed">
+          <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gray-200 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="#9ca3af" className="w-6 h-6">
+              <path d="M3.18 23.76c.3.17.64.24.99.2l12.6-7.26-2.72-2.72-10.87 9.78zM.29 1.27C.11 1.6 0 2 0 2.46v19.08c0 .46.11.86.29 1.19l.06.06 10.68-10.68v-.25L.35 1.21l-.06.06zM20.55 10.37l-2.85-1.64-3.03 3.03 3.03 3.03 2.87-1.65c.82-.47.82-1.3-.02-1.77zM3.18.24l12.6 7.26-2.72 2.72L2.19.44C2.5.07 2.88-.01 3.18.24z"/>
+            </svg>
+          </div>
+          <div className="flex-1 text-left">
+            <div className="text-xs text-gray-400 mb-0.5">Disponible sur</div>
+            <div className="font-bold text-gray-400 text-base">Google Play</div>
+          </div>
+          <span className="text-xs font-semibold text-gray-400 bg-gray-200 px-2.5 py-1 rounded-full">
+            Bientôt
+          </span>
         </div>
-      </form>
-
-      <div className="mt-6 text-center">
-        <p className="text-sm text-gray-600">
-          En vous inscrivant, vous acceptez nos{' '}
-          <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-            conditions d'utilisation
-          </a>{' '}
-          et notre{' '}
-          <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-            politique de confidentialité
-          </a>
-        </p>
       </div>
+
+      <p className="text-center text-xs text-gray-300 mt-6">
+        Gratuit · iOS 15+ · Android prochainement
+      </p>
     </Modal>
   );
 };
