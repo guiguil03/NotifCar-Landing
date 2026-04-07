@@ -34,11 +34,12 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const subject = encodeURIComponent(`[Notifcar] Demande — ${form.profil}`);
-      const body = encodeURIComponent(
-        `Nom : ${form.name}\nEmail : ${form.email}\nProfil : ${form.profil}\n\n${form.message}`
-      );
-      window.location.href = `mailto:notifcar@contact.com?subject=${subject}&body=${body}`;
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('Erreur serveur');
       setStatus('success');
     } catch {
       setStatus('error');
@@ -77,7 +78,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           {/* Chips info */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             {[
-              'notifcar@contact.com',
+              'contact@notifcar.fr',
               'Réponse sous 24h',
               'Hébergé en France',
             ].map((text) => (
@@ -105,7 +106,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               </div>
               <h3 className="font-black text-gray-900 text-2xl mb-3" style={{ letterSpacing: '-0.02em' }}>Message envoyé !</h3>
               <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-                Votre client mail s'est ouvert.<br />On vous répond sous 24h.
+                Votre message a bien été envoyé.<br />On vous répond sous 24h.
               </p>
               <button onClick={() => onNavigate?.('landing')}
                 className="px-8 py-3.5 rounded-xl font-black text-sm text-white hover:opacity-90 transition-opacity"
