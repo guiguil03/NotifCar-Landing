@@ -40,7 +40,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
       <div className="space-y-3">
         {/* App Store */}
         <a
-          href="https://apps.apple.com/fr/iphone/today"
+          href="https://apps.apple.com/fr/app/notifcar/id6755294079"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 w-full px-5 py-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group"
