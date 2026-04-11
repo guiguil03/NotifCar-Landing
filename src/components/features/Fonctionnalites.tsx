@@ -70,7 +70,7 @@ const features = [
 const Fonctionnalites: React.FC = () => {
   return (
     <section id="features" className="bg-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32">
 
         <div className="text-center max-w-xl mx-auto mb-16">
           <span
@@ -90,7 +90,7 @@ const Fonctionnalites: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f) => (
-            <div key={f.title} className="rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+            <div key={f.title} className="rounded-2xl p-5 sm:p-7 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
                 style={{ background: f.color + '12', color: f.color }}

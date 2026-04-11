@@ -86,7 +86,7 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
 
   return (
     <section className="bg-white border-t border-gray-100">
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32">
 
         {/* En-tête */}
         <div className="max-w-xl mb-14">
@@ -102,22 +102,22 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
           >
             Adapté à chaque profil
           </h2>
-          <p className="text-gray-500 text-lg leading-relaxed">
+          <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
             Particulier, professionnel ou institutionnel — NotifCar s'adapte à votre réalité.
           </p>
         </div>
 
         {/* Layout */}
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 items-stretch lg:items-start">
 
-          {/* Tabs gauche */}
+          {/* Tabs — grille 2×2 sur mobile, colonne sur desktop */}
           <div className="w-full lg:w-56 flex-shrink-0">
-            <div className="flex flex-row lg:flex-col gap-2">
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
               {profils.map((p, i) => (
                 <button
                   key={p.title}
                   onClick={() => handleSelect(i)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-left w-full transition-all duration-200 border"
+                  className="flex items-center gap-2 sm:gap-3 px-3 py-3 sm:px-4 rounded-xl text-left w-full min-h-[48px] transition-all duration-200 border min-w-0"
                   style={{
                     background: active === i ? `${p.color}08` : 'transparent',
                     borderColor: active === i ? `${p.color}22` : 'transparent',
@@ -133,8 +133,9 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
                     {p.icon}
                   </div>
                   <span
-                    className="font-semibold text-sm transition-colors duration-200"
+                    className="font-semibold text-xs sm:text-sm transition-colors duration-200 truncate"
                     style={{ color: active === i ? p.color : '#6b7280' }}
+                    title={p.title}
                   >
                     {p.title}
                   </span>
@@ -159,7 +160,7 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
             {/* Barre colorée en haut */}
             <div className="h-1 w-full" style={{ background: current.color }} />
 
-            <div className="p-8 sm:p-10">
+            <div className="p-5 sm:p-8 md:p-10">
               {/* Header */}
               <div className="flex items-center gap-4 mb-8">
                 <div

@@ -59,7 +59,7 @@ const losses = [
 const Scenarios: React.FC = () => {
   return (
     <section id="scenarios" className="bg-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pt-10 sm:pt-12 pb-24 sm:pb-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 pt-10 sm:pt-12 pb-16 sm:pb-24 md:pb-32">
 
         {/* ── En-tête ── */}
         <div className="max-w-xl mb-14">
@@ -142,7 +142,7 @@ const Scenarios: React.FC = () => {
         </div>
 
         {/* ── Barres de pertes ── */}
-        <div className="rounded-2xl border border-gray-100 shadow-sm px-8 py-10 sm:px-12 sm:py-12 bg-gray-50">
+        <div className="rounded-2xl border border-gray-100 shadow-sm px-4 py-8 sm:px-10 md:px-12 sm:py-10 md:py-12 bg-gray-50">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-10">
             <h3
               className="font-bold text-gray-900"

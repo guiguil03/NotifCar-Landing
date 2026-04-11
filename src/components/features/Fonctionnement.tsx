@@ -114,10 +114,10 @@ const Fonctionnement: React.FC = () => {
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 py-16 sm:py-24 lg:py-32">
 
         {/* ── En-tête ── */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20 px-1">
           <span
             className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-3 py-1 rounded-full"
             style={{ background: 'rgba(255,255,255,0.18)', color: 'white', border: '1px solid rgba(255,255,255,0.35)' }}
@@ -130,13 +130,13 @@ const Fonctionnement: React.FC = () => {
           >
             Comment fonctionne NotifCar ?
           </h2>
-          <p className="text-white/80 text-lg max-w-md mx-auto">
+          <p className="text-white/80 text-base sm:text-lg max-w-md mx-auto">
             Trois étapes. Quelques secondes. Zéro tracas.
           </p>
         </div>
 
         {/* ── Layout principal ── */}
-        <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20 mb-16">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 mb-12 sm:mb-16">
 
           {/* Étapes */}
           <div className="flex-1 w-full space-y-3">
@@ -145,7 +145,7 @@ const Fonctionnement: React.FC = () => {
               return (
                 <button key={step.id} onClick={() => setActive(i)} className="w-full text-left group">
                   <div
-                    className="relative rounded-2xl px-6 py-5 transition-all duration-400 border"
+                    className="relative rounded-2xl px-4 py-4 sm:px-6 sm:py-5 transition-all duration-400 border"
                     style={{
                       background: isActive
                         ? 'rgba(255,255,255,0.22)'
@@ -172,7 +172,7 @@ const Fonctionnement: React.FC = () => {
                       />
                     )}
 
-                    <div className="flex items-start gap-5">
+                    <div className="flex items-start gap-3 sm:gap-5 min-w-0">
                       {/* Numéro */}
                       <div className="flex-shrink-0 flex flex-col items-center gap-1 pt-0.5">
                         <span
@@ -184,9 +184,9 @@ const Fonctionnement: React.FC = () => {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1.5">
+                        <div className="flex flex-wrap items-center gap-2 mb-1.5 min-w-0">
                           <p
-                            className="font-bold text-base sm:text-lg transition-all duration-300"
+                            className="font-bold text-sm sm:text-base md:text-lg transition-all duration-300 min-w-0 flex-1"
                             style={{ color: isActive ? 'white' : 'rgba(255,255,255,0.6)' }}
                           >
                             {step.title}
@@ -216,11 +216,11 @@ const Fonctionnement: React.FC = () => {
               );
             })}
 
-            <div className="pt-4 flex flex-wrap gap-3">
+            <div className="pt-4 flex flex-col xs:flex-row flex-wrap gap-3">
               {/* Apple App Store */}
               <a
                 href="#"
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 w-full xs:w-auto"
                 style={{ background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.3)' }}
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 flex-shrink-0">
@@ -234,7 +234,7 @@ const Fonctionnement: React.FC = () => {
 
               {/* Google Play — Prochainement */}
               <div
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm cursor-not-allowed"
+                className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full xs:w-auto"
                 style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 flex-shrink-0 opacity-50">
@@ -249,22 +249,23 @@ const Fonctionnement: React.FC = () => {
           </div>
 
           {/* Téléphone */}
-          <div className="flex-shrink-0 relative" style={{ width: '260px' }}>
+          <div className="flex-shrink-0 relative w-full max-w-[260px] mx-auto lg:mx-0 flex flex-col items-center">
 
             {/* Halo glow */}
             <div className="absolute pointer-events-none" style={{
               top: '50%', left: '50%',
               transform: 'translate(-50%, -50%)',
-              width: '320px', height: '320px',
+              width: 'min(320px, 100vw)', height: 'min(320px, 100vw)',
               borderRadius: '50%',
               background: `radial-gradient(circle, ${currentAccent}30 0%, transparent 70%)`,
               filter: 'blur(24px)',
               transition: 'background 0.7s ease',
             }} />
 
-            {/* Mockup CSS */}
-            <div className="relative mx-auto" style={{
-              width: '240px', height: '498px',
+            {/* Mockup CSS — largeur fluide sur petit écran */}
+            <div
+              className="relative mx-auto w-[min(240px,78vw)] sm:w-[240px] aspect-[240/498]"
+              style={{
               background: 'linear-gradient(160deg, #1e1e20 0%, #0d0d0d 100%)',
               borderRadius: '44px',
               border: '1.5px solid rgba(255,255,255,0.16)',
@@ -272,7 +273,8 @@ const Fonctionnement: React.FC = () => {
               overflow: 'hidden',
               transition: 'box-shadow 0.7s ease',
               animation: 'fonc-float 5s ease-in-out infinite',
-            }}>
+            }}
+            >
               {/* Écran */}
               <div style={{ position: 'absolute', inset: '11px', borderRadius: '34px', overflow: 'hidden', background: '#000' }}>
                 {steps.map((step, i) => (
@@ -303,18 +305,24 @@ const Fonctionnement: React.FC = () => {
             </div>
 
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center items-center gap-2 mt-6">
               {steps.map((_, i) => (
                 <button
                   key={i}
+                  type="button"
                   onClick={() => setActive(i)}
-                  className="transition-all duration-300 rounded-full"
-                  style={{
-                    width: i === active ? '24px' : '6px',
-                    height: '6px',
-                    background: i === active ? '#3B7FFF' : 'rgba(255,255,255,0.2)',
-                  }}
-                />
+                  aria-label={`Étape ${i + 1}`}
+                  className="transition-all duration-300 rounded-full min-w-[44px] min-h-[44px] flex items-center justify-center p-3 -m-3"
+                >
+                  <span
+                    className="block rounded-full transition-all duration-300"
+                    style={{
+                      width: i === active ? '24px' : '6px',
+                      height: '6px',
+                      background: i === active ? '#3B7FFF' : 'rgba(255,255,255,0.2)',
+                    }}
+                  />
+                </button>
               ))}
             </div>
           </div>

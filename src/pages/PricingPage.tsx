@@ -131,7 +131,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
           style={{ background: 'radial-gradient(circle, #8DD8FF 0%, transparent 70%)' }} />
 
         {/* Hero text */}
-        <div className="relative z-10 text-center px-6 pt-28 pb-28">
+        <div className="relative z-10 text-center px-4 sm:px-6 pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-28 pb-16 sm:pb-28">
           <span className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-3 py-1.5 rounded-full"
             style={{ background: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}>
             Tarifs
@@ -140,15 +140,18 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
             style={{ fontSize: 'clamp(38px, 5.5vw, 72px)', letterSpacing: '-0.03em' }}>
             Simple. Transparent.
           </h1>
-          <p className="text-white/75 text-lg max-w-md mx-auto mb-10">
-            Commencez gratuitement. Évoluez selon vos besoins.<br />Aucun engagement, aucune surprise.
+          <p className="text-white/75 text-base sm:text-lg max-w-md mx-auto mb-8 sm:mb-10 px-1">
+            Commencez gratuitement. Évoluez selon vos besoins. Aucun engagement, aucune surprise.
           </p>
 
           {/* Toggle */}
-          <div className="inline-flex rounded-2xl p-1.5" style={{ background: 'rgba(0,0,0,0.15)' }}>
+          <div
+            className="inline-flex flex-col xs:flex-row w-full max-w-[280px] xs:max-w-none xs:w-auto mx-auto rounded-2xl p-1.5 gap-1.5 xs:gap-0"
+            style={{ background: 'rgba(0,0,0,0.15)' }}
+          >
             <button
               onClick={() => setYearly(false)}
-              className="px-7 py-2.5 rounded-xl text-sm font-bold transition-all"
+              className="w-full xs:w-auto px-5 sm:px-7 py-2.5 rounded-xl text-sm font-bold transition-all"
               style={!yearly
                 ? { background: 'white', color: '#3B7FFF', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }
                 : { color: 'rgba(255,255,255,0.65)' }}
@@ -157,7 +160,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
             </button>
             <button
               onClick={() => setYearly(true)}
-              className="px-7 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2"
+              className="w-full xs:w-auto px-5 sm:px-7 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
               style={yearly
                 ? { background: 'white', color: '#3B7FFF', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }
                 : { color: 'rgba(255,255,255,0.65)' }}
@@ -173,7 +176,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* ── Cards ── */}
-      <div className="max-w-6xl mx-auto w-full px-6 sm:px-10 lg:px-16 -mt-14 pb-24">
+      <div className="max-w-6xl mx-auto w-full px-4 sm:px-8 lg:px-16 -mt-10 sm:-mt-14 pb-16 sm:pb-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
           {plans.map((plan) => {
             const cardContent = (
@@ -285,8 +288,8 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* ── Guarantees ── */}
-      <div className="border-y border-gray-100 bg-gray-50 py-12 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      <div className="border-y border-gray-100 bg-gray-50 py-10 sm:py-12 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8 text-center">
           {[
             {
               icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" /></svg>,
@@ -307,15 +310,15 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
           ].map((g) => (
             <div key={g.label} className="flex flex-col items-center">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-blue-500" style={{ background: 'rgba(59,127,255,0.08)' }}>{g.icon}</div>
-              <p className="font-semibold text-gray-800 text-sm">{g.label}</p>
-              <p className="text-gray-400 text-xs mt-0.5">{g.sub}</p>
+              <p className="font-semibold text-gray-800 text-xs sm:text-sm leading-tight px-0.5">{g.label}</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs mt-0.5 leading-snug">{g.sub}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* ── FAQ ── */}
-      <div className="max-w-3xl mx-auto px-6 sm:px-10 py-24 w-full">
+      <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24 w-full">
         <h2 className="font-black text-gray-900 text-center mb-12"
           style={{ fontSize: 'clamp(24px, 3vw, 38px)', letterSpacing: '-0.02em' }}>
           Questions fréquentes
@@ -325,7 +328,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
             <div key={i} className="rounded-2xl overflow-hidden border transition-all"
               style={{ borderColor: openFaq === i ? '#3B7FFF' : '#f0f0f0' }}>
               <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left">
+                className="w-full flex items-center justify-between gap-3 px-4 sm:px-6 py-4 sm:py-5 text-left min-h-[52px]">
                 <span className="font-semibold text-gray-800 text-sm sm:text-base pr-4">{faq.q}</span>
                 <div className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all"
                   style={{
@@ -347,7 +350,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* ── CTA bottom ── */}
-      <div className="relative overflow-hidden px-6 py-20 text-center"
+      <div className="relative overflow-hidden px-4 sm:px-6 py-14 sm:py-20 text-center pb-[max(3.5rem,calc(2.5rem+env(safe-area-inset-bottom,0px)))]"
         style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}>
         <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-15"
           style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />

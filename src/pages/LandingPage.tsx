@@ -29,7 +29,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
 
       {/* ── HERO ── */}
       <section
-        className="relative min-h-screen overflow-hidden flex items-center"
+        className="relative min-h-[100svh] min-h-[100dvh] overflow-hidden flex items-center"
         style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}
       >
         {/* Glow haut-gauche — reflet cyan */}
@@ -43,15 +43,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
           style={{ background: 'radial-gradient(circle, #1A40CC 0%, transparent 65%)' }}
         />
 
-        <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-28 pb-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
+        <div className="relative w-full max-w-7xl mx-auto px-4 xs:px-5 sm:px-8 lg:px-16 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] pb-12 sm:pb-16 lg:pt-28 lg:pb-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
 
           {/* ── LEFT: text ── */}
-          <div className="flex-1 lg:pr-8 text-left">
+          <div className="flex-1 lg:pr-8 text-left w-full min-w-0">
 
             {/* Big title */}
             <h1
-              className="font-bold text-white leading-none mb-6"
-              style={{ fontSize: 'clamp(44px, 6.5vw, 82px)', lineHeight: 1.05 }}
+              className="font-bold text-white mb-5 sm:mb-6 break-words"
+              style={{ fontSize: 'clamp(1.875rem, 8.2vw, 5.125rem)', lineHeight: 1.08 }}
             >
               NotifCar —<br />
               votre voiture<br />
@@ -64,25 +64,51 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-10 max-w-md">
-              Rayure, accident, stationnement gênant —<br />
-              NotifCar vous alerte instantanément,<br />de manière anonyme et sécurisée.
+            <p className="text-white/60 text-[0.9375rem] sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-md">
+              Rayure, accident, stationnement gênant — NotifCar vous alerte instantanément, de manière anonyme et sécurisée.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-3 sm:gap-4">
               <button
                 onClick={() => setIsRegistrationModalOpen(true)}
-                className="bg-white text-[#1A2FA8] font-bold px-7 py-3.5 rounded-xl text-base hover:bg-blue-50 transition-colors shadow-xl"
+                className="w-full xs:w-auto bg-white text-[#1A2FA8] font-bold px-6 sm:px-7 py-3.5 rounded-xl text-sm sm:text-base hover:bg-blue-50 transition-colors shadow-xl text-center"
               >
                 Télécharger gratuitement →
               </button>
               <button
                 onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-white/60 hover:text-white font-medium text-base transition-colors"
+                className="w-full xs:w-auto text-white/70 hover:text-white font-medium text-sm sm:text-base transition-colors py-2 xs:py-0 text-center xs:text-left"
               >
                 Voir comment ça marche
               </button>
+            </div>
+
+            {/* Aperçu app — mobile uniquement (les mockups 3 téléphones restent desktop) */}
+            <div className="mt-10 flex justify-center lg:hidden w-full">
+              <div
+                className="relative mx-auto"
+                style={{
+                  width: 'min(200px, 52vw)',
+                  aspectRatio: '200 / 410',
+                }}
+              >
+                <div
+                  className="absolute inset-0 rounded-[2rem] sm:rounded-[2.25rem]"
+                  style={{
+                    background: 'linear-gradient(160deg, #1e1e20 0%, #0d0d0d 100%)',
+                    border: '1.5px solid rgba(255,255,255,0.16)',
+                    boxShadow: '0 24px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.1)',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div className="absolute inset-[9px] rounded-[1.5rem] overflow-hidden bg-black">
+                    <img src="/screen1.jpg" alt="" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-[68px] h-[20px] bg-black rounded-[14px] z-10" />
+                  <div className="absolute bottom-[14px] left-1/2 -translate-x-1/2 w-[72px] h-[3px] bg-white/25 rounded-full z-10" />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -225,7 +251,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
         </div>
 
         {/* Scroll arrow */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div
+          className="absolute left-1/2 -translate-x-1/2 animate-bounce hidden sm:block"
+          style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom, 0px))' }}
+        >
           <svg className="w-5 h-5 text-white/30" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
           </svg>

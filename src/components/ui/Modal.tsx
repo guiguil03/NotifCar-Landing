@@ -55,18 +55,19 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden overscroll-contain">
+      <div className="flex min-h-[100dvh] min-h-[100svh] items-center justify-center px-3 py-6 sm:px-4 sm:py-8 text-center pt-[max(1rem,env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]">
         {/* Overlay */}
         <div
           className="fixed inset-0 transition-opacity bg-neutral-900/50 backdrop-blur-xs"
           onClick={closeOnOverlayClick ? onClose : undefined}
+          aria-hidden="true"
         />
 
         {/* Modal */}
         <div
           className={`
-            inline-block w-full ${sizeClasses[size]} px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-2xl border border-neutral-200 shadow-xl sm:my-8 sm:align-middle sm:p-6 animate-slide-up
+            relative z-10 inline-block w-full max-h-[min(90dvh,900px)] overflow-y-auto overflow-x-hidden text-left align-middle transition-all transform bg-white rounded-2xl border border-neutral-200 shadow-xl p-5 sm:p-6 animate-slide-up ${sizeClasses[size]}
           `}
         >
           {/* Header */}

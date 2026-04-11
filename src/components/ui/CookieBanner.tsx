@@ -25,7 +25,7 @@ const CookieBanner: React.FC = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 sm:p-6">
+    <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom,0px)+0.75rem)]">
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-gray-100 px-5 py-4 sm:px-8 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         {/* Icon */}
         <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white"

@@ -29,7 +29,7 @@ const CGUPage: React.FC<CGUPageProps> = ({ onNavigate }) => {
 
       {/* Hero */}
       <div
-        className="relative overflow-hidden pt-28 pb-14 px-6 text-center"
+        className="relative overflow-hidden pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-28 pb-12 sm:pb-14 px-4 sm:px-6 text-center"
         style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}
       >
         <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-20"
@@ -52,7 +52,7 @@ const CGUPage: React.FC<CGUPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 max-w-3xl mx-auto w-full px-6 py-12">
+      <div className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 py-10 sm:py-12 pb-[max(2.5rem,calc(1.5rem+env(safe-area-inset-bottom,0px)))]">
         <Section title="1. Acceptation des conditions">
           En téléchargeant et en utilisant l'application Notifcar, vous acceptez sans réserve les présentes conditions générales d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.
         </Section>

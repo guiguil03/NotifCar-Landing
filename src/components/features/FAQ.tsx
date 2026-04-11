@@ -28,7 +28,7 @@ const FaqItemRow: React.FC<{
       <div
         id={contentId}
         className={`px-4 sm:px-5 pb-3 sm:pb-4 text-neutral-700 transition-[max-height,opacity] duration-300 ease-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[min(75vh,28rem)] overflow-y-auto opacity-100' : 'max-h-0 overflow-hidden opacity-0'
         }`}
       >
         <p className="pt-1 leading-relaxed text-sm sm:text-base">{item.answer}</p>

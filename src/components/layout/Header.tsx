@@ -95,11 +95,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
       `}</style>
 
       <header
-        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4"
+        className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:pt-4"
         style={{ opacity: mounted ? 1 : 0 }}
       >
         <div
-          className="header-bar max-w-6xl mx-auto flex items-center justify-between h-14 px-5 sm:px-7 rounded-2xl"
+          className="header-bar max-w-6xl mx-auto flex items-center justify-between min-h-[3.25rem] h-14 px-4 sm:px-7 rounded-2xl gap-2"
           style={{
             background: 'rgba(255,255,255,0.97)',
             boxShadow: '0 2px 20px rgba(0,0,0,0.08)',
@@ -176,10 +176,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
         {/* Menu mobile */}
         {isMenuOpen && (
           <div
-            className="mobile-menu md:hidden max-w-6xl mx-auto mt-2 rounded-2xl overflow-hidden"
+            className="mobile-menu md:hidden max-w-6xl mx-auto mt-2 rounded-2xl max-h-[min(70vh,calc(100dvh-8rem))] overflow-y-auto overflow-x-hidden shadow-lg"
             style={{ background: 'rgba(255,255,255,0.97)', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
           >
-            <div className="px-4 py-3 space-y-1">
+            <div className="px-3 sm:px-4 py-3 space-y-1">
               {navLinks.map((link, i) => (
                 <button
                   key={link.label}

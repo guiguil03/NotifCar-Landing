@@ -55,7 +55,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
       {/* ── Hero compact ── */}
       <div
-        className="relative overflow-hidden pt-28 pb-16 px-6 text-center"
+        className="relative overflow-hidden pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 text-center"
         style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}
       >
         <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-20"
@@ -71,7 +71,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           <h1 className="font-black text-white mb-4" style={{ fontSize: 'clamp(36px, 5vw, 60px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
             On vous répond sous 24h.
           </h1>
-          <p className="text-white/70 text-base max-w-md mx-auto">
+          <p className="text-white/70 text-sm sm:text-base max-w-md mx-auto px-1">
             Question, projet ou partenariat — notre équipe est disponible pour vous aider.
           </p>
 
@@ -79,11 +79,11 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* ── Formulaire principal ── */}
-      <div className="flex-1 flex items-start justify-center px-6 py-16">
+      <div className="flex-1 flex items-start justify-center px-4 sm:px-6 py-10 sm:py-16 pb-[max(2.5rem,calc(1.5rem+env(safe-area-inset-bottom,0px)))]">
         <div className="w-full max-w-2xl">
 
           {status === 'success' ? (
-            <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-12 text-center">
+            <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 sm:p-12 text-center">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
                 style={{ background: 'rgba(38,194,158,0.1)', border: '1px solid rgba(38,194,158,0.2)' }}>
                 <svg className="w-8 h-8" fill="none" stroke="#26C29E" strokeWidth="2.2" viewBox="0 0 24 24">
