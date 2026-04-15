@@ -32,9 +32,9 @@ const plans = [
   {
     name: 'Premium',
     tag: 'Plus populaire',
-    price: { monthly: '3,99', yearly: '2,99' },
+    price: { monthly: '5,99', yearly: '4,49' },
     suffix: '€',
-    desc: 'La protection complète pour les particuliers.',
+    desc: 'La protection complète pour les particuliers. Prix de lancement — sera à 7,99€/mois.',
     accent: '#3B7FFF',
     features: [
       { label: 'Notifications illimitées', ok: true },
@@ -99,13 +99,13 @@ const faqs = [
 ];
 
 const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
-  const [yearly, setYearly] = useState(false);
+  const yearly = false;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   React.useEffect(() => {
     document.title = 'Tarifs NotifCar — Basic, Premium et Entreprise';
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', 'Découvrez les offres NotifCar : version gratuite, Premium à 3,99€/mois et formule Entreprise sur mesure pour les flottes de véhicules.');
+    if (meta) meta.setAttribute('content', 'Découvrez les offres NotifCar : version gratuite, Premium à 5,99€/mois (prix de lancement) et formule Entreprise sur mesure pour les flottes de véhicules.');
   }, []);
 
   return (
@@ -144,34 +144,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
             Commencez gratuitement. Évoluez selon vos besoins. Aucun engagement, aucune surprise.
           </p>
 
-          {/* Toggle */}
-          <div
-            className="inline-flex flex-col xs:flex-row w-full max-w-[280px] xs:max-w-none xs:w-auto mx-auto rounded-2xl p-1.5 gap-1.5 xs:gap-0"
-            style={{ background: 'rgba(0,0,0,0.15)' }}
-          >
-            <button
-              onClick={() => setYearly(false)}
-              className="w-full xs:w-auto px-5 sm:px-7 py-2.5 rounded-xl text-sm font-bold transition-all"
-              style={!yearly
-                ? { background: 'white', color: '#3B7FFF', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }
-                : { color: 'rgba(255,255,255,0.65)' }}
-            >
-              Mensuel
-            </button>
-            <button
-              onClick={() => setYearly(true)}
-              className="w-full xs:w-auto px-5 sm:px-7 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
-              style={yearly
-                ? { background: 'white', color: '#3B7FFF', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }
-                : { color: 'rgba(255,255,255,0.65)' }}
-            >
-              Annuel
-              <span className="text-[10px] font-black px-1.5 py-0.5 rounded-full"
-                style={{ background: 'rgba(38,194,158,0.3)', color: '#26C29E' }}>
-                −25%
-              </span>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -226,9 +198,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
                   )}
                 </div>
 
-                {yearly && plan.price.monthly !== 'Devis' && plan.price.monthly !== '0' && (
-                  <p className="text-xs text-gray-400 mb-3">au lieu de {plan.price.monthly}€ · facturé annuellement</p>
-                )}
 
                 <p className="text-sm text-gray-500 mb-7 leading-relaxed">{plan.desc}</p>
 
