@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { type Page } from '../../hooks/useNavigation';
 import notifcarLogo from '../../assets/notifcarlogo.png';
+import { RegistrationModal } from '../modals';
 
 interface HeaderProps {
   onNavigate?: (page: Page) => void;
@@ -14,6 +15,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeLink, setActiveLink] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openDownload = () => {
+    setIsMenuOpen(false);
+    if (onOpenRegistration) onOpenRegistration();
+    else setIsModalOpen(true);
+  };
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 50);
@@ -145,7 +153,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
               </>
             ) : (
               <button
-                onClick={() => onOpenRegistration?.()}
+                onClick={openDownload}
                 className="cta-btn text-sm font-semibold px-5 py-2 rounded-xl text-white transition-all hover:opacity-90 active:scale-95"
                 style={{ background: '#3B7FFF' }}
               >
@@ -197,7 +205,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
                   </button>
                 ) : (
                   <button
-                    onClick={() => { setIsMenuOpen(false); onOpenRegistration?.(); }}
+                    onClick={openDownload}
                     className="w-full text-sm font-semibold px-4 py-3 rounded-xl text-white text-center active:opacity-80"
                     style={{ background: '#3B7FFF' }}
                   >
@@ -209,6 +217,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
           </div>
         )}
       </header>
+
+      <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

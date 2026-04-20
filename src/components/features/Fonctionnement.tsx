@@ -219,7 +219,9 @@ const Fonctionnement: React.FC = () => {
             <div className="pt-4 flex flex-col xs:flex-row flex-wrap gap-3">
               {/* Apple App Store */}
               <a
-                href="#"
+                href="https://apps.apple.com/fr/app/notifcar/id6755294079"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 w-full xs:w-auto"
                 style={{ background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.3)' }}
               >

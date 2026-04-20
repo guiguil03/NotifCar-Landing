@@ -12,12 +12,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 pt-14 sm:pt-20 pb-[max(2.5rem,calc(1.25rem+env(safe-area-inset-bottom,0px)))]">
 
         {/* Haut : brand + colonnes */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 sm:gap-12 pb-10 sm:pb-14 border-b" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+        <div className="flex flex-col md:flex-row gap-10 md:gap-8 lg:gap-16 pb-10 sm:pb-14 border-b" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
 
           {/* Brand */}
-          <div className="sm:col-span-2 md:col-span-4">
+          <div className="flex-shrink-0 md:w-72">
             <img src={notifcarLogo} alt="NotifCar" className="h-5 w-auto mb-5" style={{ filter: 'brightness(0) invert(1)' }} />
-            <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.45)' }}>
+            <p className="text-sm leading-relaxed mb-6 max-w-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>
               NotifCar protège votre véhicule 24h/24 grâce à un système d'alertes anonymes par QR code. Simple, rapide, sécurisé.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -46,81 +46,85 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 Instagram
               </a>
             </div>
-            
           </div>
 
-          {/* Produit */}
-          <div className="sm:col-span-1 md:col-span-2 md:col-start-6">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Produit</h3>
-            <ul className="space-y-3">
-              {[
-                { label: 'Comment ça marche ?', action: () => onNavigate?.('landing') },
-                { label: 'Fonctionnalités', action: () => onNavigate?.('landing') },
-                { label: 'Tarifs', action: () => onNavigate?.('pricing') },
-              ].map((l) => (
-                <li key={l.label}>
-                  <button onClick={l.action} className="text-sm transition-colors hover:text-white text-left" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                    {l.label}
+          {/* Colonnes liens — grille 3 cols sur mobile aussi */}
+          <div className="flex-1 grid grid-cols-3 gap-6 sm:gap-8">
+
+            {/* Produit */}
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 sm:mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Produit</h3>
+              <ul className="space-y-3">
+                {[
+                  { label: 'Comment ça marche ?', action: () => onNavigate?.('landing') },
+                  { label: 'Fonctionnalités', action: () => onNavigate?.('landing') },
+                  { label: 'Tarifs', action: () => onNavigate?.('pricing') },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <button onClick={l.action} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                      {l.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Entreprise */}
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 sm:mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Entreprise</h3>
+              <ul className="space-y-3">
+                {[
+                  { label: 'Nous contacter', action: () => onNavigate?.('contact') },
+                  { label: 'Pour les flottes', action: () => onNavigate?.('contact') },
+                  { label: 'Partenaires', action: () => onNavigate?.('contact') },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <button onClick={l.action} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                      {l.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Légal */}
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 sm:mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Légal</h3>
+              <ul className="space-y-3">
+                <li>
+                  <button onClick={() => onNavigate?.('privacy')} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                    Confidentialité
                   </button>
                 </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Entreprise */}
-          <div className="md:col-span-2">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Entreprise</h3>
-            <ul className="space-y-3">
-              {[
-                { label: 'Nous contacter', action: () => onNavigate?.('contact') },
-                { label: 'Pour les flottes', action: () => onNavigate?.('contact') },
-                { label: 'Partenaires', action: () => onNavigate?.('contact') },
-              ].map((l) => (
-                <li key={l.label}>
-                  <button onClick={l.action} className="text-sm transition-colors hover:text-white text-left" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                    {l.label}
+                <li>
+                  <button onClick={() => onNavigate?.('cgu')} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                    CGU
                   </button>
                 </li>
-              ))}
-            </ul>
-          </div>
+                {['Cookies', 'RGPD'].map((l) => (
+                  <li key={l}>
+                    <a href="#" className="text-xs sm:text-sm transition-colors hover:text-white leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Légal */}
-          <div className="md:col-span-2">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>Légal</h3>
-            <ul className="space-y-3">
-              <li>
-                <button onClick={() => onNavigate?.('privacy')} className="text-sm transition-colors hover:text-white text-left" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                  Confidentialité
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate?.('cgu')} className="text-sm transition-colors hover:text-white text-left" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                  CGU
-                </button>
-              </li>
-              {['Cookies', 'RGPD'].map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-sm transition-colors hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
         {/* Bas */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+        <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-center sm:text-left" style={{ color: 'rgba(255,255,255,0.3)' }}>
             © {new Date().getFullYear()} NotifCar. Tous droits réservés. Hébergé en France.
           </p>
           <a
-            href="mailto:notifcar@contact.com"
+            href="mailto:contact@notifcar.fr"
             className="text-xs transition-colors hover:text-white"
             style={{ color: 'rgba(255,255,255,0.35)' }}
           >
-            notifcar@contact.com
+            contact@notifcar.fr
           </a>
         </div>
       </div>
