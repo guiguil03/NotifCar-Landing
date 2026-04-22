@@ -15,7 +15,7 @@ const plans = [
     desc: 'Pour découvrir Notifcar sans engagement.',
     accent: '#6b7280',
     features: [
-      { label: '5 notifications / mois', ok: true },
+      { label: '2 notifications / mois', ok: true },
       { label: '1 véhicule', ok: true },
       { label: 'Historique 7 jours', ok: true },
       { label: 'QR code standard', ok: true },

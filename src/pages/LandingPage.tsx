@@ -20,7 +20,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Header
         onNavigate={onNavigate}
         onScrollToSection={onScrollToSection}

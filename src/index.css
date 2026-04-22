@@ -6,6 +6,7 @@
 html {
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
+  background: linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%);
 }
 
 html, body {
@@ -17,6 +18,7 @@ html, body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #6EC6F5;
 }
 
 body {
