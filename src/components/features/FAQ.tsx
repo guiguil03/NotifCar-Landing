@@ -1,5 +1,11 @@
 import React, { useId, useMemo, useState, useEffect } from 'react';
-import { FAQ_ITEMS, type FaqItem } from '../../data/faq';
+import { useTranslation } from 'react-i18next';
+
+interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
 
 const FaqItemRow: React.FC<{
   item: FaqItem;
@@ -38,13 +44,15 @@ const FaqItemRow: React.FC<{
 };
 
 const FAQ: React.FC = () => {
+  const { t } = useTranslation();
   const [openId, setOpenId] = useState<string | null>(null);
 
-  // JSON-LD (FAQPage)
+  const items = t('faq.items', { returnObjects: true }) as FaqItem[];
+
   const jsonLd = useMemo(() => ({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ_ITEMS.map((q) => ({
+    mainEntity: items.map((q) => ({
       '@type': 'Question',
       name: q.question,
       acceptedAnswer: {
@@ -52,30 +60,30 @@ const FAQ: React.FC = () => {
         text: q.answer,
       },
     })),
-  }), []);
+  }), [items]);
 
   useEffect(() => {
     const hash = window.location.hash?.replace('#', '');
     if (hash) {
-      const exists = FAQ_ITEMS.find((f) => f.id === hash);
+      const exists = items.find((f) => f.id === hash);
       if (exists) setOpenId(hash);
     }
-  }, []);
+  }, [items]);
 
   return (
     <section id="faq" className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="section-title mb-3 sm:mb-4 bg-gradient-to-r from-indigo-700 via-indigo-600 to-teal-500 bg-clip-text text-transparent">
-            Foire aux questions
+            {t('faq.title')}
           </h2>
           <p className="text-neutral-600 text-base sm:text-lg">
-            Les réponses aux questions les plus fréquentes sur NotifCar
+            {t('faq.subtitle')}
           </p>
         </div>
 
         <div className="space-y-3 sm:space-y-4">
-          {FAQ_ITEMS.map((item) => (
+          {items.map((item) => (
             <FaqItemRow
               key={item.id}
               item={item}
@@ -85,7 +93,6 @@ const FAQ: React.FC = () => {
           ))}
         </div>
 
-        {/* JSON-LD for SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -96,5 +103,3 @@ const FAQ: React.FC = () => {
 };
 
 export default FAQ;
-
-

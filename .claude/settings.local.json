@@ -7,7 +7,8 @@
       "Bash(npm run:*)",
       "WebFetch(domain:www.unify-run.fr)",
       "WebFetch(domain:unify-run.fr)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npx tsc *)"
     ]
   }
 }

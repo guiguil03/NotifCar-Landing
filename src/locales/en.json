@@ -1,0 +1,485 @@
+{
+  "header": {
+    "nav": {
+      "howItWorks": "How it works",
+      "features": "Features",
+      "pricing": "Pricing",
+      "contact": "Contact"
+    },
+    "cta": "Download the app",
+    "logout": "Log out"
+  },
+  "hero": {
+    "titleLine1": "NotifCar —",
+    "titleLine2": "your car",
+    "titleHighlight": "protected in real time.",
+    "subtitle": "Scratch, accident, obstructive parking — NotifCar alerts you instantly, anonymously and securely.",
+    "ctaDownload": "Download for free →",
+    "ctaHowItWorks": "See how it works"
+  },
+  "qrcode": {
+    "badge": "Why Notifcar",
+    "title": "Your car got hit.",
+    "titleHighlight": "You weren't there.",
+    "subtitle": "Every day, millions of drivers discover damage to their vehicle — no witness, no culprit, no recourse.",
+    "stats": [
+      { "value": "11M", "label": "car incidents per year in France" },
+      { "value": "73%", "label": "of responsible parties flee the scene" },
+      { "value": "€1,200", "label": "average cost with no identified party" },
+      { "value": "0", "label": "evidence available in most cases" }
+    ],
+    "quoteText1": "You park your car in the morning. In the evening, you find a",
+    "quoteHighlight1": "dented bumper",
+    "quoteText2": "and a note that says... nothing. Without proof, your insurer pays,",
+    "quoteHighlight2": "your bonus takes the hit.",
+    "quoteSub": "A scenario experienced by millions of people every year — that NotifCar can change."
+  },
+  "scenarios": {
+    "badge": "Real scenarios",
+    "title": "It happens every day.",
+    "titleHighlight": "NotifCar changes everything.",
+    "withoutLabel": "Without NotifCar",
+    "withLabel": "With NotifCar",
+    "lossesTitle": "What you lose without NotifCar",
+    "lossesSubtitle": "Per unresolved incident",
+    "items": [
+      {
+        "tag": "Everyday",
+        "title": "Obstructing vehicle",
+        "description": "A car is blocking your exit, a delivery or an access point. You're in a hurry but have no way to reach the owner.",
+        "sans": "Waiting, stress, delays. You're at the mercy of chance.",
+        "avec": "One scan is enough to alert the driver. They're notified immediately and can move their vehicle."
+      },
+      {
+        "tag": "Recurring · Conflict",
+        "title": "Residential parking space",
+        "description": "Someone is parked in your private spot when you get home. You can't park, and there's no one to contact.",
+        "sans": "You drive around, wait, or park elsewhere. Tension with neighbours, no way to act quickly.",
+        "avec": "You scan and immediately contact the owner. Resolved in minutes, without conflict."
+      },
+      {
+        "tag": "Professional",
+        "title": "Company fleet",
+        "description": "A fleet vehicle comes back with a dent. No one knows where or when it happened.",
+        "sans": "Internal dispute, difficult insurance claims, cost absorbed by the company.",
+        "avec": "Every incident is timestamped, geolocated and automatically documented."
+      }
+    ],
+    "losses": [
+      { "label": "Insurance excess", "value": "-€300" },
+      { "label": "Bonus malus penalty", "value": "-€400" },
+      { "label": "Repair with no recourse", "value": "-€500" },
+      { "label": "Time lost in paperwork", "value": "~6h" }
+    ]
+  },
+  "howItWorks": {
+    "badge": "Simple & fast",
+    "title": "How does NotifCar work?",
+    "subtitle": "Three steps. A few seconds. Zero hassle.",
+    "appStorePrefix": "Download on the",
+    "appStoreName": "App Store",
+    "googlePlayPrefix": "Coming soon on",
+    "googlePlayName": "Google Play",
+    "stepDotLabel": "Step {{number}}",
+    "steps": [
+      {
+        "id": "01",
+        "title": "Stick your QR code",
+        "description": "When you sign up, you receive a unique NotifCar QR code. Stick it on your windshield — discreet and weather-resistant."
+      },
+      {
+        "id": "02",
+        "title": "A passer-by scans the QR code",
+        "description": "Anyone can scan the NotifCar QR code with their phone, without downloading an app. They choose a reason and send the alert anonymously."
+      },
+      {
+        "id": "03",
+        "title": "You're alerted immediately",
+        "description": "You receive a push notification in under 3 seconds with the reason for the report, the exact address and the time — wherever you are."
+      }
+    ],
+    "details": [
+      { "title": "Native scan", "desc": "Native camera — no app required.", "tags": [] },
+      { "title": "Reasons", "desc": "", "tags": ["Impact", "Scratch", "Obstructive parking", "Other"] },
+      { "title": "< 3 seconds", "desc": "Alert received in real time, anywhere in the world.", "tags": [] }
+    ]
+  },
+  "features": {
+    "badge": "NotifCar Features",
+    "title": "Everything you need with NotifCar",
+    "subtitle": "Designed to be simple to use, powerful in an incident.",
+    "items": [
+      { "title": "Real-time alerts", "desc": "Push notification in under 3 seconds as soon as a report is made, wherever you are." },
+      { "title": "Full anonymity", "desc": "Passers-by report without creating an account. No personal data collected from the reporter." },
+      { "title": "Precise geolocation", "desc": "Exact address and GPS coordinates of the report, stored in your incident history." },
+      { "title": "Automatic report", "desc": "Every incident generates a complete timestamped report ready to send to your insurer in one click." },
+      { "title": "Unique QR code", "desc": "A discreet personal QR code, weather-resistant, ready to scan without an app." },
+      { "title": "Secure data", "desc": "Hosted in France, end-to-end encryption. Your data is never sold." }
+    ]
+  },
+  "profiles": {
+    "badge": "For every profile",
+    "title": "Tailored to each profile",
+    "subtitle": "Individual, professional or institutional — NotifCar adapts to your reality.",
+    "cta": "Contact us →",
+    "items": [
+      {
+        "title": "Individuals",
+        "subtitle": "24/7 protection with zero effort",
+        "points": ["React immediately to any incident", "Simplify your insurance process", "Park with peace of mind"]
+      },
+      {
+        "title": "Pro fleets",
+        "subtitle": "Centralised dashboard per vehicle",
+        "points": ["Alerts per assigned driver", "Automated incident reports", "Reduced claim costs"]
+      },
+      {
+        "title": "Garages & dealerships",
+        "subtitle": "Showroom fleet protection",
+        "points": ["Differentiating service for your customers", "Real-time incident management", "Simple integration with your CRM"]
+      },
+      {
+        "title": "Insurers",
+        "subtitle": "Certified proof for your files",
+        "points": ["Reduced claims fraud", "Accelerated claims processing", "Partner API available"]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Answers to the most common questions about NotifCar",
+    "items": [
+      {
+        "id": "usage",
+        "question": "How does NotifCar work?",
+        "answer": "Simply scan the QR code on a vehicle. You can then send an anonymous, secure alert to the owner (e.g. lights left on, obstructing vehicle, etc.). No personal data is exchanged — everything goes through the app."
+      },
+      {
+        "id": "pourquoi",
+        "question": "Why NotifCar?",
+        "answer": "NotifCar makes it easy for drivers to communicate in case of an emergency or obstruction, without direct contact. It's a simple, respectful act of mutual aid."
+      },
+      {
+        "id": "Alerte",
+        "question": "Do I need an account to send an alert?",
+        "answer": "No. Scanning a QR code lets you send an alert without mandatory registration. The owner receives the alert via their secure account."
+      },
+      {
+        "id": "proprietaire",
+        "question": "Can I use it if I don't have a car?",
+        "answer": "Yes! You can always scan a QR code and notify a driver if needed. NotifCar is built on community solidarity."
+      },
+      {
+        "id": "collecte",
+        "question": "Does NotifCar collect my location data?",
+        "answer": "No. We don't track your position in real time. Only the voluntary QR scan triggers an exchange."
+      },
+      {
+        "id": "price",
+        "question": "Is the app free?",
+        "answer": "NotifCar offers a free version at launch so everyone can discover the concept. A Premium plan will follow to enhance the experience (instant messaging, alert history, vehicle profile customisation…)."
+      },
+      {
+        "id": "spam",
+        "question": "What if my QR code is stolen or copied?",
+        "answer": "You can deactivate or regenerate your QR code from your user account in one click."
+      },
+      {
+        "id": "devices",
+        "question": "Which devices will NotifCar be available on?",
+        "answer": "NotifCar will be available on iOS and Android at launch. A progressive web app (PWA) is also planned for access without installation."
+      }
+    ]
+  },
+  "footer": {
+    "description": "NotifCar protects your vehicle 24/7 with an anonymous QR code alert system. Simple, fast, secure.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "links": {
+      "howItWorks": "How it works",
+      "features": "Features",
+      "pricing": "Pricing",
+      "contact": "Contact us",
+      "fleets": "For fleets",
+      "partners": "Partners",
+      "privacy": "Privacy",
+      "cgu": "Terms of use",
+      "cookies": "Cookies",
+      "rgpd": "GDPR"
+    },
+    "copyright": "© {{year}} NotifCar. All rights reserved. Hosted in France."
+  },
+  "pricing": {
+    "badge": "Pricing",
+    "title": "Simple. Transparent.",
+    "subtitle": "Start for free. Scale as you need. No commitment, no surprises.",
+    "month": "/mo",
+    "onRequest": "On request",
+    "popular": "Most popular",
+    "custom": "Custom",
+    "faqTitle": "Frequently asked questions",
+    "ctaTitle": "A question about our plans?",
+    "ctaSubtitle": "Our team helps you choose the right plan.",
+    "ctaCta": "Talk to the team →",
+    "guarantees": [
+      { "label": "Secure data", "sub": "Hosted in France" },
+      { "label": "No commitment", "sub": "Cancel anytime" },
+      { "label": "7 days free", "sub": "Premium plan" },
+      { "label": "Responsive support", "sub": "Reply < 24h" }
+    ],
+    "plans": [
+      {
+        "name": "Basic",
+        "desc": "Discover Notifcar with no commitment.",
+        "cta": "Get started for free",
+        "features": [
+          { "label": "2 notifications / month", "ok": true },
+          { "label": "1 vehicle", "ok": true },
+          { "label": "7-day history", "ok": true },
+          { "label": "Standard QR code", "ok": true },
+          { "label": "Email support", "ok": true },
+          { "label": "Instant messaging", "ok": false },
+          { "label": "Activity reports", "ok": false },
+          { "label": "Multi-vehicle", "ok": false }
+        ]
+      },
+      {
+        "name": "Premium",
+        "desc": "Full protection for individuals. Launch price — will be €7.99/mo.",
+        "cta": "Choose Premium",
+        "features": [
+          { "label": "Unlimited notifications", "ok": true },
+          { "label": "3 vehicles", "ok": true },
+          { "label": "Full history", "ok": true },
+          { "label": "Custom QR code", "ok": true },
+          { "label": "Priority support", "ok": true },
+          { "label": "Instant messaging", "ok": true },
+          { "label": "Advanced activity reports", "ok": true },
+          { "label": "Multi-vehicle", "ok": false }
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "desc": "For fleets, garages and insurers.",
+        "cta": "Contact us",
+        "features": [
+          { "label": "Unlimited notifications", "ok": true },
+          { "label": "Unlimited vehicles", "ok": true },
+          { "label": "Full history", "ok": true },
+          { "label": "Enterprise QR code", "ok": true },
+          { "label": "Dedicated 24/7 support", "ok": true },
+          { "label": "Custom messaging", "ok": true },
+          { "label": "Multi-vehicle reports", "ok": true },
+          { "label": "Multi-user management", "ok": true }
+        ]
+      }
+    ],
+    "pricingFaqs": [
+      {
+        "q": "Can I change plans at any time?",
+        "a": "Yes, you can upgrade or downgrade your subscription at any time. Billing is adjusted on a pro-rata basis."
+      },
+      {
+        "q": "Is there a trial period?",
+        "a": "7-day free trial on the Premium plan, no credit card required. Full access to all features during that period."
+      },
+      {
+        "q": "How does annual billing work?",
+        "a": "With annual billing, you save 25% compared to monthly. You're billed once for 12 months."
+      },
+      {
+        "q": "What's included in the Enterprise plan?",
+        "a": "Unlimited access, centralised dashboard, automated reports and possible API integration. Custom pricing based on your needs."
+      },
+      {
+        "q": "Is my data secure?",
+        "a": "Hosted in France, end-to-end encryption, GDPR compliant. Your data is never sold."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "We'll reply within 24h.",
+    "subtitle": "Question, project or partnership — our team is available to help.",
+    "formTitle": "Send us a message",
+    "formSubtitle": "All fields are required.",
+    "nameLabel": "Name",
+    "namePlaceholder": "John Smith",
+    "emailLabel": "Email",
+    "emailPlaceholder": "john@email.com",
+    "profileLabel": "You are",
+    "profilePlaceholder": "Select your profile",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your need, project or questions...",
+    "submit": "Send message →",
+    "sending": "Sending…",
+    "rgpd": "Protected data · GDPR · Hosted in France",
+    "error": "An error occurred, please try again.",
+    "successTitle": "Message sent!",
+    "successBody": "Your message has been sent.\nWe'll reply within 24h.",
+    "backHome": "Back to home",
+    "linkedin": "Follow us on LinkedIn",
+    "profiles": ["Individual", "Professional fleet", "Garage / Dealership", "Insurer", "Other"]
+  },
+  "modal": {
+    "title": "Download NotifCar",
+    "subtitle": "Available on iPhone now.",
+    "appStorePrefix": "Download on the",
+    "appStoreName": "App Store",
+    "googlePlayPrefix": "Available on",
+    "googlePlayName": "Google Play",
+    "comingSoon": "Coming soon",
+    "footer": "Free · iOS 15+ · Android coming soon",
+    "closeLabel": "Close"
+  },
+  "cookies": {
+    "title": "This site uses cookies",
+    "description": "We use cookies to improve your experience and analyse traffic.",
+    "learnMore": "Learn more",
+    "acceptAll": "Accept all",
+    "essentialOnly": "Essential only"
+  },
+  "privacy": {
+    "heroBadge": "GDPR · Notifcar SAS",
+    "heroTitle": "Privacy policy",
+    "heroSubtitle": "Information on the collection, use and protection of your personal data.",
+    "intro": "This policy informs you about how we collect, use, store and protect your personal data, in compliance with the GDPR and the French Data Protection Act.",
+    "art1Title": "Article 1 — Data controller identity",
+    "art1Body": "NOTIFCAR — Simplified joint-stock company (SAS)\nShare capital: €500\nRegistered office: 78 Avenue des Champs-Élysées, 75008 Paris, France\nSIREN: 100 680 594",
+    "art1Email": "Email: contact@notifcar.fr",
+    "art2Title": "Article 2 — Scope of application",
+    "art2Body": "This policy applies to all processing carried out in the context of:",
+    "art2B1": "use of the Notifcar application and website",
+    "art2B2": "creating and managing user accounts",
+    "art2B3": "use of Notifcar QR codes",
+    "art2B4": "sending notifications or reports",
+    "art2B5": "authentication via Apple or Google",
+    "art2B6": "push notifications",
+    "art2B7": "payment or subscription services",
+    "art3Title": "Article 3 — Categories of data collected",
+    "art3Sub1": "3.1 Identification data",
+    "art3B1_1": "First and last name, possible username",
+    "art3B1_2": "Email address, phone number (if provided)",
+    "art3B1_3": "User identifier",
+    "art3Sub2": "3.2 Authentication data",
+    "art3B2_1": "Encrypted password (if classic account)",
+    "art3B2_2": "Apple Sign-In or Google Sign-In identifier",
+    "art3B2_3": "Data required to secure access",
+    "art3Sub3": "3.3 Service-related data",
+    "art3B3_1": "QR code identifier and associated vehicle information",
+    "art3B3_2": "Content of alerts or reports sent",
+    "art3B3_3": "Date and time of notifications",
+    "art3Sub4": "3.4 Technical data",
+    "art3B4_1": "IP address, connection logs",
+    "art3B4_2": "Device type, operating system, application version",
+    "art3B4_3": "Technical identifiers required for security",
+    "art3Sub5": "3.5 Notification data",
+    "art3B5_1": "Device notification identifier",
+    "art3B5_2": "Notification preferences, send or receive status",
+    "art3Sub6": "3.6 Payment data",
+    "art3Body6": "Payments are processed by Stripe. Notifcar does not retain complete banking data when processed directly by this provider.",
+    "art3Sub7": "3.7 Audience measurement data",
+    "art3Body7": "Notifcar uses Google Analytics to measure audience and improve the user experience.",
+    "art4Title": "Article 4 — Purposes of processing",
+    "art4B1": "Create and manage user accounts",
+    "art4B2": "Enable use of the Notifcar service",
+    "art4B3": "Associate a QR code with a vehicle",
+    "art4B4": "Transmit alerts and push notifications",
+    "art4B5": "Enable Apple or Google login",
+    "art4B6": "Secure the application and prevent fraud",
+    "art4B7": "Improve the application and ensure maintenance",
+    "art4B8": "Manage subscriptions and payments",
+    "art4B9": "Respond to user requests",
+    "art4B10": "Comply with legal and regulatory obligations",
+    "art5Title": "Article 5 — Legal bases for processing",
+    "art5Sub1": "Contract performance",
+    "art5Body1": "Account creation, use of services, sending notifications, subscription management.",
+    "art5Sub2": "Legitimate interest",
+    "art5Body2": "Platform security, fraud prevention, service improvement.",
+    "art5Sub3": "Consent",
+    "art5Body3": "Certain trackers and marketing communications.",
+    "art5Sub4": "Legal obligation",
+    "art5Body4": "Accounting, tax or regulatory obligations.",
+    "art6Title": "Article 6 — Mandatory data",
+    "art6Body": "Some data is required to create an account, use the service, receive notifications or secure the application. Without this data, certain Notifcar features may be unavailable.",
+    "art7Title": "Article 7 — Data recipients",
+    "art7B1": "Authorised Notifcar staff",
+    "art7B2": "Hosting provider IONOS",
+    "art7B3": "Payment provider Stripe",
+    "art7B4": "Analytics service Google Analytics",
+    "art7B5": "Apple and Google authentication services",
+    "art7B6": "Technical providers required for operation",
+    "art7B7": "Administrative or judicial authorities if required by law",
+    "art8Title": "Article 8 — Data retention periods",
+    "art8R1L": "User account data",
+    "art8R1V": "3 years after end of relationship",
+    "art8R2L": "Alerts and messages",
+    "art8R2V": "30 days maximum",
+    "art8R3L": "Technical logs",
+    "art8R3V": "6 months to 1 year",
+    "art8R4L": "Prospecting data",
+    "art8R4V": "3 years after last contact",
+    "art8R5L": "Billing data",
+    "art8R5V": "10 years (accounting obligations)",
+    "art8R6L": "Dispute-related data",
+    "art8R6V": "Up to 5 years",
+    "art9Title": "Article 9 — Data hosting",
+    "art9Body": "Data is hosted by IONOS. Notifcar implements the necessary measures to ensure confidentiality, integrity and availability of data.",
+    "art10Title": "Article 10 — Data security",
+    "art10Body": "Notifcar implements technical and organisational measures to protect data:",
+    "art10B1": "Access control and secure authentication",
+    "art10B2": "Communications encryption",
+    "art10B3": "Technical event logging",
+    "art11Title": "Article 11 — Data transfers",
+    "art11Body": "Through the use of certain providers (Google Analytics, Stripe, Apple, Google), some data may be transferred outside the European Union. These transfers are governed by legal mechanisms compliant with the GDPR.",
+    "art12Title": "Article 12 — Cookies and trackers",
+    "art12Body1": "The application or website may use cookies or SDKs to:",
+    "art12B1": "Ensure the service operates and connections are secure",
+    "art12B2": "Measure audience and improve the user experience",
+    "art12Body2": "Where necessary, the user's consent is obtained.",
+    "art13Title": "Article 13 — Push notifications",
+    "art13Body1": "Notifcar may send push notifications to inform you:",
+    "art13B1": "Of a report concerning your vehicle",
+    "art13B2": "Of an alert or event related to your account",
+    "art13Body2": "You can disable these notifications at any time in your device settings.",
+    "art14Title": "Article 14 — Login via Apple or Google",
+    "art14Body": "You can create an account via Apple Sign-In or Google Sign-In. In this context, some data may be transmitted to Notifcar by these authentication services.",
+    "art15Title": "Article 15 — User rights",
+    "art15Body1": "Under the GDPR, you have the following rights:",
+    "art15B1": "Right of access, rectification and erasure",
+    "art15B2": "Right to restriction of processing and objection",
+    "art15B3": "Right to data portability and withdrawal of consent",
+    "art15B4": "Right to define post-mortem directives",
+    "art15Body2": "Any request can be sent to:\ncontact@notifcar.fr",
+    "art16Title": "Article 16 — Complaints",
+    "art16Body": "You may lodge a complaint with the competent supervisory authority.\n\nIn France:\nCNIL – Commission Nationale de l'Informatique et des Libertés\nwww.cnil.fr",
+    "art17Title": "Article 17 — Policy changes",
+    "art17Body": "Notifcar reserves the right to modify this policy at any time. The applicable version is the one published in the application or on the website."
+  },
+  "cgu": {
+    "heroBadge": "Last updated: January 2025",
+    "heroTitle": "Terms of use",
+    "heroSubtitle": "Rules for using the Notifcar service, subscriptions, liability and applicable law.",
+    "s1Title": "1. Acceptance of terms",
+    "s1Body": "By downloading and using the Notifcar application, you unconditionally accept these terms of use. If you do not accept these terms, please do not use the application.",
+    "s2Title": "2. Service description",
+    "s2Body": "Notifcar is a mobile application that allows vehicle owners to be alerted when needed via a QR code placed on their vehicle. The service includes vehicle management, notification reception and a messaging system between drivers.",
+    "s3Title": "3. Registration and user account",
+    "s3Body": "To use Notifcar, you must create an account with a valid email address. You are responsible for the confidentiality of your credentials and all activities carried out from your account. Any fraudulent use must be reported immediately.",
+    "s4Title": "4. Acceptable use",
+    "s4Body": "You agree to use Notifcar only for legitimate and lawful purposes. It is prohibited to use the application to harass other users, spread illegal content, attempt to compromise the security of the service, or for unauthorised commercial purposes.",
+    "s5Title": "5. Intellectual property",
+    "s5Body": "The Notifcar application, its logo, interfaces, texts and features are the exclusive property of their creators and are protected by intellectual property laws. Any unauthorised reproduction is prohibited.",
+    "s6Title": "6. Subscriptions and payments",
+    "s6Body": "Some Notifcar features are subject to a paid subscription. Prices are clearly displayed in the application. Subscriptions are billed via Stripe and can be cancelled at any time from your subscriber account.",
+    "s7Title": "7. Limitation of liability",
+    "s7Body": "Notifcar shall not be liable for indirect, incidental or consequential damages arising from the use or inability to use the service. Our liability is limited to the amount paid for the subscription over the last 12 months.",
+    "s8Title": "8. Changes to terms",
+    "s8Body": "We reserve the right to modify these terms at any time. Changes take effect upon publication in the application. Continued use of Notifcar after modification constitutes acceptance of the new terms.",
+    "s9Title": "9. Applicable law",
+    "s9Body": "These terms are governed by French law. Any dispute relating to their interpretation or execution will be subject to the exclusive jurisdiction of the French courts.",
+    "s10Title": "10. Contact",
+    "s10Body": "For any questions regarding these terms, you can contact us at: contact@notifcar.fr"
+  }
+}

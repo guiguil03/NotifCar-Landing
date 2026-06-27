@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
 import { type Page } from '../hooks/useNavigation';
 
@@ -6,101 +7,29 @@ interface PricingPageProps {
   onNavigate?: (page: Page) => void;
 }
 
-const plans = [
-  {
-    name: 'Basic',
-    tag: null,
-    price: { monthly: '0', yearly: '0' },
-    suffix: '€',
-    desc: 'Pour découvrir Notifcar sans engagement.',
-    accent: '#6b7280',
-    features: [
-      { label: '2 notifications / mois', ok: true },
-      { label: '1 véhicule', ok: true },
-      { label: 'Historique 7 jours', ok: true },
-      { label: 'QR code standard', ok: true },
-      { label: 'Support email', ok: true },
-      { label: 'Messagerie instantanée', ok: false },
-      { label: "Rapports d'activité", ok: false },
-      { label: 'Multi-véhicules', ok: false },
-    ],
-    cta: 'Commencer gratuitement',
-    ctaStyle: 'ghost' as const,
-    isPopular: false,
-    isEnterprise: false,
-  },
-  {
-    name: 'Premium',
-    tag: 'Plus populaire',
-    price: { monthly: '5,99', yearly: '4,49' },
-    suffix: '€',
-    desc: 'La protection complète pour les particuliers. Prix de lancement — sera à 7,99€/mois.',
-    accent: '#3B7FFF',
-    features: [
-      { label: 'Notifications illimitées', ok: true },
-      { label: '3 véhicules', ok: true },
-      { label: 'Historique complet', ok: true },
-      { label: 'QR code personnalisé', ok: true },
-      { label: 'Support prioritaire', ok: true },
-      { label: 'Messagerie instantanée', ok: true },
-      { label: "Rapports d'activité avancés", ok: true },
-      { label: 'Multi-véhicules', ok: false },
-    ],
-    cta: 'Choisir Premium',
-    ctaStyle: 'filled' as const,
-    isPopular: true,
-    isEnterprise: false,
-  },
-  {
-    name: 'Entreprise',
-    tag: 'Sur mesure',
-    price: { monthly: 'Devis', yearly: 'Devis' },
-    suffix: '',
-    desc: 'Pour les flottes, garages et assureurs.',
-    accent: '#26C29E',
-    features: [
-      { label: 'Notifications illimitées', ok: true },
-      { label: 'Véhicules illimités', ok: true },
-      { label: 'Historique complet', ok: true },
-      { label: 'QR code entreprise', ok: true },
-      { label: 'Support dédié 24/7', ok: true },
-      { label: 'Messagerie personnalisée', ok: true },
-      { label: 'Rapports multi-véhicules', ok: true },
-      { label: 'Gestion multi-utilisateurs', ok: true },
-    ],
-    cta: 'Nous contacter',
-    ctaStyle: 'teal' as const,
-    isPopular: false,
-    isEnterprise: true,
-  },
-];
-
-const faqs = [
-  {
-    q: 'Puis-je changer de plan à tout moment ?',
-    a: 'Oui, vous pouvez évoluer ou réduire votre abonnement à tout moment. La facturation est ajustée au prorata.',
-  },
-  {
-    q: "Y a-t-il une période d'essai ?",
-    a: "7 jours d'essai gratuit sur le plan Premium, sans carte bancaire. Accès à toutes les fonctionnalités pendant cette période.",
-  },
-  {
-    q: 'Comment fonctionne la facturation annuelle ?',
-    a: 'En annuel, vous économisez 25% par rapport au mensuel. Vous êtes facturé en une seule fois pour 12 mois.',
-  },
-  {
-    q: "Qu'est-ce qui est inclus dans le plan Entreprise ?",
-    a: "Accès illimité, dashboard centralisé, rapports automatisés et intégration API possible. Tarif sur mesure selon vos besoins.",
-  },
-  {
-    q: 'Mes données sont-elles sécurisées ?',
-    a: 'Hébergement en France, chiffrement bout-en-bout, conformité RGPD. Vos données ne sont jamais revendues.',
-  },
+const PLAN_META = [
+  { accent: '#6b7280', ctaStyle: 'ghost' as const, isPopular: false, isEnterprise: false, tag: null, price: { monthly: '0', yearly: '0' }, suffix: '€' },
+  { accent: '#3B7FFF', ctaStyle: 'filled' as const, isPopular: true,  isEnterprise: false, tag: 'popular', price: { monthly: '5,99', yearly: '4,49' }, suffix: '€' },
+  { accent: '#26C29E', ctaStyle: 'teal'   as const, isPopular: false, isEnterprise: true,  tag: 'custom', price: { monthly: 'Devis', yearly: 'Devis' }, suffix: '' },
 ];
 
 const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
+  const { t } = useTranslation();
   const yearly = false;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const planTranslations = t('pricing.plans', { returnObjects: true }) as { name: string; desc: string; cta: string; features: { label: string; ok: boolean }[] }[];
+  const faqs = t('pricing.pricingFaqs', { returnObjects: true }) as { q: string; a: string }[];
+  const guarantees = t('pricing.guarantees', { returnObjects: true }) as { label: string; sub: string }[];
+
+  const plans = PLAN_META.map((meta, i) => ({ ...meta, ...planTranslations[i] }));
+
+  const guaranteeIcons = [
+    <svg key="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" /></svg>,
+    <svg key="nolock" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 14l-4-4 4-4M5 10h14a4 4 0 010 8h-1" /></svg>,
+    <svg key="clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+    <svg key="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
+  ];
 
   React.useEffect(() => {
     document.title = 'Tarifs NotifCar — Basic, Premium et Entreprise';
@@ -119,41 +48,34 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
         }
       `}</style>
 
-      {/* ── Hero bleu ── */}
-      <div
-        className="relative overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}
-      >
-        {/* Glow décoratif */}
+      {/* Hero */}
+      <div className="relative overflow-hidden"
+        style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}>
         <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-20"
           style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />
         <div className="pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full opacity-15"
           style={{ background: 'radial-gradient(circle, #8DD8FF 0%, transparent 70%)' }} />
-
-        {/* Hero text */}
         <div className="relative z-10 text-center px-4 sm:px-6 pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-28 pb-16 sm:pb-28">
           <span className="inline-block text-xs font-bold tracking-widest uppercase mb-5 px-3 py-1.5 rounded-full"
             style={{ background: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)' }}>
-            Tarifs
+            {t('pricing.badge')}
           </span>
           <h1 className="font-black text-white leading-none mb-5"
             style={{ fontSize: 'clamp(38px, 5.5vw, 72px)', letterSpacing: '-0.03em' }}>
-            Simple. Transparent.
+            {t('pricing.title')}
           </h1>
           <p className="text-white/75 text-base sm:text-lg max-w-md mx-auto mb-8 sm:mb-10 px-1">
-            Commencez gratuitement. Évoluez selon vos besoins. Aucun engagement, aucune surprise.
+            {t('pricing.subtitle')}
           </p>
-
         </div>
       </div>
 
-      {/* ── Cards ── */}
+      {/* Cards */}
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-8 lg:px-16 -mt-10 sm:-mt-14 pb-16 sm:pb-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
           {plans.map((plan) => {
             const cardContent = (
-              <div
-                className="relative flex flex-col h-full bg-white rounded-2xl"
+              <div className="relative flex flex-col h-full bg-white rounded-2xl"
                 style={{
                   padding: '2rem',
                   borderRadius: plan.isPopular ? '23px' : '20px',
@@ -161,9 +83,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
                     ? '0 20px 60px rgba(59,127,255,0.18), 0 4px 16px rgba(0,0,0,0.08)'
                     : '0 2px 16px rgba(0,0,0,0.06)',
                   marginTop: plan.isPopular ? '-8px' : '0',
-                }}
-              >
-                {/* Top accent bar */}
+                }}>
                 <div style={{
                   position: 'absolute', top: 0, left: '24px', right: '24px', height: '3px',
                   borderRadius: '0 0 4px 4px',
@@ -172,38 +92,33 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
                     : plan.isEnterprise ? '#26C29E' : '#e5e7eb',
                 }} />
 
-                {/* Badge */}
                 {plan.tag && (
                   <span className="inline-block text-[10px] font-black uppercase tracking-widest mb-5 px-3 py-1 rounded-full w-fit"
                     style={plan.isPopular
                       ? { background: 'rgba(59,127,255,0.1)', color: '#3B7FFF', border: '1px solid rgba(59,127,255,0.2)' }
                       : { background: 'rgba(38,194,158,0.1)', color: '#26C29E', border: '1px solid rgba(38,194,158,0.2)' }}>
-                    {plan.tag}
+                    {t(`pricing.${plan.tag}`)}
                   </span>
                 )}
 
                 <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: plan.accent }}>{plan.name}</p>
 
-                {/* Price */}
                 <div className="mb-1">
                   {plan.price.monthly === 'Devis' ? (
-                    <p className="font-black text-gray-900 text-3xl">Sur devis</p>
+                    <p className="font-black text-gray-900 text-3xl">{t('pricing.onRequest')}</p>
                   ) : (
                     <div className="flex items-baseline gap-1">
                       <span className="font-black text-gray-900" style={{ fontSize: '3rem', lineHeight: 1, letterSpacing: '-0.03em' }}>
                         {yearly ? plan.price.yearly : plan.price.monthly}
                       </span>
-                      <span className="text-gray-400 text-sm">{plan.suffix}/mois</span>
+                      <span className="text-gray-400 text-sm">{plan.suffix}{t('pricing.month')}</span>
                     </div>
                   )}
                 </div>
 
-
                 <p className="text-sm text-gray-500 mb-7 leading-relaxed">{plan.desc}</p>
-
                 <div className="h-px bg-gray-100 mb-6" />
 
-                {/* Features */}
                 <ul className="space-y-3 flex-1 mb-8">
                   {plan.features.map((f) => (
                     <li key={f.label} className="flex items-center gap-3">
@@ -225,7 +140,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
                   ))}
                 </ul>
 
-                {/* CTA */}
                 {plan.ctaStyle === 'filled' ? (
                   <button className="w-full py-4 rounded-xl text-sm font-black text-white transition-all hover:opacity-90"
                     style={{ background: 'linear-gradient(135deg, #3B7FFF, #5B9FFF)', boxShadow: '0 8px 24px rgba(59,127,255,0.35)' }}>
@@ -256,29 +170,14 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* ── Guarantees ── */}
+      {/* Guarantees */}
       <div className="border-y border-gray-100 bg-gray-50 py-10 sm:py-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8 text-center">
-          {[
-            {
-              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" /></svg>,
-              label: 'Données sécurisées', sub: 'Hébergement France',
-            },
-            {
-              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 14l-4-4 4-4M5 10h14a4 4 0 010 8h-1" /></svg>,
-              label: 'Sans engagement', sub: 'Résiliation libre',
-            },
-            {
-              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-              label: '7 jours offerts', sub: 'Plan Premium',
-            },
-            {
-              icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
-              label: 'Support réactif', sub: 'Réponse < 24h',
-            },
-          ].map((g) => (
+          {guarantees.map((g, i) => (
             <div key={g.label} className="flex flex-col items-center">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-blue-500" style={{ background: 'rgba(59,127,255,0.08)' }}>{g.icon}</div>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-blue-500" style={{ background: 'rgba(59,127,255,0.08)' }}>
+                {guaranteeIcons[i]}
+              </div>
               <p className="font-semibold text-gray-800 text-xs sm:text-sm leading-tight px-0.5">{g.label}</p>
               <p className="text-gray-400 text-[10px] sm:text-xs mt-0.5 leading-snug">{g.sub}</p>
             </div>
@@ -286,11 +185,11 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* ── FAQ ── */}
+      {/* FAQ */}
       <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24 w-full">
         <h2 className="font-black text-gray-900 text-center mb-12"
           style={{ fontSize: 'clamp(24px, 3vw, 38px)', letterSpacing: '-0.02em' }}>
-          Questions fréquentes
+          {t('pricing.faqTitle')}
         </h2>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
@@ -318,21 +217,21 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* ── CTA bottom ── */}
+      {/* CTA bottom */}
       <div className="relative overflow-hidden px-4 sm:px-6 py-14 sm:py-20 text-center pb-[max(3.5rem,calc(2.5rem+env(safe-area-inset-bottom,0px)))]"
         style={{ background: 'linear-gradient(160deg, #6EC6F5 0%, #3B7FFF 42%, #2048D8 75%, #1535B8 100%)' }}>
         <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-15"
           style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />
         <h2 className="font-black text-white mb-4" style={{ fontSize: 'clamp(24px, 3vw, 40px)', letterSpacing: '-0.02em' }}>
-          Une question sur nos offres ?
+          {t('pricing.ctaTitle')}
         </h2>
         <p className="text-white/70 text-base mb-9 max-w-sm mx-auto">
-          Notre équipe vous aide à choisir la formule adaptée.
+          {t('pricing.ctaSubtitle')}
         </p>
         <button onClick={() => onNavigate?.('contact')}
           className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-sm transition-all hover:opacity-90"
           style={{ background: 'white', color: '#3B7FFF', boxShadow: '0 8px 28px rgba(0,0,0,0.15)' }}>
-          Parler à l'équipe →
+          {t('pricing.ctaCta')}
         </button>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
 import { RegistrationModal } from '../components/modals';
 import QRCodeSection from '../components/features/QRCodeSection';
@@ -17,6 +18,7 @@ interface LandingPageProps {
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection }) => {
+  const { t } = useTranslation();
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
   return (
@@ -53,19 +55,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               className="font-bold text-white mb-5 sm:mb-6 break-words"
               style={{ fontSize: 'clamp(1.875rem, 8.2vw, 5.125rem)', lineHeight: 1.08 }}
             >
-              NotifCar —<br />
-              votre voiture<br />
+              {t('hero.titleLine1')}<br />
+              {t('hero.titleLine2')}<br />
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'linear-gradient(90deg, #BFCEFF 0%, #26C29E 100%)' }}
               >
-                protégée en temps réel.
+                {t('hero.titleHighlight')}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-white/60 text-[0.9375rem] sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-md">
-              Rayure, accident, stationnement gênant — NotifCar vous alerte instantanément, de manière anonyme et sécurisée.
+              {t('hero.subtitle')}
             </p>
 
             {/* CTAs */}
@@ -74,17 +76,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 onClick={() => setIsRegistrationModalOpen(true)}
                 className="w-full xs:w-auto bg-white text-[#1A2FA8] font-bold px-6 sm:px-7 py-3.5 rounded-xl text-sm sm:text-base hover:bg-blue-50 transition-colors shadow-xl text-center"
               >
-                Télécharger gratuitement →
+                {t('hero.ctaDownload')}
               </button>
               <button
                 onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full xs:w-auto text-white/70 hover:text-white font-medium text-sm sm:text-base transition-colors py-2 xs:py-0 text-center xs:text-left"
               >
-                Voir comment ça marche
+                {t('hero.ctaHowItWorks')}
               </button>
             </div>
 
-            {/* Aperçu app — mobile uniquement (les mockups 3 téléphones restent desktop) */}
+            {/* Aperçu app — mobile uniquement */}
             <div className="mt-10 flex justify-center lg:hidden w-full">
               <div
                 className="relative mx-auto"
@@ -130,7 +132,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 0%, 100% { transform: rotate(10deg) translateY(0px); }
                 50% { transform: rotate(10deg) translateY(-7px); }
               }
-
               @keyframes phone-enter-left {
                 0%   { opacity: 0; transform: rotate(-10deg) translateX(-60px) translateY(40px) scale(0.88); }
                 60%  { opacity: 1; transform: rotate(-10deg) translateX(4px) translateY(-3px) scale(1.01); }
@@ -146,7 +147,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 55%  { opacity: 1; transform: translateX(-50%) translateY(-8px) scale(1.02); }
                 100% { opacity: 1; transform: translateX(-50%) translateY(0px) scale(1); }
               }
-
               .phone-left-anim {
                 animation:
                   phone-enter-left 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both,
@@ -170,19 +170,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               filter: 'blur(20px)',
             }} />
 
-            {/* ── Téléphone gauche (incliné à gauche) ── */}
-            <div className="absolute phone-left-anim" style={{
-              left: '10px', bottom: '20px', zIndex: 1,
-            }}>
+            {/* Téléphone gauche */}
+            <div className="absolute phone-left-anim" style={{ left: '10px', bottom: '20px', zIndex: 1 }}>
               <div style={{
                 width: '210px', height: '436px',
                 background: 'linear-gradient(160deg, #1c1c1e 0%, #111 100%)',
                 borderRadius: '40px',
                 border: '1.5px solid rgba(255,255,255,0.13)',
                 boxShadow: '0 0 0 1px rgba(0,0,0,0.8), 0 40px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07)',
-                overflow: 'hidden',
-                position: 'relative',
-                opacity: 0.88,
+                overflow: 'hidden', position: 'relative', opacity: 0.88,
               }}>
                 <div style={{ position: 'absolute', inset: '10px', borderRadius: '32px', overflow: 'hidden', background: '#000' }}>
                   <img src="/screen2.jpg" alt="Interface NotifCar - réception d'alerte sur le véhicule" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -195,19 +191,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               </div>
             </div>
 
-            {/* ── Téléphone droit (incliné à droite) ── */}
-            <div className="absolute phone-right-anim" style={{
-              right: '10px', bottom: '20px', zIndex: 1,
-            }}>
+            {/* Téléphone droit */}
+            <div className="absolute phone-right-anim" style={{ right: '10px', bottom: '20px', zIndex: 1 }}>
               <div style={{
                 width: '210px', height: '436px',
                 background: 'linear-gradient(160deg, #1c1c1e 0%, #111 100%)',
                 borderRadius: '40px',
                 border: '1.5px solid rgba(255,255,255,0.13)',
                 boxShadow: '0 0 0 1px rgba(0,0,0,0.8), 0 40px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07)',
-                overflow: 'hidden',
-                position: 'relative',
-                opacity: 0.88,
+                overflow: 'hidden', position: 'relative', opacity: 0.88,
               }}>
                 <div style={{ position: 'absolute', inset: '10px', borderRadius: '32px', overflow: 'hidden', background: '#000' }}>
                   <img src="/screen3.jpg" alt="Interface NotifCar - scan du QR code et envoi d'alerte anonyme" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -220,19 +212,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
               </div>
             </div>
 
-            {/* ── Téléphone central (droit, devant) ── */}
-            <div className="absolute phone-center-anim" style={{
-              left: '50%', bottom: '0px',
-              zIndex: 3,
-            }}>
+            {/* Téléphone central */}
+            <div className="absolute phone-center-anim" style={{ left: '50%', bottom: '0px', zIndex: 3 }}>
               <div style={{
                 width: '230px', height: '478px',
                 background: 'linear-gradient(160deg, #1e1e20 0%, #0d0d0d 100%)',
                 borderRadius: '44px',
                 border: '1.5px solid rgba(255,255,255,0.18)',
                 boxShadow: '0 0 0 1px rgba(0,0,0,0.9), 0 50px 90px rgba(10,20,120,0.55), 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12)',
-                overflow: 'hidden',
-                position: 'relative',
+                overflow: 'hidden', position: 'relative',
               }}>
                 <div style={{ position: 'absolute', inset: '11px', borderRadius: '34px', overflow: 'hidden', background: '#000' }}>
                   <img src="/screen1.jpg" alt="App NotifCar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -245,9 +233,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 45%)', borderRadius: '44px', pointerEvents: 'none', zIndex: 20 }} />
               </div>
             </div>
-
           </div>
-
         </div>
 
         {/* Scroll arrow */}
@@ -261,31 +247,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
         </div>
       </section>
 
-      {/* QR Code Section */}
       <QRCodeSection />
-
-      {/* Scenarios Section */}
       <Scenarios />
-
-      {/* Fonctionnement Section */}
       <Fonctionnement />
-
-      {/* Fonctionnalités Section */}
       <Fonctionnalites />
-
-      {/* Profils Section */}
       <Profils onNavigate={onNavigate} />
-
-      {/* FAQ Section */}
       <FAQ />
-
-      {/* Footer Section */}
       <Footer onNavigate={onNavigate} />
-
-      {/* Cookie Banner */}
       <CookieBanner />
 
-      {/* Registration Modal */}
       <RegistrationModal
         isOpen={isRegistrationModalOpen}
         onClose={() => setIsRegistrationModalOpen(false)}

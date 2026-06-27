@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/AuthContext';
 import { type Page } from '../../hooks/useNavigation';
 import notifcarLogo from '../../assets/notifcarlogo.png';
 import { RegistrationModal } from '../modals';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 interface HeaderProps {
   onNavigate?: (page: Page) => void;
@@ -11,6 +13,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
+  const { t } = useTranslation();
   const { isAuthenticated, user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -39,10 +42,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
   };
 
   const navLinks = [
-    { label: 'Comment ça marche ?', action: () => scrollTo('how-it-works') },
-    { label: 'Fonctionnalités', action: () => scrollTo('features') },
-    { label: 'Tarifs', action: () => onNavigate?.('pricing') },
-    { label: 'Contact', action: () => onNavigate?.('contact') },
+    { label: t('header.nav.howItWorks'), action: () => scrollTo('how-it-works') },
+    { label: t('header.nav.features'), action: () => scrollTo('features') },
+    { label: t('header.nav.pricing'), action: () => onNavigate?.('pricing') },
+    { label: t('header.nav.contact'), action: () => onNavigate?.('contact') },
   ];
 
   return (
@@ -136,11 +139,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
             ))}
           </nav>
 
-          {/* CTA desktop */}
+          {/* CTA + Language switcher desktop */}
           <div
             className="hidden md:flex items-center gap-3"
             style={{ animation: 'nav-fade-in 0.4s cubic-bezier(0.22,1,0.36,1) 0.45s both' }}
           >
+            <LanguageSwitcher />
             {isAuthenticated ? (
               <>
                 <span className="text-sm text-gray-500">{user?.name}</span>
@@ -148,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
                   onClick={handleLogout}
                   className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-300 transition-all"
                 >
-                  Déconnexion
+                  {t('header.logout')}
                 </button>
               </>
             ) : (
@@ -157,7 +161,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
                 className="cta-btn text-sm font-semibold px-5 py-2 rounded-xl text-white transition-all hover:opacity-90 active:scale-95"
                 style={{ background: '#3B7FFF' }}
               >
-                Télécharger l'app
+                {t('header.cta')}
               </button>
             )}
           </div>
@@ -198,10 +202,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
                   {link.label}
                 </button>
               ))}
-              <div className="pt-2 pb-1 border-t border-gray-100 mt-2">
+              <div className="pt-2 pb-1 border-t border-gray-100 mt-2 flex items-center justify-between px-2">
+                <LanguageSwitcher />
+              </div>
+              <div className="pb-1">
                 {isAuthenticated ? (
                   <button onClick={handleLogout} className="w-full text-sm font-medium px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-left">
-                    Déconnexion
+                    {t('header.logout')}
                   </button>
                 ) : (
                   <button
@@ -209,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
                     className="w-full text-sm font-semibold px-4 py-3 rounded-xl text-white text-center active:opacity-80"
                     style={{ background: '#3B7FFF' }}
                   >
-                    Télécharger l'app
+                    {t('header.cta')}
                   </button>
                 )}
               </div>

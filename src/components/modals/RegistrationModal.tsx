@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Modal from '../ui/Modal';
 
 interface RegistrationModalProps {
@@ -7,12 +8,14 @@ interface RegistrationModalProps {
 }
 
 const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md">
       <button
         onClick={onClose}
         className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 transition-colors"
-        aria-label="Fermer"
+        aria-label={t('modal.closeLabel')}
       >
         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -20,25 +23,19 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
       </button>
 
       <div className="text-center mb-8">
-        <div
-          className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-5"
-          style={{ background: 'rgba(59,127,255,0.1)' }}
-        >
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-5" style={{ background: 'rgba(59,127,255,0.1)' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="#3B7FFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
             <path d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z" />
             <path d="M8.5 12l2.5 2.5 4.5-4.5" />
           </svg>
         </div>
         <h2 className="font-extrabold text-gray-900 text-2xl mb-2" style={{ letterSpacing: '-0.02em' }}>
-          Télécharger NotifCar
+          {t('modal.title')}
         </h2>
-        <p className="text-gray-400 text-sm">
-          Disponible sur iPhone dès maintenant.
-        </p>
+        <p className="text-gray-400 text-sm">{t('modal.subtitle')}</p>
       </div>
 
       <div className="space-y-3">
-        {/* App Store */}
         <a
           href="https://apps.apple.com/fr/app/notifcar/id6755294079"
           target="_blank"
@@ -51,15 +48,14 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             </svg>
           </div>
           <div className="flex-1 text-left">
-            <div className="text-xs text-gray-400 mb-0.5">Télécharger sur l'</div>
-            <div className="font-bold text-gray-900 text-base">App Store</div>
+            <div className="text-xs text-gray-400 mb-0.5">{t('modal.appStorePrefix')}</div>
+            <div className="font-bold text-gray-900 text-base">{t('modal.appStoreName')}</div>
           </div>
           <svg className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 18l6-6-6-6" />
           </svg>
         </a>
 
-        {/* Google Play — bientôt */}
         <div className="flex items-center gap-4 w-full px-5 py-4 rounded-2xl border border-gray-100 bg-gray-50 cursor-not-allowed">
           <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gray-200 flex items-center justify-center">
             <svg viewBox="0 0 24 24" fill="#9ca3af" className="w-6 h-6">
@@ -67,18 +63,16 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
             </svg>
           </div>
           <div className="flex-1 text-left">
-            <div className="text-xs text-gray-400 mb-0.5">Disponible sur</div>
-            <div className="font-bold text-gray-400 text-base">Google Play</div>
+            <div className="text-xs text-gray-400 mb-0.5">{t('modal.googlePlayPrefix')}</div>
+            <div className="font-bold text-gray-400 text-base">{t('modal.googlePlayName')}</div>
           </div>
           <span className="text-xs font-semibold text-gray-400 bg-gray-200 px-2.5 py-1 rounded-full">
-            Bientôt
+            {t('modal.comingSoon')}
           </span>
         </div>
       </div>
 
-      <p className="text-center text-xs text-gray-300 mt-6">
-        Gratuit · iOS 15+ · Android prochainement
-      </p>
+      <p className="text-center text-xs text-gray-300 mt-6">{t('modal.footer')}</p>
     </Modal>
   );
 };
