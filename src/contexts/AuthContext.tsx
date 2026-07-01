@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
 interface User {
@@ -53,12 +55,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     checkAuth();
   }, []);
 
-  const login = async (email: string, _password: string) => {
+  const login = async (email: string) => {
     setIsLoading(true);
     try {
       // Simuler un appel API de connexion
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Mock user data
       const userData: User = {
         id: '1',
@@ -69,23 +71,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       };
 
       const token = 'mock_jwt_token_' + Date.now();
-      
+
       localStorage.setItem('notifcar_token', token);
       localStorage.setItem('notifcar_user', JSON.stringify(userData));
       setUser(userData);
-    } catch (error) {
+    } catch {
       throw new Error('Erreur lors de la connexion');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const register = async (name: string, email: string, _password: string) => {
+  const register = async (name: string, email: string) => {
     setIsLoading(true);
     try {
       // Simuler un appel API d'inscription
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Mock user data
       const userData: User = {
         id: '1',
@@ -94,11 +96,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       };
 
       const token = 'mock_jwt_token_' + Date.now();
-      
+
       localStorage.setItem('notifcar_token', token);
       localStorage.setItem('notifcar_user', JSON.stringify(userData));
       setUser(userData);
-    } catch (error) {
+    } catch {
       throw new Error('Erreur lors de l\'inscription');
     } finally {
       setIsLoading(false);

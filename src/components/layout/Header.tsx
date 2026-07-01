@@ -1,20 +1,20 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/AuthContext';
-import { type Page } from '../../hooks/useNavigation';
-import notifcarLogo from '../../assets/notifcarlogo.png';
+import { useAppNavigation } from '../../hooks/useNavigation';
 import { RegistrationModal } from '../modals';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 interface HeaderProps {
-  onNavigate?: (page: Page) => void;
-  onScrollToSection?: (sectionId: string) => void;
   onOpenRegistration?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
+const Header: React.FC<HeaderProps> = ({ onOpenRegistration }) => {
   const { t } = useTranslation();
   const { isAuthenticated, user, logout } = useAuth();
+  const { navigateTo } = useAppNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeLink, setActiveLink] = useState<string | null>(null);
@@ -31,11 +31,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
     return () => clearTimeout(t);
   }, []);
 
-  const handleLogout = () => { logout(); onNavigate?.('landing'); };
+  const handleLogout = () => { logout(); navigateTo('landing'); };
 
   const scrollTo = (id: string) => {
     setIsMenuOpen(false);
-    onNavigate?.('landing');
+    navigateTo('landing');
     setTimeout(() => {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
@@ -44,8 +44,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
   const navLinks = [
     { label: t('header.nav.howItWorks'), action: () => scrollTo('how-it-works') },
     { label: t('header.nav.features'), action: () => scrollTo('features') },
-    { label: t('header.nav.pricing'), action: () => onNavigate?.('pricing') },
-    { label: t('header.nav.contact'), action: () => onNavigate?.('contact') },
+    { label: t('header.nav.pricing'), action: () => navigateTo('pricing') },
+    { label: t('header.nav.contact'), action: () => navigateTo('contact') },
   ];
 
   return (
@@ -118,8 +118,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenRegistration }) => {
           }}
         >
           {/* Logo */}
-          <button onClick={() => onNavigate?.('landing')} className="flex-shrink-0 logo-anim">
-            <img src={notifcarLogo} alt="NotifCar" className="h-5 w-auto" />
+          <button onClick={() => navigateTo('landing')} className="flex-shrink-0 logo-anim">
+            <img src="/notifcarlogo.png" alt="NotifCar" className="h-5 w-auto" />
           </button>
 
           {/* Nav desktop */}

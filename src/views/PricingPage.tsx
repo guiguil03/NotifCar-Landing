@@ -1,11 +1,9 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
-import { type Page } from '../hooks/useNavigation';
-
-interface PricingPageProps {
-  onNavigate?: (page: Page) => void;
-}
+import { useAppNavigation } from '../hooks/useNavigation';
 
 const PLAN_META = [
   { accent: '#6b7280', ctaStyle: 'ghost' as const, isPopular: false, isEnterprise: false, tag: null, price: { monthly: '0', yearly: '0' }, suffix: '€' },
@@ -13,8 +11,9 @@ const PLAN_META = [
   { accent: '#26C29E', ctaStyle: 'teal'   as const, isPopular: false, isEnterprise: true,  tag: 'custom', price: { monthly: 'Devis', yearly: 'Devis' }, suffix: '' },
 ];
 
-const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
+const PricingPage: React.FC = () => {
   const { t } = useTranslation();
+  const { navigateTo } = useAppNavigation();
   const yearly = false;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -31,15 +30,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
     <svg key="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
   ];
 
-  React.useEffect(() => {
-    document.title = 'Tarifs NotifCar — Basic, Premium et Entreprise';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', 'Découvrez les offres NotifCar : version gratuite, Premium à 5,99€/mois (prix de lancement) et formule Entreprise sur mesure pour les flottes de véhicules.');
-  }, []);
-
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Header onNavigate={onNavigate} />
+      <Header />
       <style>{`
         @keyframes gradient-border {
           0%   { background-position: 0% 50%; }
@@ -146,7 +139,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
                     {plan.cta}
                   </button>
                 ) : plan.ctaStyle === 'teal' ? (
-                  <button onClick={() => onNavigate?.('contact')}
+                  <button onClick={() => navigateTo('contact')}
                     className="w-full py-4 rounded-xl text-sm font-black transition-all hover:opacity-80"
                     style={{ background: 'rgba(38,194,158,0.1)', color: '#26C29E', border: '1px solid rgba(38,194,158,0.25)' }}>
                     {plan.cta}
@@ -228,7 +221,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
         <p className="text-white/70 text-base mb-9 max-w-sm mx-auto">
           {t('pricing.ctaSubtitle')}
         </p>
-        <button onClick={() => onNavigate?.('contact')}
+        <button onClick={() => navigateTo('contact')}
           className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-sm transition-all hover:opacity-90"
           style={{ background: 'white', color: '#3B7FFF', boxShadow: '0 8px 28px rgba(0,0,0,0.15)' }}>
           {t('pricing.ctaCta')}

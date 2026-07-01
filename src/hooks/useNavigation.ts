@@ -1,27 +1,37 @@
-import { useState, useCallback } from 'react';
+'use client';
+
+import { useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 
 export type Page = 'landing' | 'auth' | 'dashboard' | 'profile' | 'contact' | 'pricing' | 'privacy' | 'cgu';
 
-export const useNavigation = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('landing');
+const PAGE_PATHS: Record<Page, string> = {
+  landing: '/',
+  contact: '/contact',
+  pricing: '/tarifs',
+  privacy: '/confidentialite',
+  cgu: '/cgu',
+  auth: '/',
+  dashboard: '/',
+  profile: '/',
+};
+
+export const useAppNavigation = () => {
+  const router = useRouter();
 
   const navigateTo = useCallback((page: Page) => {
-    setCurrentPage(page);
-  }, []);
+    router.push(PAGE_PATHS[page] ?? '/');
+  }, [router]);
 
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   }, []);
 
-  return {
-    currentPage,
-    navigateTo,
-    scrollToSection
-  };
+  return { navigateTo, scrollToSection };
 };

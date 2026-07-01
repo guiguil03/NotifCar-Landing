@@ -1,26 +1,19 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
-import { type Page } from '../hooks/useNavigation';
-
-interface ContactPageProps {
-  onNavigate?: (page: Page) => void;
-}
+import { useAppNavigation } from '../hooks/useNavigation';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
-const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
+const ContactPage: React.FC = () => {
   const { t } = useTranslation();
+  const { navigateTo } = useAppNavigation();
   const [form, setForm] = useState({ name: '', email: '', profil: '', message: '' });
   const [status, setStatus] = useState<Status>('idle');
 
   const profiles = t('contact.profiles', { returnObjects: true }) as string[];
-
-  React.useEffect(() => {
-    document.title = 'Contacter NotifCar — Réponse sous 24h';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', "Contactez l'équipe NotifCar pour toute question, projet ou partenariat. Réponse garantie sous 24h.");
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -46,7 +39,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header onNavigate={onNavigate} />
+      <Header />
 
       {/* Hero */}
       <div
@@ -86,7 +79,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               <p className="text-gray-400 text-sm mb-8 leading-relaxed whitespace-pre-line">
                 {t('contact.successBody')}
               </p>
-              <button onClick={() => onNavigate?.('landing')}
+              <button onClick={() => navigateTo('landing')}
                 className="px-8 py-3.5 rounded-xl font-black text-sm text-white hover:opacity-90 transition-opacity"
                 style={{ background: 'linear-gradient(135deg, #3B7FFF, #5B9FFF)', boxShadow: '0 8px 24px rgba(59,127,255,0.28)' }}>
                 {t('contact.backHome')}

@@ -1,14 +1,10 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const { name, email, profil, message } = req.body as {
+export async function POST(req: Request) {
+  const { name, email, profil, message } = (await req.json()) as {
     name: string;
     email: string;
     profil: string;
@@ -16,7 +12,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   };
 
   if (!name || !email || !profil || !message) {
-    return res.status(400).json({ error: 'Tous les champs sont obligatoires.' });
+    return NextResponse.json({ error: 'Tous les champs sont obligatoires.' }, { status: 400 });
   }
 
   try {
@@ -104,9 +100,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 </html>`,
     });
 
-    return res.status(200).json({ success: true });
+    return NextResponse.json({ success: true });
   } catch (err) {
     console.error('Resend error:', err);
-    return res.status(500).json({ error: 'Erreur lors de l\'envoi.' });
+    return NextResponse.json({ error: "Erreur lors de l'envoi." }, { status: 500 });
   }
 }
