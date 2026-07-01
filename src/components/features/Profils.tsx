@@ -1,10 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { type Page } from '../../hooks/useNavigation';
-
-interface ProfilsProps {
-  onNavigate?: (page: Page) => void;
-}
+import { useAppNavigation } from '../../hooks/useNavigation';
 
 const profilIcons = [
   <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -26,8 +24,9 @@ const profilIcons = [
   </svg>,
 ];
 
-const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
+const Profils: React.FC = () => {
   const { t } = useTranslation();
+  const { navigateTo } = useAppNavigation();
   const [active, setActive] = useState(0);
   const [animKey, setAnimKey] = useState(0);
 
@@ -135,7 +134,7 @@ const Profils: React.FC<ProfilsProps> = ({ onNavigate }) => {
                 ))}
               </ul>
               <button
-                onClick={() => onNavigate?.('contact')}
+                onClick={() => navigateTo('contact')}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90"
                 style={{ background: color }}
               >

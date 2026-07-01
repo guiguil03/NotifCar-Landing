@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
@@ -10,22 +12,14 @@ import Profils from '../components/features/Profils';
 import FAQ from '../components/features/FAQ';
 import Footer from '../components/layout/Footer';
 import CookieBanner from '../components/ui/CookieBanner';
-import { type Page } from '../hooks/useNavigation';
 
-interface LandingPageProps {
-  onNavigate?: (page: Page) => void;
-  onScrollToSection?: (sectionId: string) => void;
-}
-
-const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection }) => {
+const LandingPage: React.FC = () => {
   const { t } = useTranslation();
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
       <Header
-        onNavigate={onNavigate}
-        onScrollToSection={onScrollToSection}
         onOpenRegistration={() => setIsRegistrationModalOpen(true)}
       />
 
@@ -251,9 +245,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onScrollToSection
       <Scenarios />
       <Fonctionnement />
       <Fonctionnalites />
-      <Profils onNavigate={onNavigate} />
+      <Profils />
       <FAQ />
-      <Footer onNavigate={onNavigate} />
+      <Footer />
       <CookieBanner />
 
       <RegistrationModal

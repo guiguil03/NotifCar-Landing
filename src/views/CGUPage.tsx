@@ -1,12 +1,9 @@
+'use client';
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { type Page } from '../hooks/useNavigation';
-
-interface CGUPageProps {
-  onNavigate?: (page: Page) => void;
-}
 
 function Section({ title, children }: { title: string; children: string }) {
   return (
@@ -17,18 +14,12 @@ function Section({ title, children }: { title: string; children: string }) {
   );
 }
 
-const CGUPage: React.FC<CGUPageProps> = ({ onNavigate }) => {
+const CGUPage: React.FC = () => {
   const { t } = useTranslation();
-
-  React.useEffect(() => {
-    document.title = "Conditions générales d'utilisation — NotifCar";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', "Conditions générales d'utilisation de NotifCar. Règles d'utilisation du service, abonnements, responsabilités et droit applicable.");
-  }, []);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#F0F4F8' }}>
-      <Header onNavigate={onNavigate} />
+      <Header />
 
       {/* Hero */}
       <div className="relative overflow-hidden pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-28 pb-12 sm:pb-14 px-4 sm:px-6 text-center"
@@ -64,7 +55,7 @@ const CGUPage: React.FC<CGUPageProps> = ({ onNavigate }) => {
         <Section title={t('cgu.s10Title')}>{t('cgu.s10Body')}</Section>
       </div>
 
-      <Footer onNavigate={onNavigate} />
+      <Footer />
     </div>
   );
 };

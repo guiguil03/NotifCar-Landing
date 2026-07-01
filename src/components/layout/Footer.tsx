@@ -1,14 +1,12 @@
+'use client';
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import notifcarLogo from '../../assets/notifcarlogo.png';
-import { type Page } from '../../hooks/useNavigation';
+import { useAppNavigation } from '../../hooks/useNavigation';
 
-interface FooterProps {
-  onNavigate?: (page: Page) => void;
-}
-
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const { navigateTo } = useAppNavigation();
 
   return (
     <footer style={{ background: '#0B0F2E' }}>
@@ -18,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Brand */}
           <div className="flex-shrink-0 md:w-72">
-            <img src={notifcarLogo} alt="NotifCar" className="h-5 w-auto mb-5" style={{ filter: 'brightness(0) invert(1)' }} />
+            <img src="/notifcarlogo.png" alt="NotifCar" className="h-5 w-auto mb-5" style={{ filter: 'brightness(0) invert(1)' }} />
             <p className="text-sm leading-relaxed mb-6 max-w-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>
               {t('footer.description')}
             </p>
@@ -49,9 +47,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <h3 className="text-xs font-bold uppercase tracking-widest mb-4 sm:mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>{t('footer.product')}</h3>
               <ul className="space-y-3">
                 {[
-                  { label: t('footer.links.howItWorks'), action: () => onNavigate?.('landing') },
-                  { label: t('footer.links.features'), action: () => onNavigate?.('landing') },
-                  { label: t('footer.links.pricing'), action: () => onNavigate?.('pricing') },
+                  { label: t('footer.links.howItWorks'), action: () => navigateTo('landing') },
+                  { label: t('footer.links.features'), action: () => navigateTo('landing') },
+                  { label: t('footer.links.pricing'), action: () => navigateTo('pricing') },
                 ].map((l) => (
                   <li key={l.label}>
                     <button onClick={l.action} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -66,9 +64,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <h3 className="text-xs font-bold uppercase tracking-widest mb-4 sm:mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>{t('footer.company')}</h3>
               <ul className="space-y-3">
                 {[
-                  { label: t('footer.links.contact'), action: () => onNavigate?.('contact') },
-                  { label: t('footer.links.fleets'), action: () => onNavigate?.('contact') },
-                  { label: t('footer.links.partners'), action: () => onNavigate?.('contact') },
+                  { label: t('footer.links.contact'), action: () => navigateTo('contact') },
+                  { label: t('footer.links.fleets'), action: () => navigateTo('contact') },
+                  { label: t('footer.links.partners'), action: () => navigateTo('contact') },
                 ].map((l) => (
                   <li key={l.label}>
                     <button onClick={l.action} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
@@ -83,12 +81,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <h3 className="text-xs font-bold uppercase tracking-widest mb-4 sm:mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>{t('footer.legal')}</h3>
               <ul className="space-y-3">
                 <li>
-                  <button onClick={() => onNavigate?.('privacy')} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  <button onClick={() => navigateTo('privacy')} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {t('footer.links.privacy')}
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => onNavigate?.('cgu')} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  <button onClick={() => navigateTo('cgu')} className="text-xs sm:text-sm transition-colors hover:text-white text-left leading-snug" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {t('footer.links.cgu')}
                   </button>
                 </li>

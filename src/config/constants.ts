@@ -8,7 +8,7 @@ export const APP_CONFIG = {
 } as const;
 
 export const API_CONFIG = {
-  baseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
+  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api',
   timeout: 10000,
   endpoints: {
     auth: {
@@ -39,7 +39,7 @@ export const API_CONFIG = {
 } as const;
 
 export const QR_CODE_CONFIG = {
-  baseUrl: import.meta.env.VITE_QR_CODE_BASE_URL || 'https://notifcar.com/qr',
+  baseUrl: process.env.NEXT_PUBLIC_QR_CODE_BASE_URL || 'https://notifcar.com/qr',
   size: 256,
   format: 'png',
   errorCorrectionLevel: 'M',

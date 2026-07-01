@@ -1,12 +1,9 @@
+'use client';
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { type Page } from '../hooks/useNavigation';
-
-interface PrivacyPageProps {
-  onNavigate?: (page: Page) => void;
-}
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -43,18 +40,12 @@ function DurationRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
+const PrivacyPage: React.FC = () => {
   const { t } = useTranslation();
-
-  React.useEffect(() => {
-    document.title = 'Politique de confidentialité — NotifCar';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', "Politique de confidentialité de NotifCar, conforme au RGPD. Informations sur la collecte, l'utilisation et la protection de vos données personnelles.");
-  }, []);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#F0F4F8' }}>
-      <Header onNavigate={onNavigate} />
+      <Header />
 
       {/* Hero */}
       <div className="relative overflow-hidden pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-28 pb-12 sm:pb-14 px-4 sm:px-6 text-center"
@@ -227,7 +218,7 @@ const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         </Section>
       </div>
 
-      <Footer onNavigate={onNavigate} />
+      <Footer />
     </div>
   );
 };
